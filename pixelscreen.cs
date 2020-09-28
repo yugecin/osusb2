@@ -45,7 +45,19 @@ partial class all {
 			return owner[x, y];
 		}
 
-		private void init() {
+		public bool hasOwner(object owner) {
+			for (int i = 0; i < hpixels; i++) {
+				for (int j = 0; j < vpixels; j++) {
+					if (this.owner[i, j] == owner) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
+		private void init()
+		{
 			this.zbuf = new float[hpixels,vpixels];
 			this.owner = new object[hpixels,vpixels];
 			this.odot = new Odot[hpixels,vpixels];

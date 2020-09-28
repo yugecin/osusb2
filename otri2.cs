@@ -30,24 +30,33 @@ partial class all {
 			update(scene, .3f, .7f, 1f);
 		}
 
+		public void cullframe(SCENE scene) {
+			tris[0].update(scene.time, null, 0f, null, v2(0f));
+			tris[1].update(scene.time, null, 0f, null, v2(0f));
+		}
+
 		public void update(SCENE scene, float light_ambient, float light_diffuse, float light_mod) {
 			Tri t = this.tri;
 			Otri tri1 = tris[0];
 			Otri tri2 = tris[1];
 
 			if (light_mod < 0) {
-				goto cull;
+				cullframe(scene);
+				return;
 			}
 
 			if (t.shouldcull() && (settings & SETTING_NO_BCULL) == 0) {
-				goto cull;
+				cullframe(scene);
+				return;
 			}
 
 			vec4 shade = all.col(t.color);
 			if ((settings & SETTING_SHADED) > 0) {
 				float rv = (tri.surfacenorm().norm() ^ tri.rayvec().norm());
 				if (rv < 0.0f || float.IsNaN(rv)) {
-					goto cull; // TODO why wasn't this here before
+					// TODO why wasn't this cull here before
+					cullframe(scene);
+					return;
 				}
 				if (t.shouldcull()) {
 					rv *= -1;
@@ -56,7 +65,11 @@ partial class all {
 				if (rv < 0.0f) {
 					rv = 0.0f;
 				}
-				shade *= light_ambient + light_diffuse * rv;
+				float camfactor = tri.surfacenorm().norm() ^ (tri.points[tri.a] - campos).norm();
+				if (camfactor < 0.0f) {
+					camfactor = 0.0f;
+				}
+				shade *= light_ambient + light_diffuse * rv + .2f * camfactor;
 				shade *= light_mod;
 				if (shade.x > 1f) shade.x = 1f;
 				if (shade.y > 1f) shade.y = 1f;
@@ -76,13 +89,15 @@ partial class all {
 			};
 
 			if (pts4[0].z < 1f || pts4[1].z < 1f || pts4[2].z < 1f) {
-				goto cull;
+				cullframe(scene);
+				return;
 			}
 
 			vec2[] pts = { pts4[0].xy, pts4[1].xy, pts4[2].xy };
 
 			if (!isonscreen(pts)) {
-				goto cull;
+				cullframe(scene);
+				return;
 			}
 
 			if (distance(pts[0], pts[1]) < distance(pts[0], pts[2])) {
@@ -99,10 +114,6 @@ partial class all {
 
 			dotri(scene, tri1, pts, phantom, 0, w, shade);
 			dotri(scene, tri2, pts, phantom, 1, w, shade);
-			return;
-cull:
-			tri1.update(scene.time, null, 0f, null, v2(0f));
-			tri2.update(scene.time, null, 0f, null, v2(0f));
 		}
 
 		private bool isonscreen(vec2[] pts) {

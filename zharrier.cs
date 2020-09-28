@@ -15,7 +15,7 @@ partial class all{
 		Otri2[] tris;
 		Oline[] lines;
 		Odot[] dots;
-		Pixelscreen pixelscreen = new Pixelscreen(640/2, 480/2, 2);
+		Pixelscreen pixelscreen = new Pixelscreen(/*widescreen mode*/854/2, 480/2, 2);
 		public static Odot dot;
 
 		public Zharrier(int start, int stop) {
@@ -76,23 +76,25 @@ partial class all{
 			copy(_points, points);
 			Zcamera.adjust(_points);
 
-			foreach (Otri2 t in tris) {
-				t.update(scene);
-			}
-
-			/*
 			pixelscreen.clear();
 			foreach (Otri2 t in tris) {
 				pixelscreen.tri(
-					t.tri,
+					t,
 					new vec4[] {
 						project(t.tri.points[t.tri.a]),
 						project(t.tri.points[t.tri.b]),
 						project(t.tri.points[t.tri.c])
 					});
 			}
-			pixelscreen.draw(scene);
-			*/
+			//pixelscreen.draw(scene);
+
+			foreach (Otri2 t in tris) {
+				if (pixelscreen.hasOwner(t)) {
+					t.update(scene);
+				} else {
+					t.cullframe(scene);
+				}
+			}
 
 			foreach (Oline l in lines) {
 				l.update(scene.time, v4(1f));

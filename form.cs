@@ -314,6 +314,7 @@ partial class all {
 
 	[STAThread]
 	static void Main() {
+		all.Widescreen = true;
 		CultureInfo customCulture = (CultureInfo) Thread.CurrentThread.CurrentCulture.Clone();
 		customCulture.NumberFormat.NumberDecimalSeparator = ".";
 		Thread.CurrentThread.CurrentCulture = customCulture;
@@ -437,7 +438,7 @@ partial class all {
 				maxtime = z.stop;
 			}
 		}
-		int nextprogress = 5;
+		int nextprogress = 0;
 		rendering = true;
 		for (int i = mintime; i < maxtime; i += 5) {
 			int progress = (i - mintime) * 100 / (maxtime - mintime);
