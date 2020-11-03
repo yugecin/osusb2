@@ -1,4 +1,4 @@
-﻿namespace osusb1 {
+namespace osusb1 {
 	partial class form {
 	/// <summary>
 	/// Required designer variable.

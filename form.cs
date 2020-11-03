@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
@@ -349,9 +349,9 @@ partial class all {
 
 	static void init() {
 		zs.Clear();
-		zs.Add(new Zcamera(00000, 138200));
-		zs.Add(new Zairport(00000, 16200));
-		zs.Add(new Zharrier(00000, 138200));
+		zs.Add(new Zcamera(00000, 124000));
+		zs.Add(new Zairport2(00000, 124000));
+		zs.Add(new Zharrier(00000, 124000));
 		//zs.Add(new Zwaves(51750, 69150));
 		/*
 		zs.Add(new Zstartcube(00000, 16200));

@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Drawing;
 
 namespace osusb1 {
 partial class all {
@@ -27,8 +28,38 @@ partial class all {
 			}
 		}
 
-		public void update(SCENE scene) {
+		public void update_culled(SCENE scene)
+		{
+			for (int i = 0; i < tris.Length; i++) {
+				tris[i].update(scene.time, null, 0f, null, v2(0f));
+			}
+		}
+
+		public void update(SCENE scene)
+		{
 			update(scene, .3f, .7f, 1f);
+		}
+
+		public bool is_fully_visible()
+		{
+			foreach (Tri t in new Tri[] { rect.tri1, rect.tri2 }) {
+				vec4[] pts4 = {
+					project(t.points[t.a]),
+					project(t.points[t.b]),
+					project(t.points[t.c]),
+				};
+
+				if (pts4[0].z < 1f || pts4[1].z < 1f || pts4[2].z < 1f) {
+					return false;
+				}
+
+				vec2[] pts = { pts4[0].xy, pts4[1].xy, pts4[2].xy };
+
+				if (!isonscreen(pts)) {
+					return false;
+				}	
+			}
+			return true;
 		}
 
 		public void update(SCENE scene, float light_ambient, float light_diffuse, float light_mod) {
@@ -63,8 +94,6 @@ partial class all {
 					shade.w = 1f;
 				}
 
-				float w = project((t.points[t.a] + t.points[t.b] + t.points[t.c]) / 3f).w;
-
 				vec4[] pts4 = {
 					project(t.points[t.a]),
 					project(t.points[t.b]),
@@ -93,6 +122,7 @@ partial class all {
 				float x = cos(dangle) * distance(pts[0], pts[2]) / distance(pts[0], pts[1]);
 				vec2 phantom = lerp(pts[0], pts[1], x);
 
+				float w = project((t.points[t.a] + t.points[t.b] + t.points[t.c]) / 3f).w;
 				dotri(scene, tri1, pts, phantom, 0, w, shade);
 				dotri(scene, tri2, pts, phantom, 1, w, shade);
 				continue;
@@ -162,6 +192,143 @@ cull:
 		public void fin(Writer w) {
 			foreach (Otri t in tris) {
 				t.fin(w);
+			}
+		}
+	}
+	class MultiRect
+	{
+		private Rect rect;
+		public MultiRectChild child;
+
+		public MultiRect(Rect rect)
+		{
+			this.rect = rect;
+			vec3[] mypoints = new vec3[4];
+			mypoints[0] = this.rect.pts[this.rect.a];
+			mypoints[1] = this.rect.pts[this.rect.b];
+			mypoints[2] = this.rect.pts[this.rect.c];
+			mypoints[3] = this.rect.pts[this.rect.d];
+			this.child = new MultiRectChild(mypoints, rect.color, 0, 0f, 1f, 0f, 1f);
+		}
+
+		public void update(SCENE scene)
+		{
+			this.child.parentpoints[0] = this.rect.pts[this.rect.a];
+			this.child.parentpoints[1] = this.rect.pts[this.rect.b];
+			this.child.parentpoints[2] = this.rect.pts[this.rect.c];
+			this.child.parentpoints[3] = this.rect.pts[this.rect.d];
+			this.child.update(scene, false);
+		}
+
+		public void fin(Writer w)
+		{
+			this.child.fin(w);
+		}
+	}
+	class MultiRectChild
+	{
+		/*
+		static System.Drawing.Color[] colors = new System.Drawing.Color[] {
+			System.Drawing.Color.Aqua,
+			System.Drawing.Color.Red,
+			System.Drawing.Color.Orange,
+			System.Drawing.Color.Green,
+			System.Drawing.Color.Blue,
+			System.Drawing.Color.Magenta,
+			System.Drawing.Color.Maroon,
+			System.Drawing.Color.Lime,
+			System.Drawing.Color.Yellow,
+			System.Drawing.Color.White,
+			System.Drawing.Color.Gray,
+		};*/
+		public vec3[] parentpoints;
+		public vec3[] mypoints;
+		public float abt1, abt2, act1, act2; /*to make this child (mypoints)*/
+		public Orect rect;
+		public MultiRectChild[] children;
+		public int depth;
+
+		public MultiRectChild(vec3[] points, Color col, int depth, float abt1, float abt2, float act1, float act2)
+		{
+			this.depth = depth;
+			this.abt1 = abt1;
+			this.abt2 = abt2;
+			this.act1 = act1;
+			this.act2 = act2;
+			this.parentpoints = new vec3[4];
+			this.mypoints = new vec3[4];
+			copy(this.parentpoints, points);
+			this.update_my_points();
+			this.rect = new Orect(new Rect(this, col /*colors[this.depth]*/, this.mypoints, 0, 1, 2, 3), 0);
+			if (depth < 6) {
+				depth++;
+				float acdist = distance(this.mypoints[0], this.mypoints[2]);
+				float abdist = distance(this.mypoints[0], this.mypoints[1]);
+				if (abdist >= 1.75 * acdist) {
+					this.children = new MultiRectChild[] {
+					new MultiRectChild(mypoints, col, depth, 0f, .5f, 0f, 1f),
+					new MultiRectChild(mypoints, col, depth, .5f, 1f, 0f, 1f),
+				};
+				} else if (acdist >= 1.75 * abdist) {
+					this.children = new MultiRectChild[] {
+					new MultiRectChild(mypoints, col, depth, 0f, 1f, 0f, .5f),
+					new MultiRectChild(mypoints, col, depth, 0f, 1f, .5f, 1f),
+				};
+				} else {
+					this.children = new MultiRectChild[] {
+					new MultiRectChild(mypoints, col, depth, 0f, .5f, 0f, .5f),
+					new MultiRectChild(mypoints, col, depth, .5f, 1f, 0f, .5f),
+					new MultiRectChild(mypoints, col, depth, 0f, .5f, .5f, 1f),
+					new MultiRectChild(mypoints, col, depth, .5f, 1f, .5f, 1f),
+				};
+				}
+			} else {
+				this.children = new MultiRectChild[0];
+			}
+		}
+
+		private void update_my_points()
+		{
+			vec3 _a = lerp(this.parentpoints[0], this.parentpoints[1], this.abt1);
+			vec3 _b = lerp(this.parentpoints[0], this.parentpoints[1], this.abt2);
+			vec3 _c = lerp(this.parentpoints[2], this.parentpoints[3], this.abt1);
+			vec3 _d = lerp(this.parentpoints[2], this.parentpoints[3], this.abt2);
+			vec3 __a = lerp(_a, _c, this.act1);
+			vec3 __c = lerp(_a, _c, this.act2);
+			vec3 __b = lerp(_b, _d, this.act1);
+			vec3 __d = lerp(_b, _d, this.act2);
+			this.mypoints[0] = __a;
+			this.mypoints[1] = __b;
+			this.mypoints[2] = __c;
+			this.mypoints[3] = __d;
+		}
+
+		public void update(SCENE scene, bool culled)
+		{
+			this.update_my_points();
+
+			if (culled) {
+				this.rect.update_culled(scene);
+			} else {
+				if (this.rect.is_fully_visible()) {
+					this.rect.update(scene, .3f, .7f, 1f);
+					culled = true;
+				} else {
+					this.rect.update_culled(scene);
+				}
+			}
+
+			foreach (MultiRectChild child in this.children) {
+				copy(child.parentpoints, this.mypoints);
+				child.update(scene, culled);
+			}
+		}
+
+		public void fin(Writer w)
+		{
+			this.rect.fin(w);
+			foreach (MultiRectChild child in this.children) {
+				child.fin(w);
 			}
 		}
 	}

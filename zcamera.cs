@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 using System.Windows.Forms;
 
@@ -67,10 +67,14 @@ partial class all
 				dp.z -= 0.7f * udata[1];
 
 
-				dp.y -= lerp(0f, 20f, progress(0, 5000, scene.time));
-				dp.x -= lerp(0f, 10f, progress(0, 5000, scene.time));
-				dp.z -= lerp(10f, 20f, progress(0, 5000, scene.time));
-				
+				//dp.y -= lerp(0f, 20f, progress(0, 5000, scene.time));
+				//dp.x -= lerp(0f, 10f, progress(0, 5000, scene.time));
+				//dp.z -= lerp(10f, 20f, progress(0, 5000, scene.time));
+
+				dp.z -= cos(progress(0, 5000, scene.time)) * 20;
+				dp.y += 10 * sin(progress(0, 5000, scene.time));
+				dp.x += 10 * sin(progress(0, 5000, scene.time));
+
 				//dp.y -= 70.0f;
 				
 				dir = dp - v3(0);

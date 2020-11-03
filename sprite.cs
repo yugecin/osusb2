@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -42,7 +42,7 @@ partial class all {
 			spritedata.Add(SPRITE_SQUARE_6_6, new SDATA(6f, 6f));
 			spritedata.Add(SPRITE_SQUARE_2_2, new SDATA(2f, 2f));
 			spritedata.Add(SPRITE_DOT_6_12, new SDATA(12f, 6f));
-			spritedata.Add(SPRITE_TRI, new SDATA(100f, 100f));
+			spritedata.Add(SPRITE_TRI, new SDATA(500f, 500f));
 		}
 
 		public static float Size(string filename) {

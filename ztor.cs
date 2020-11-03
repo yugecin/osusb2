@@ -1,4 +1,4 @@
-﻿//#define SCREEN
+//#define SCREEN
 using System;
 using System.Drawing;
 
