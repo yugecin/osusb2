@@ -7,7 +7,7 @@ partial class all{
 	public static vec3 harrpoint;
 	public delegate void harrupdate();
 	public static harrupdate haha;
-	public static vec3 sunpos = v3(0);
+	public static vec3 sunpos = v3(0f); // see zcamera
 	class Zharrier : Z {
 
 		vec3[] points;
@@ -63,11 +63,6 @@ partial class all{
 			ICommand.round_scale_decimals.Push(DECIMALS_PRECISE);
 			ICommand.round_rot_decimals.Push(DECIMALS_PRECISE);
 
-			sunpos = v3(15.0f, 15.0f, 50.0f);
-			vec3[] sp = new vec3[] { sunpos };
-			move(sp, Zcamera.mid);
-			Zcamera.adjust(sp);
-			sunpos = sp[0];
 			if (!rendering) {
 				dot.update(scene.time, v4(1f, 0, 0, 1f), project(sunpos));
 				dot.draw(scene.g);

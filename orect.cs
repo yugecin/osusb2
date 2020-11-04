@@ -79,14 +79,22 @@ partial class all {
 
 				vec4 shade = all.col(t.color);
 				if ((settings & SETTING_SHADED) > 0) {
-					float rv = (rect.surfacenorm().norm() ^ rect.rayvec().norm());
+					//float rv = (rect.surfacenorm().norm() ^ rect.rayvec().norm());
+					//if (rv < 0.0f) {
+					//	goto cull; // TODO why wasn't this here before
+					//}
+					float rv = rect.surfacenorm().norm() ^ (rect.pts[rect.a] - sunpos).norm();
 					if (rv < 0.0f) {
-						goto cull; // TODO why wasn't this here before
+						rv = 0.0f;
 					}
+					float camfactor = rect.surfacenorm().norm() ^ (rect.pts[rect.a] - campos).norm();
+					//if (camfactor < 0.0f) {
+						camfactor = 0.0f;
+					//}
 					if (t.shouldcull()) {
 						rv *= -1;
 					}
-					shade *= light_ambient + light_diffuse * rv;
+					shade *= light_ambient + light_diffuse * rv + .2f * camfactor;
 					shade *= light_mod;
 					if (shade.x > 1f) shade.x = 1f;
 					if (shade.y > 1f) shade.y = 1f;

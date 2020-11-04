@@ -50,6 +50,11 @@ partial class all
 		}
 
 		public override void draw(SCENE scene) {
+			vec3[] sp = new vec3[] { v3(0f, 0f, 50f) };
+			move(sp, Zcamera.mid);
+			Zcamera.adjust(sp);
+			sunpos = sp[0];
+
 			dp = v3(0f);
 			vec3 dir = v3(0f);
 			float rz = 0f;

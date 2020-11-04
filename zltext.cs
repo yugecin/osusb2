@@ -25,7 +25,7 @@ partial class all {
 
 		public const int SIZE = 2;
 
-		public Zltext(int start, int stop, string text) {
+		public Zltext(int start, int stop, string text, vec3 offset) {
 			this.start = start;
 			this.stop = stop;
 			framedelta = 15;
@@ -44,7 +44,7 @@ partial class all {
 				v3(.9f).col(),
 			};
 			for (int i = 0; i < cols.Length; i++) {
-				cols[i] = v3(.6f, .4f, 1f).col();
+				//cols[i] = v3(.6f, .4f, 1f).col();
 			}
 			points = new vec3[8];
 			vec3 topleft = Zcamera.mid - v3(width / 2f * SIZE, 0f, 0f);
@@ -104,7 +104,7 @@ partial class all {
 			_points = new vec3[points.Length];
 			int pointcount = 0;
 			foreach (vec3 p in pointlist) {
-				points[pointcount++] = p;
+				points[pointcount++] = p + offset;
 			}
 			rects = new MRECT[rectlist.Count];
 			rects2 = new MRECT[rectlist.Count];
