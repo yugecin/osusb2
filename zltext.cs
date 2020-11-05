@@ -28,7 +28,7 @@ partial class all {
 		public Zltext(int start, int stop, string text, vec3 offset) {
 			this.start = start;
 			this.stop = stop;
-			framedelta = 15;
+			framedelta = 50;
 
 			int width = font.textWidth(text);
 

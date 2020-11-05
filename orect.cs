@@ -235,20 +235,23 @@ cull:
 	}
 	class MultiRectChild
 	{
-		/*
-		static System.Drawing.Color[] colors = new System.Drawing.Color[] {
-			System.Drawing.Color.Aqua,
-			System.Drawing.Color.Red,
-			System.Drawing.Color.Orange,
-			System.Drawing.Color.Green,
-			System.Drawing.Color.Blue,
-			System.Drawing.Color.Magenta,
-			System.Drawing.Color.Maroon,
-			System.Drawing.Color.Lime,
-			System.Drawing.Color.Yellow,
-			System.Drawing.Color.White,
-			System.Drawing.Color.Gray,
-		};*/
+		static Color[] colors = new Color[] {
+			Color.Aqua,
+			Color.Red,
+			Color.Orange,
+			Color.Green,
+			Color.Blue,
+			Color.Magenta,
+			Color.Maroon,
+			Color.Lime,
+			Color.Yellow,
+			Color.White,
+			Color.Gray,
+			Color.Beige,
+			Color.CornflowerBlue,
+			Color.Chocolate,
+			Color.MintCream,
+		};
 		public vec3[] parentpoints;
 		public vec3[] mypoints;
 		public float abt1, abt2, act1, act2; /*to make this child (mypoints)*/
@@ -268,10 +271,10 @@ cull:
 			copy(this.parentpoints, points);
 			this.update_my_points();
 			this.rect = new Orect(new Rect(this, col /*colors[this.depth]*/, this.mypoints, 0, 1, 2, 3), 0);
-			if (depth < 6) {
+			float acdist = distance(this.mypoints[0], this.mypoints[2]);
+			float abdist = distance(this.mypoints[0], this.mypoints[1]);
+			if (depth < 12 && (acdist > 30f || abdist > 30f)) {
 				depth++;
-				float acdist = distance(this.mypoints[0], this.mypoints[2]);
-				float abdist = distance(this.mypoints[0], this.mypoints[1]);
 				if (abdist >= 1.75 * acdist) {
 					this.children = new MultiRectChild[] {
 					new MultiRectChild(mypoints, col, depth, 0f, .5f, 0f, 1f),

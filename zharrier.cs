@@ -93,7 +93,7 @@ partial class all{
 
 			foreach (Oline l in lines) {
 				l.update(scene.time, v4(1f));
-				if (udata[5] >= 0) {
+				if (udata[5] > 0) {
 					l.draw(scene.g);
 				}
 			}
@@ -112,7 +112,7 @@ partial class all{
 					move(_p, Zcamera.mid);
 					Zcamera.adjust(_p);
 					vec4 px = project(_p[0]);
-					if (udata[6] >= 0 && px.w > 0) {
+					if (udata[6] > 0 && px.w > 0) {
 						scene.g.DrawString(i.ToString(), font, new SolidBrush(Color.White), px.x + 1, px.y + 1);
 						scene.g.DrawString(i.ToString(), font, new SolidBrush(Color.Blue), px.x, px.y);
 					}

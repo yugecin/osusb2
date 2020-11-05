@@ -77,8 +77,8 @@ partial class all
 				//dp.z -= lerp(10f, 20f, progress(0, 5000, scene.time));
 
 				dp.z -= cos(progress(0, 5000, scene.time)) * 20;
-				dp.y += 10 * sin(progress(0, 5000, scene.time));
-				dp.x += 10 * sin(progress(0, 5000, scene.time));
+				dp.y += -20 + 20 * sin(progress(0, 5000, scene.time));
+				dp.x += 30 * sin(progress(0, 5000, scene.time));
 
 				//dp.y -= 70.0f;
 				
@@ -133,7 +133,7 @@ partial class all
 
 		public static void adjust(vec3[] points) {
 			if (!rendering) {
-				vec3 d = v3(debug_x, debug_y, 0);
+				vec3 d = v3(debug_x * 3, debug_y * 3, 0);
 				move(points, d);
 				turn(points, mid, quat(0f, 0f, rad(mouse.x)));
 				turn(points, mid, quat(0f, -rad(mouse.y), 0f));

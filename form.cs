@@ -351,8 +351,8 @@ partial class all {
 		zs.Clear();
 		zs.Add(new Zcamera(00000, 124000));
 		zs.Add(new Zairport2(00000, 124000));
-		//zs.Add(new Zltext(00000, 124000, "robin_be presents"));
-		zs.Add(new Zltext(00000, 124000, "osu! storyboard demo number two", v3(0f, 30f, -20f)));
+		zs.Add(new Zltext(00000, 124000, "robin_be presents", v3(0f, 250f, -20f)));
+		zs.Add(new Zltext(00000, 124000, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
 		zs.Add(new Zharrier(00000, 124000));
 		//zs.Add(new Zwaves(51750, 69150));
 		/*
