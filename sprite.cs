@@ -559,7 +559,7 @@ exit:
 					return;
 				}
 			}
-			FadeCommand cmd = new FadeCommand(endtime, actualendtime, 1f, 1f);
+			FadeCommand cmd = new FadeCommand(/*this was endtime, but I guess it was a bug?*/starttime, actualendtime, 1f, 1f);
 			if (fadecmds.Last != null) {
 				cmd.to = cmd.from = fadecmds.Last.Value.to;
 			}

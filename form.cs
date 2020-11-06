@@ -353,7 +353,7 @@ partial class all {
 		//zs.Add(new Zairport2(00000, 71208));
 		//zs.Add(new Zltext(00000, 71208, "robin_be presents", v3(0f, 250f, -20f)));
 		//zs.Add(new Zltext(00000, 71208, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
-		zs.Add(new Zharrier(00000, 71208));
+		//zs.Add(new Zharrier(00000, 71208));
 		zs.Add(new Zharrierbreakdown(71208, 104085));
 		foreach (Z z in zs) {
 			z.framedelta = 1000 / 20;

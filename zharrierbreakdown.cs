@@ -14,6 +14,35 @@ partial class all{
 		Pixelscreen pixelscreen = new Pixelscreen(/*widescreen mode*/854/2, 480/2, 2);
 		public static Odot dot;
 
+		const int TEXTSPACING = 3;
+		string[] text = {
+			"How to 3d:",
+			"Move",
+			"Rotate",
+			"Scale",
+			"82 verts",
+			"215 lines",
+			"145 tris",
+			"triangle commands size (KB):",
+		};
+		vec2[] textlocstart = {
+			v2(-75f, 50f),
+			v2(-75f, 150f),
+			v2(-75f, 180f),
+			v2(-75f, 210f),
+			v2(-75f, 300f),
+			v2(-75f, 330f),
+			v2(-75f, 360f),
+			v2(-75f, 450f),
+		};
+		vec2 textoffset = v2(-10f, -20f);
+		Odot[] statictext;
+		vec2[] textloc;
+		bool[] movtext;
+		bool[] rottext;
+		bool[] scaletext;
+		bool[] ftext;
+
 		public Zharrierbreakdown(int start, int stop)
 		{
 			this.start = start;
@@ -45,6 +74,47 @@ partial class all{
 					), s);
 			}
 			move(points, Zcamera.mid);
+
+			inittext();
+		}
+
+		private void inittext()
+		{
+			int pointcount = 0;
+			for (int i = 0; i < text.Length; i++) {
+				pointcount += font.calcPointCount(text[i]);
+			}
+			statictext = new Odot[pointcount];
+			textloc = new vec2[pointcount];
+			movtext = new bool[pointcount];
+			rottext = new bool[pointcount];
+			scaletext = new bool[pointcount];
+			ftext = new bool[pointcount];
+
+			int idx = 0;
+			for (int q = 0; q < text.Length; q++) {
+				string t = text[q];
+				int xoff = 0;
+				for (int i = 0; i < t.Length; i++) {
+					int c = t[i] - 32;
+					int cw = font.charwidth[c];
+					for (int j = 0; j < font.charheight; j++) {
+						for (int k = 0; k < cw; k++) {
+							if (((font.chardata[c][j] >> k) & 1) == 1) {
+								int x = xoff + k;
+								textloc[idx] = v2(x, j) * TEXTSPACING + textlocstart[q] + textoffset;
+								statictext[idx] = new Odot("2", 0);
+								movtext[idx] = q == 1;
+								rottext[idx] = q == 2;
+								scaletext[idx] = q == 3;
+								ftext[idx] = q == 7;
+								idx++;
+							}
+						}
+					}
+					xoff += cw + 1;
+				}
+			}
 		}
 
 		private void drawtri(Otri2 t, SCENE scene, Pixelscreen pixelscreen)
@@ -55,6 +125,8 @@ partial class all{
 				t.cullframe(scene);
 			}
 		}
+
+		bool EW_STATE_FLICKER_TEXT_SHOWN; // state sux but it has to be perfect yknow
 
 		public override void draw(SCENE scene) {
 			ICommand.round_move_decimals.Push(DECIMALS_PRECISE);
@@ -82,6 +154,8 @@ partial class all{
 
 			int t = scene.time;
 
+			bool showmov = false, showrot = false, showscale = false;
+
 			// shakes
 			if (76166 <= t && t < 77208 ||
 				82791 <= t && t < 83875 ||
@@ -101,29 +175,37 @@ partial class all{
 					dots[i].draw(scene.g);
 				}
 			//}
-
 			// tris
 			float faster = 1.2f;
 			if (t < 96080) {
+				showmov = true;
 				Otri2.rotation_factor = progressxy(72958, 74583, scene.time, faster);
 				Otri2.scale_factor = progressxy(74583, 76166, scene.time, faster);
+				showrot |= t < 77875 && t > 72958;
+				showscale |= t < 77875 && t > 74583;
 				drawtri(tris[129], scene, pixelscreen);
 				Otri2.rotation_factor = Otri2.scale_factor = 1f;
 				if (t > 77875) {
 					Otri2.rotation_factor = progressxy(79500, 81125, scene.time, faster);
 					Otri2.scale_factor = progressxy(81125, 82791, scene.time, faster);
+					showrot |= t < 84458 && t > 79500;
+					showscale |= t < 84458 && t > 81125;
 					drawtri(tris[108], scene, pixelscreen);
 					Otri2.rotation_factor = Otri2.scale_factor = 1f;
 				}
 				if (t > 84458) {
 					Otri2.rotation_factor = progressxy(86125, 87791, scene.time, faster);
 					Otri2.scale_factor = progressxy(87791, 89375, scene.time, faster);
+					showrot |= t < 91040 && t > 86125;
+					showscale |= t < 91040 && t > 87791;
 					drawtri(tris[135], scene, pixelscreen);
 					Otri2.rotation_factor = Otri2.scale_factor = 1f;
 				}
 				if (t> 91040) {
 					Otri2.rotation_factor = progressxy(92792, 94333, scene.time, faster);
 					Otri2.scale_factor = progressxy(94333, 96080, scene.time, faster);
+					showrot |= t > 92792;
+					showscale |= t > 94333;
 					drawtri(tris[103], scene, pixelscreen);
 					Otri2.rotation_factor = Otri2.scale_factor = 1f;
 				}
@@ -137,6 +219,23 @@ partial class all{
 			} else {
 				foreach (Otri2 tri in tris) {
 					drawtri(tri, scene, pixelscreen);
+				}
+			}
+
+			EW_STATE_FLICKER_TEXT_SHOWN = !EW_STATE_FLICKER_TEXT_SHOWN;
+
+			for (int i = 0; i < statictext.Length; i++) {
+				bool show =
+					(!movtext[i] || showmov) &&
+					(!rottext[i] || showrot) &&
+					(!scaletext[i] || showscale) &&
+					(!ftext[i] || EW_STATE_FLICKER_TEXT_SHOWN || t < 100208 || 101041 < t);
+
+				if (show) {
+					statictext[i].update(scene.time, v4(1f), v4(textloc[i], 1f, 1f));
+					statictext[i].draw(scene.g);
+				} else {
+					statictext[i].update(scene.time, null, null);
 				}
 			}
 
@@ -158,6 +257,9 @@ partial class all{
 			}
 			foreach (Otri2 t in tris) {
 				t.fin(w);
+			}
+			foreach (Odot d in statictext) {
+				d.fin(w);
 			}
 			ICommand.round_move_decimals.Pop();
 			ICommand.round_scale_decimals.Pop();
