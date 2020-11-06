@@ -414,19 +414,28 @@ partial class all {
 				maxtime = z.stop;
 			}
 		}
-		int nextprogress = 0;
+		Console.WriteLine("Rendering...");
+		int lastprogress = 1;
 		rendering = true;
-		for (int i = mintime; i < maxtime; i += 5) {
-			int progress = (i - mintime) * 100 / (maxtime - mintime);
-			if (progress >= nextprogress) {
-				Console.Write("{0}% ", progress);
-				nextprogress += 5;
+		for (int i = mintime;;) {
+			int progress = (i - mintime) * 500 / (maxtime - mintime);
+			for (; lastprogress < progress; lastprogress++) {
+				Console.Write(".");
+				if ((lastprogress % 50) == 0) {
+					Console.WriteLine(" {0}%", lastprogress / 5);
+				}
 			}
-			render(i, null);
+			if (i < maxtime) {
+				render(i, null);
+			} else if (lastprogress >= 500) {
+				Console.WriteLine(". 100%"); // dont judge lol
+				break;
+			}
+			i += 5;
 		}
 		rendering = false;
 		isPhantomFrame = false;
-		Console.WriteLine("\nWriting...");
+		Console.WriteLine("Writing...");
 		using (StreamWriter w = new StreamWriter(osb)) {
 			w.Write("[32]\n");
 			w.Write("4,0,1,b.png,0,0\n");
@@ -453,17 +462,16 @@ partial class all {
 	static void fin(Writer w) {
 		int totalbytes = 0;
 		foreach (Z z in zs) {
+			Console.Write("scene '{0}' @ {1}fps ({2}): ",
+				z.GetType().Name,
+				1000 / z.framedelta,
+				1000 / z.phantomframedelta
+			);
 			Sprite.framedelta = z.framedelta;
 			w.byteswritten = 0;
 			w.comment(z.GetType().Name);
 			z.fin(w);
-			Console.WriteLine(
-				"scene '{0}' @ {1}fps ({2}): {3}KB",
-				z.GetType().Name,
-				1000 / z.framedelta,
-				1000 / z.phantomframedelta,
-				w.byteswritten / 1000f
-			);
+			Console.WriteLine("{0}KB", w.byteswritten / 1000f);
 			totalbytes += w.byteswritten;
 		}
 		Console.WriteLine("{0}KB / {1}KiB", totalbytes / 1000f, totalbytes / 1024f);
