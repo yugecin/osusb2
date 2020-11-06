@@ -127,6 +127,7 @@ partial class all{
 		}
 
 		bool EW_STATE_FLICKER_TEXT_SHOWN; // state sux but it has to be perfect yknow
+		int lastshakeytime;
 
 		public override void draw(SCENE scene) {
 			ICommand.round_move_decimals.Push(DECIMALS_PRECISE);
@@ -160,7 +161,7 @@ partial class all{
 			if (76166 <= t && t < 77208 ||
 				82791 <= t && t < 83875 ||
 				89375 <= t && t < 90458) {
-				move(_points, v3(.5f * cos(scene.time * 36846f)));
+				move(_points, v3(.5f * cos(scene.time * 368f)));
 			}
 
 			// dots n lines
@@ -222,7 +223,11 @@ partial class all{
 				}
 			}
 
-			EW_STATE_FLICKER_TEXT_SHOWN = !EW_STATE_FLICKER_TEXT_SHOWN;
+			// limit to 40ms flickers, we don't want to give high fps peoples epilepsy (and it looks bad)
+			if (scene.time - lastshakeytime > 40) {
+				EW_STATE_FLICKER_TEXT_SHOWN = !EW_STATE_FLICKER_TEXT_SHOWN;
+				lastshakeytime = scene.time;
+			}
 
 			for (int i = 0; i < statictext.Length; i++) {
 				bool show =
