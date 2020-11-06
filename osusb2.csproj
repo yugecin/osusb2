@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="commands.cs" />
+    <Compile Include="zharrierbreakdown.cs" />
     <Compile Include="zairport2.cs" />
     <Compile Include="harr.cs" />
     <Compile Include="odottedrect.cs" />

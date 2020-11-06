@@ -9,6 +9,9 @@ partial class all {
 		public const int SETTING_SHADED = 0x1;
 		public const int SETTING_NO_BCULL = 0x2;
 
+		public static float rotation_factor = 1f;
+		public static float scale_factor = 1f;
+
 		public readonly Tri tri;
 		Otri[] tris;
 		int settings;
@@ -163,13 +166,18 @@ partial class all {
 			float rot = angle(phantom, pts[2]) + PI;
 			vec2 pos = pts[2];
 			vec2 size = v2(distance(phantom, pts[2]), distance(phantom, pts[i]));
+			if (scale_factor != 1f) {
+				// note: this can't be square (100&100) because then square and non-square scale will interfere
+				// not sure if that's due to my code or osu! code, dunno, duncare
+				size = v2(lerp(100f, size.x, scale_factor), lerp(105f, size.y, scale_factor));
+			}
 			float d = angle(pts[i], phantom) - angle(pts[2], phantom);
 			if (d > PI || (d < 0 && d > -PI)) {
 				pos = pts[i];
 				rot -= PI2;
 				size = v2(size.y, size.x);
 			}
-			tri.update(scene.time, col, rot, v4(pos.x, pos.y, 1f, w), size);
+			tri.update(scene.time, col, rot * rotation_factor, v4(pos.x, pos.y, 1f, w), size);
 			tri.draw(scene.g);
 		}
 

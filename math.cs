@@ -87,6 +87,9 @@ partial class all {
 	public static float progressx(float a, float b, float x) {
 		return clamp(progress(a, b, x), 0f, 1f);
 	}
+	public static float progressxy(float a, float b, float x, float extra) {
+		return clamp(progress(a, b, x) * extra, 0f, 1f);
+	}
 	public static vec2 lerp(vec2 a, vec2 b, float x) {
 		return v2(lerp(a.x, b.x, x), lerp(a.y, b.y, x));
 	}

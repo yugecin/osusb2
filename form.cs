@@ -23,7 +23,7 @@ partial class form : Form {
 		this.Text = all.osb;
 		all.Widescreen = chkwidescreen.Checked;
 		refreshLists();
-		nuptime.Value = 00;
+		nuptime.Value = 71208;
 		nuptime.KeyDown += new KeyEventHandler(nuptime_KeyDown);
 		listBox1.SelectedIndexChanged += new EventHandler(listBox_SelectedIndexChanged);
 		listBox2.SelectedIndexChanged += new EventHandler(listBox_SelectedIndexChanged);
@@ -350,40 +350,14 @@ partial class all {
 	static void init() {
 		zs.Clear();
 		zs.Add(new Zcamera(00000, 124000));
-		zs.Add(new Zairport2(00000, 124000));
-		zs.Add(new Zltext(00000, 124000, "robin_be presents", v3(0f, 250f, -20f)));
-		zs.Add(new Zltext(00000, 124000, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
-		zs.Add(new Zharrier(00000, 124000));
-		//zs.Add(new Zwaves(51750, 69150));
-		/*
-		zs.Add(new Zstartcube(00000, 16200));
-		zs.Add(new Zsc(16200, 69150));
-		zs.Add(new Ztunnel(16200, 52000));
-		zs.Add(new Z0020spect(17100, 31900));
-		zs.Add(new Z002Bspect(17300, 22000));
-		zs.Add(new Z002Cspect(22000, 31900));
-		zs.Add(new Zwaves(51750, 69150));
-		zs.Add(new Zrub(31900, 69150));
-		zs.Add(new Zheart(69150, 102900));
-		zs.Add(new Zgreet(86500, 101700));
-		zs.Add(new Ztorfield(102900, 121000));
-		zs.Add(new Zlc(121000, 138200));
-		zs.Add(new Zcheckerboard(121000, 138200));
-		zs.Add(new Zltext(121000, 129800, "Robin"));
-		zs.Add(new Zltext(129800, 138200, "Emily"));
-		zs.Add(new Zstarfield(138200, 155700));
-		zs.Add(new Ztor(138200, 155700));
-		*/
-
-		//zs.Add(new Zstart(00000, 36000));
-		//zs.Add(new Zdebugdot(00000, 5000));
-		//zs.Add(new Zdebugdot2(00000, 70000));
-		//zs.Add(new Ztestcube3(00000, 20000));
-		//zs.Add(new Ztestcube4(00000, 20000));
-		//zs.Add(new Ztestfont(00000, 20000));
-		//zs.Add(new Ztestfont2(00000, 10000));
-		//zs.Add(new Z0010spect(50000, 60000));
-		//zs.Add(new Ztestcube2(00000, 10000));
+		//zs.Add(new Zairport2(00000, 71208));
+		//zs.Add(new Zltext(00000, 71208, "robin_be presents", v3(0f, 250f, -20f)));
+		//zs.Add(new Zltext(00000, 71208, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
+		zs.Add(new Zharrier(00000, 71208));
+		zs.Add(new Zharrierbreakdown(71208, 104085));
+		foreach (Z z in zs) {
+			z.framedelta = 1000 / 20;
+		}
 		foreach (Z z in zs) {
 			if (z.framedelta == 0) {
 				throw new Exception("framedelta for " + z.GetType().Name);

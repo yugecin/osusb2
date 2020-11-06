@@ -125,6 +125,14 @@ partial class all
 				rz = 0f;
 			}
 
+			int t = scene.time;
+
+			if (71208 <= t && t < 104085) {
+				// harrier breakdown
+				dp = v3(-38f, 40f, -20f);
+				dir = dp - v3(0f, 20f, -5f);
+			}
+
 			vec2 vd = viewdir(dir);
 			lquatx = quat(0f, 0f, vd.x);
 			lquaty = quat(0f, vd.y, 0f);
