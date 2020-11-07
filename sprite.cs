@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 
 namespace osusb1 {
 partial class all {
@@ -67,11 +68,39 @@ partial class all {
 		int settings;
 		public int starttime, endtime;
 
+		bool fakesprite_skipusagedata;
+
 		public Sprite(string filename, int settings) {
 			this.filename = filename;
 			this.settings = settings;
 			this.sdata = spritedata[filename];
 			starttime = -1;
+		}
+
+		public Sprite(Sprite from) {
+			this.filename = from.filename;
+			this.settings = from.settings;
+			this.sdata = from.sdata;
+			this.starttime = from.starttime;
+			this.starttime = from.endtime;
+			this.fakesprite_skipusagedata = true;
+			foreach (ICommand cmd in from.allcmds) { this.allcmds.AddLast(cmd.copy()); }
+			/*
+			foreach (RotCommand cmd in from.rotcmds) { this.rotcmds.AddLast(cmd); }
+			foreach (MoveCommand cmd in from.movecmds) { this.movecmds.AddLast(cmd); }
+			foreach (FadeCommand cmd in from.fadecmds) { this.fadecmds.AddLast(cmd); }
+			foreach (ColorCommand cmd in from.colorcmds) { this.colorcmds.AddLast(cmd); }
+			foreach (ScaleCommand cmd in from.scalecmds) { this.scalecmds.AddLast(cmd); }
+			foreach (VScaleCommand cmd in from.vscalecmds) { this.vscalecmds.AddLast(cmd); }
+			 * */
+			// skipped overrides and raws
+		}
+
+		public int calcStoryboardCommandSize()
+		{
+			Writer cw = new CountingWriter();
+			new Sprite(this).fin(cw);
+			return cw.byteswritten;
 		}
 
 		public void addRaw(string raw) {
@@ -221,7 +250,9 @@ squarescale:
 				}
 			}
 
-			addusagedata();
+			if (fakesprite_skipusagedata) {
+				addusagedata();
+			}
 			w.ln(createsprite(initialPosition));
 
 			if ((settings & SESDSM) == SESDSM && movecmds.Count > 2) {

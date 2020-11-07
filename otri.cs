@@ -76,6 +76,16 @@ partial class all {
 			}
 			sprites.Clear();
 		}
+
+		// a real performance killer :D
+		public int calcStoryboardCommandSize()
+		{
+			int size = 0;
+			foreach (Sprite s in sprites) {
+				size += s.calcStoryboardCommandSize();
+			}
+			return size;
+		}
 	}
 }
 }

@@ -191,6 +191,15 @@ partial class all {
 				t.fin(w);
 			}
 		}
+
+		public int calcStoryboardCommandSize()
+		{
+			int size = 0;
+			foreach (Otri t in tris) {
+				size += t.calcStoryboardCommandSize();
+			}
+			return size;
+		}
 	}
 }
 }

@@ -43,6 +43,9 @@ partial class all{
 		bool[] scaletext;
 		bool[] ftext;
 
+		Odot[] sizetext;
+		vec4[] sizetextloc;
+
 		public Zharrierbreakdown(int start, int stop)
 		{
 			this.start = start;
@@ -74,6 +77,17 @@ partial class all{
 					), s);
 			}
 			move(points, Zcamera.mid);
+
+			sizetext = new Odot[8/*charwidth*/ * 8/*charheight*/ * 10];
+			for (int i = 0; i < sizetext.Length; i++) {
+				sizetext[i] = new Odot("2", 0);
+			}
+			sizetextloc = new vec4[sizetext.Length];
+			for (int i = 0; i < sizetextloc.Length; i++) {
+				sizetextloc[i] = v4(500f, 450f, 1f, 1f);
+				sizetextloc[i].x += (i % 80) * TEXTSPACING;
+				sizetextloc[i].y += (i / 80 - 6) * TEXTSPACING - 2;
+			}
 
 			inittext();
 		}
@@ -230,19 +244,55 @@ partial class all{
 				EW_STATE_FLICKER_TEXT_SHOWN = !EW_STATE_FLICKER_TEXT_SHOWN;
 				lastshakeytime = scene.time;
 			}
+			bool flicker_text_state = EW_STATE_FLICKER_TEXT_SHOWN || t < 100208 || 101041 < t;
 
 			for (int i = 0; i < statictext.Length; i++) {
 				bool show =
 					(!movtext[i] || showmov) &&
 					(!rottext[i] || showrot) &&
 					(!scaletext[i] || showscale) &&
-					(!ftext[i] || EW_STATE_FLICKER_TEXT_SHOWN || t < 100208 || 101041 < t);
+					(!ftext[i] || flicker_text_state);
 
 				if (show) {
 					statictext[i].update(scene.time, v4(1f), v4(textloc[i], 1f, 1f));
 					statictext[i].draw(scene.g);
 				} else {
 					statictext[i].update(scene.time, null, null);
+				}
+			}
+
+			int size = 0;
+			foreach (Otri2 tri in tris) {
+				size += tri.calcStoryboardCommandSize();
+			}
+			if (!rendering) {
+				size = 2030333;
+			}
+			string sizestr = string.Format("{0,8:####.000}", (size / 1000f));
+
+			bool[] sizetextshown = new bool[sizetext.Length];
+			if (flicker_text_state) {
+				int xoff = 0;
+				for (int i = 0; i < sizestr.Length; i++) {
+					int c = sizestr[i] - 32;
+					int cw = font.charwidth[c];
+					for (int j = 0; j < font.charheight; j++) {
+						for (int k = 0; k < cw; k++) {
+							if (((font.chardata[c][j] >> k) & 1) == 1) {
+								int idx = 80 * j + xoff + k;
+								sizetextshown[idx] = true;
+								sizetext[idx].update(scene.time, v4(1f), sizetextloc[idx]);
+								sizetext[idx].draw(scene.g);
+							}
+						}
+					}
+					xoff += cw + 1;
+				}
+			}
+			for (int i = 0; i < sizetextshown.Length; i++) {
+				if (!sizetextshown[i]) {
+					sizetext[i].update(scene.time, null, null);
+					//sizetext[i].update(scene.time, v4(v3(0f), 1f), sizetextloc[i]);
 				}
 			}
 
@@ -266,6 +316,9 @@ partial class all{
 				t.fin(w);
 			}
 			foreach (Odot d in statictext) {
+				d.fin(w);
+			}
+			foreach (Odot d in sizetext) {
 				d.fin(w);
 			}
 			ICommand.round_move_decimals.Pop();

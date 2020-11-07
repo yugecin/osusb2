@@ -15,7 +15,7 @@ partial class all {
 			this.comments = comments;
 		}
 
-		public void ln(string line) {
+		public virtual void ln(string line) {
 			byteswritten += line.Length + 1;
 			w.Write(line + "\n");
 		}
@@ -24,6 +24,18 @@ partial class all {
 			if (comments) {
 				ln("// " + line);
 			}
+		}
+	}
+	class CountingWriter : Writer
+	{
+		public CountingWriter()
+			: base(null, false)
+		{
+		}
+
+		public override void ln(string line)
+		{
+			this.byteswritten += line.Length + 1;
 		}
 	}
 }
