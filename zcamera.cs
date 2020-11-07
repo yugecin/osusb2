@@ -76,9 +76,9 @@ partial class all
 				//dp.x -= lerp(0f, 10f, progress(0, 5000, scene.time));
 				//dp.z -= lerp(10f, 20f, progress(0, 5000, scene.time));
 
-				dp.z -= cos(progress(0, 5000, scene.time)) * 20;
-				dp.y += -20 + 20 * sin(progress(0, 5000, scene.time));
-				dp.x += 30 * sin(progress(0, 5000, scene.time));
+				//dp.z -= cos(progress(0, 5000, scene.time)) * 20;
+				//dp.y += -20 + 20 * sin(progress(0, 5000, scene.time));
+				//dp.x += 30 * sin(progress(0, 5000, scene.time));
 
 				//dp.y -= 70.0f;
 				

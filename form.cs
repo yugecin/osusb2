@@ -23,7 +23,7 @@ partial class form : Form {
 		this.Text = all.osb;
 		all.Widescreen = chkwidescreen.Checked;
 		refreshLists();
-		nuptime.Value = 0;
+		nuptime.Value = 30000;
 		nuptime.KeyDown += new KeyEventHandler(nuptime_KeyDown);
 		listBox1.SelectedIndexChanged += new EventHandler(listBox_SelectedIndexChanged);
 		listBox2.SelectedIndexChanged += new EventHandler(listBox_SelectedIndexChanged);
@@ -350,14 +350,18 @@ partial class all {
 	static void init() {
 		int from = 0, to = 71208;
 		//from = 14666;
-		to = 18291;
+		//to = 33000;
 		zs.Clear();
 		zs.Add(new Zcamera(00000, 124000));
 		zs.Add(new Zairport2(from, to));
 		zs.Add(new Zltext(from, to, "robin_be presents", v3(0f, 450f, -20f)));
 		zs.Add(new Zltext(from, to, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
+		zs.Add(new Zctext(30000, 33000, Zctext.luki, v3(0f, 0f, 100f), 1));
+		zs.Add(new Zctext(30000, 33000, Zctext.herakles, v3(0f, 0f, 150f), 2));
+		zs.Add(new Zctext(30000, 33000, Zctext.em, v3(0f, 0f, 200f), 3));
+		zs.Add(new Zctext(30000, 33000, Zctext.quack, v3(0f, 0f, 250f), 4));
 		zs.Add(new Zharrier(from, to));
-		//zs.Add(new Zharrierbreakdown(71208, 104085));
+		zs.Add(new Zharrierbreakdown(71208, 104085));
 		foreach (Z z in zs) {
 			z.framedelta = 1000 / 20;
 		}
