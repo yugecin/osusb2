@@ -23,7 +23,7 @@ partial class all {
 			}
 		}
 
-		public const int SIZE = 2;
+		public const int SIZE = 6;
 
 		public Zltext(int start, int stop, string text, vec3 offset) {
 			this.start = start;

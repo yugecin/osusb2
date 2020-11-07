@@ -127,7 +127,44 @@ partial class all
 
 			int t = scene.time;
 
-			if (71208 <= t && t < 104085) {
+			if (t < 5041) {
+				// intro
+				dp = v3(lerp(-1000f, 1000f, progress(0, 5041, t)), 0f, 0f);
+				dir = v3(10f, 0f, 0f);
+			} else if (t < 9950) {
+				// first circling
+				float f = progress(5041, 9950, t) + .7f;
+				dp = v3(500f * cos(f * 4f), 500f * sin(f * 4f), -200f);
+				dir = dp - v3(0f, 0f, 0f);
+			} else if (t < 11708) {
+				// i present
+				float f = progress(9950, 11708, t);
+				dp = v3(-lerp(-520f, 520f, f), -200f, -40f);
+				dir = dp - v3(-lerp(-400f, 400f, f), -450f, -20f);
+			} else if (t < 14958) {
+				// more showoff
+				float f = progress(11708, 14666, t);
+				dp = v3(lerp(500f, -500f, f), 0f, -600f);
+				dir = dp - v3(lerp(500f, -500f, f), 0f, 0f);
+			} else if (t < 18291) {
+				// osu sb numero dos
+				int nums = 11;
+				float size = 0.07f;
+				float f = progress(14958, 18291, t) * (1f - nums * size);
+				int tt = t + 75;
+				if (tt > 15375) f += size;
+				for (int i = 0; i < 6; i++) {
+					if (t > 15791 + i * 132) {
+						f += size;
+					}
+				}
+				if (tt > 16583) f += size;
+				if (tt > 16980) f += size;
+				if (tt > 17375) f += size;
+				if (tt > 17833) f += size;
+				dp = v3(-lerp(-700f, 650f, f), 100f, -25f);
+				dir = v3(0f, 1f, 0f);
+			} else if (71208 <= t && t < 104085) {
 				// harrier breakdown
 				dp = v3(-38f, 40f, -20f);
 				dir = dp - v3(0f, 20f, -5f);

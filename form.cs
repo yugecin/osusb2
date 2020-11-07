@@ -23,7 +23,7 @@ partial class form : Form {
 		this.Text = all.osb;
 		all.Widescreen = chkwidescreen.Checked;
 		refreshLists();
-		nuptime.Value = 71208;
+		nuptime.Value = 0;
 		nuptime.KeyDown += new KeyEventHandler(nuptime_KeyDown);
 		listBox1.SelectedIndexChanged += new EventHandler(listBox_SelectedIndexChanged);
 		listBox2.SelectedIndexChanged += new EventHandler(listBox_SelectedIndexChanged);
@@ -348,13 +348,16 @@ partial class all {
 	public static int DECIMALS_PRECISE = 7;
 
 	static void init() {
+		int from = 0, to = 71208;
+		//from = 14666;
+		to = 18291;
 		zs.Clear();
 		zs.Add(new Zcamera(00000, 124000));
-		//zs.Add(new Zairport2(00000, 71208));
-		//zs.Add(new Zltext(00000, 71208, "robin_be presents", v3(0f, 250f, -20f)));
-		//zs.Add(new Zltext(00000, 71208, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
-		//zs.Add(new Zharrier(00000, 71208));
-		zs.Add(new Zharrierbreakdown(71208, 104085));
+		zs.Add(new Zairport2(from, to));
+		zs.Add(new Zltext(from, to, "robin_be presents", v3(0f, 450f, -20f)));
+		zs.Add(new Zltext(from, to, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
+		zs.Add(new Zharrier(from, to));
+		//zs.Add(new Zharrierbreakdown(71208, 104085));
 		foreach (Z z in zs) {
 			z.framedelta = 1000 / 20;
 		}
