@@ -9,6 +9,8 @@ partial class all {
 		public const int SETTING_SHADED = 0x1;
 		public const int SETTING_NO_BCULL = 0x2;
 
+		public static vec2 custom_position;
+		public static float position_factor = 1f;
 		public static float rotation_factor = 1f;
 		public static float scale_factor = 1f;
 
@@ -176,6 +178,9 @@ partial class all {
 				pos = pts[i];
 				rot -= PI2;
 				size = v2(size.y, size.x);
+			}
+			if (position_factor != 1f) {
+				pos = lerp(custom_position, pos, position_factor);
 			}
 			tri.update(scene.time, col, rot * rotation_factor, v4(pos.x, pos.y, 1f, w), size);
 			tri.draw(scene.g);

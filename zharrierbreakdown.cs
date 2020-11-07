@@ -179,37 +179,39 @@ partial class all{
 			// tris
 			float faster = 1.2f;
 			if (t < 96080) {
-				showmov = true;
+				Otri2.custom_position = v2(200f, 100f);
+				Otri2.position_factor = progressxy(71208, 72958, scene.time, faster);
 				Otri2.rotation_factor = progressxy(72958, 74583, scene.time, faster);
 				Otri2.scale_factor = progressxy(74583, 76166, scene.time, faster);
-				showrot |= t < 77875 && t > 72958;
-				showscale |= t < 77875 && t > 74583;
+				showmov |= t < 76166 && t >= 71208;
+				showrot |= t < 76166 && t >= 72958;
+				showscale |= t < 76166 && t >= 74583;
 				drawtri(tris[129], scene, pixelscreen);
-				Otri2.rotation_factor = Otri2.scale_factor = 1f;
-				if (t > 77875) {
-					Otri2.rotation_factor = progressxy(79500, 81125, scene.time, faster);
-					Otri2.scale_factor = progressxy(81125, 82791, scene.time, faster);
-					showrot |= t < 84458 && t > 79500;
-					showscale |= t < 84458 && t > 81125;
-					drawtri(tris[108], scene, pixelscreen);
-					Otri2.rotation_factor = Otri2.scale_factor = 1f;
-				}
-				if (t > 84458) {
-					Otri2.rotation_factor = progressxy(86125, 87791, scene.time, faster);
-					Otri2.scale_factor = progressxy(87791, 89375, scene.time, faster);
-					showrot |= t < 91040 && t > 86125;
-					showscale |= t < 91040 && t > 87791;
-					drawtri(tris[135], scene, pixelscreen);
-					Otri2.rotation_factor = Otri2.scale_factor = 1f;
-				}
-				if (t> 91040) {
-					Otri2.rotation_factor = progressxy(92792, 94333, scene.time, faster);
-					Otri2.scale_factor = progressxy(94333, 96080, scene.time, faster);
-					showrot |= t > 92792;
-					showscale |= t > 94333;
-					drawtri(tris[103], scene, pixelscreen);
-					Otri2.rotation_factor = Otri2.scale_factor = 1f;
-				}
+				Otri2.custom_position = v2(325f, 100f);
+				Otri2.position_factor = progressxy(77875, 79500, scene.time, faster);
+				Otri2.rotation_factor = progressxy(79500, 81125, scene.time, faster);
+				Otri2.scale_factor = progressxy(81125, 82791, scene.time, faster);
+				showmov |= t < 82791 && t >= 77875;
+				showrot |= t < 82791 && t >= 79500;
+				showscale |= t < 82791 && t >= 81125;
+				drawtri(tris[108], scene, pixelscreen);
+				Otri2.custom_position = v2(450f, 100f);
+				Otri2.position_factor = progressxy(84458, 86125, scene.time, faster);
+				Otri2.rotation_factor = progressxy(86125, 87791, scene.time, faster);
+				Otri2.scale_factor = progressxy(87791, 89375, scene.time, faster);
+				showmov |= t < 89375 && t >= 84458;
+				showrot |= t < 89375 && t >= 86125;
+				showscale |= t < 89375 && t >= 87791;
+				drawtri(tris[135], scene, pixelscreen);
+				Otri2.custom_position = v2(575f, 100f);
+				Otri2.position_factor = progressxy(91040, 92792, scene.time, faster);
+				Otri2.rotation_factor = progressxy(92792, 94333, scene.time, faster);
+				Otri2.scale_factor = progressxy(94333, 96080, scene.time, faster);
+				showmov |= t < 96080 && t >= 91040;
+				showrot |= t < 96080 && t >= 92792;
+				showscale |= t < 96080 && t >= 94333;
+				drawtri(tris[103], scene, pixelscreen);
+				Otri2.position_factor = Otri2.rotation_factor = Otri2.scale_factor = 1f;
 			} else if (t < 97666) {
 				int mod = (int) (progressxy(96080, 97666, t, 3f) * 4f);
 				for (int i = 0; i < tris.Length; i++ ) {
