@@ -347,7 +347,7 @@ partial class all {
 
 	public static int DECIMALS_PRECISE = 7;
 
-	public static int guistarttime = 67916;
+	public static int guistarttime = 0;
 
 	static void init() {
 		int from1 = 2000, to1 = 67458;

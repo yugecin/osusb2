@@ -66,7 +66,7 @@ partial class all {
 			int a, b, c, d, e, f, g, h, j, k;
 			int ta, tb, tc, td, te, tf, tg, th, ti, tj, tk, tl, tm, tn, to, tp;
 
-			points = new vec3[33 * 4 + /*hangar*/10 + /*hangar*/10 + /*tower*/16];
+			points = new vec3[33 * 4 + /*hangar x 3*/30 + /*tower*/16];
 			int i = 0;
 			mkrect(i++, v2(0f), v2(SIZEX, SIZEY), Z);
 			mkrect(i++, v2(0f), v2(RW_LENGTH + LINE_WIDTH * 3f, RW_WIDTH), Z);
@@ -113,6 +113,7 @@ partial class all {
 			points[j = i++] = v3(0f, +H_L, Z + H_H + H_X);
 			points[k = i++] = v3(0f, -H_L, Z + H_H + H_X);
 			i += 10; /*hangar2*/
+			i += 10; /*hangar3*/
 			points[ta = i++] = v3(T_S, T_S, Z + T_H);
 			points[tb = i++] = v3(-T_S, T_S, Z + T_H);
 			points[tc = i++] = v3(T_S, T_S, Z);
@@ -130,8 +131,9 @@ partial class all {
 			points[to = i++] = v3(T_S2, T_S2, Z + T_H + T_H2);
 			points[tp = i++] = v3(-T_S2, T_S2, Z + T_H + T_H2);
 			for (i = a; i < a + 10; i++) {
-				points[i] += v3(-300f, -200f, 0f);
+				points[i] += v3(-400f, -200f, 0f);
 				points[i + 10] = points[i] + v3(200f, 0f, 0f);
+				points[i + 20] = points[i] + v3(400f, 0f, 0f);
 			}
 			for (i = ta; i < ta + 16; i++) {
 				points[i] += v3(400f, -200f - H_W / 2, 0f);
@@ -188,20 +190,28 @@ partial class all {
 				// hangars
 				new MultiRect(new Rect(null, colhangard, _points, f, h, b, d)), // h1 side
 				new MultiRect(new Rect(null, colhangard, _points, f+10, h+10, b+10, d+10)), // h2 side
+				new MultiRect(new Rect(null, colhangard, _points, f+20, h+20, b+20, d+20)), // h3 side
 				new MultiRect(new Rect(null, colhangard, _points, g, e, c, a)), // h1 other side
 				new MultiRect(new Rect(null, colhangard, _points, g+10, e+10, c+10, a+10)), // h2 other side
+				new MultiRect(new Rect(null, colhangard, _points, g+20, e+20, c+20, a+20)), // h3 other side
 				new MultiRect(new Rect(null, colhangard2, _points, j, k, g, e)), // h1 top side
 				new MultiRect(new Rect(null, colhangard2, _points, j+10, k+10, g+10, e+10)), // h2 top side
+				new MultiRect(new Rect(null, colhangard2, _points, j+20, k+20, g+20, e+20)), // h3 top side
 				new MultiRect(new Rect(null, colhangard3, _points, k, j, f, h)),// h1 top other side
 				new MultiRect(new Rect(null, colhangard3, _points, k+10, j+10, f+10, h+10)), // h2 top other side
+				new MultiRect(new Rect(null, colhangard3, _points, k+20, j+20, f+20, h+20)), // h3 top other side
 				new MultiRect(new Rect(null, colhangarl, _points, h, g, d, c)), // h1 front
 				new MultiRect(new Rect(null, colhangarl, _points, j, j, h, g)), // h1 front top
 				new MultiRect(new Rect(null, colhangarl, _points, h+10, g+10, d+10, c+10)), // h2 front
 				new MultiRect(new Rect(null, colhangarl, _points, j+10, j+10, h+10, g+10)), // h2 front top
+				new MultiRect(new Rect(null, colhangarl, _points, h+20, g+20, d+20, c+20)), // h3 front
+				new MultiRect(new Rect(null, colhangarl, _points, j+20, j+20, h+20, g+20)), // h3 front top
 				new MultiRect(new Rect(null, colhangarl, _points, e, f, a, b)), // h1 back
 				new MultiRect(new Rect(null, colhangarl, _points, k, k, e, f)), // h1 back top
 				new MultiRect(new Rect(null, colhangarl, _points, e+10, f+10, a+10, b+10)), // h2 back
 				new MultiRect(new Rect(null, colhangarl, _points, k+10, k+10, e+10, f+10)), // h2 back top
+				new MultiRect(new Rect(null, colhangarl, _points, e+20, f+20, a+20, b+20)), // h3 back
+				new MultiRect(new Rect(null, colhangarl, _points, k+20, k+20, e+20, f+20)), // h3 back top
 			};
 			//move(points, v3(v2(SIZE / 2f) * -SPACING, 0f));
 		}
