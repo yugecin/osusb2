@@ -23,7 +23,7 @@ partial class form : Form {
 		this.Text = all.osb;
 		all.Widescreen = chkwidescreen.Checked;
 		refreshLists();
-		nuptime.Value = 30000;
+		nuptime.Value = all.guistarttime;
 		nuptime.KeyDown += new KeyEventHandler(nuptime_KeyDown);
 		listBox1.SelectedIndexChanged += new EventHandler(listBox_SelectedIndexChanged);
 		listBox2.SelectedIndexChanged += new EventHandler(listBox_SelectedIndexChanged);
@@ -329,7 +329,7 @@ partial class all {
 		Application.Run(new form());
 	}
 
-	public static string path = @"S:\games\osu!\Songs\beatmap-637369189818030795-bensound-dubstep";
+	public static string path = @"D:\games\osu!\Songs\beatmap-637369189818030795-bensound-dubstep";
 	public static string osb = path + @"\bensound - dubstep (yugecin).osb";
 	public static string osbx = path + @"\bensound - dubstep (yugecin))-.osb";
 
@@ -347,21 +347,21 @@ partial class all {
 
 	public static int DECIMALS_PRECISE = 7;
 
+	public static int guistarttime = 67916;
+
 	static void init() {
-		int from = 0, to = 71208;
-		//from = 14666;
-		//to = 33000;
+		int from1 = 2000, to1 = 67458;
 		zs.Clear();
-		zs.Add(new Zcamera(00000, 124000));
-		zs.Add(new Zairport2(from, to));
-		zs.Add(new Zltext(from, to, "robin_be presents", v3(0f, 450f, -20f)));
-		zs.Add(new Zltext(from, to, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
+		zs.Add(new Zcamera(2000, 124000));
+		zs.Add(new Zairport2(from1, to1));
+		zs.Add(new Zltext(from1, to1, "robin_be presents", v3(0f, 450f, -20f)));
+		zs.Add(new Zltext(from1, to1, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
 		zs.Add(new Zctext(30000, 33000, Zctext.luki, v3(0f, 0f, 100f), 1));
 		zs.Add(new Zctext(30000, 33000, Zctext.herakles, v3(0f, 0f, 150f), 2));
 		zs.Add(new Zctext(30000, 33000, Zctext.em, v3(0f, 0f, 200f), 3));
 		zs.Add(new Zctext(30000, 33000, Zctext.quack, v3(0f, 0f, 250f), 4));
-		zs.Add(new Zharrier(from, to));
-		zs.Add(new Zharrierbreakdown(71208, 104085));
+		zs.Add(new Zharrier(from1, to1));
+		zs.Add(new Zharrierbreakdown(to1, 104085));
 		foreach (Z z in zs) {
 			z.framedelta = 1000 / 20;
 		}

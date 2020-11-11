@@ -45,7 +45,6 @@
     <Compile Include="odottedrect.cs" />
     <Compile Include="otri2.cs" />
     <Compile Include="zharrier.cs" />
-    <Compile Include="zairport.cs" />
     <Compile Include="cube.cs" />
     <Compile Include="equation.cs" />
     <Compile Include="fft.cs" />

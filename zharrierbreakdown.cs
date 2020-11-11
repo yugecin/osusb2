@@ -150,8 +150,9 @@ partial class all{
 
 			copy(_points, points);
 
-			turn(_points, Zcamera.mid, quat(0f, 0f, cos(scene.progress * 40f) * .18f));
-			turn(_points, Zcamera.mid, quat(0f, -cos(scene.progress * 30f) * .18f, 0f));
+			float prg = progressx(71208, scene.endtime, scene.time);
+			turn(_points, Zcamera.mid, quat(0f, 0f, cos(prg * 40f) * .18f));
+			turn(_points, Zcamera.mid, quat(0f, -cos(prg * 30f) * .18f, 0f));
 
 			Zcamera.adjust(_points);
 
@@ -180,14 +181,36 @@ partial class all{
 
 			// dots n lines
 			//if (t < 96080) {
-				foreach (Oline l in lines) {
-					l.update(scene.time, v4(1f));
-					l.draw(scene.g);
+				for (int i = 0; i < lines.Length; i++) {
+					int mod = 0;
+					if (t > 67916) mod++;
+					if (t > 68333) mod++;
+					if (t > 68750) mod++; // 1
+					if (t > 68750 + (69416 - 68750) / 5 * 1) mod++; // 2
+					if (t > 68750 + (69416 - 68750) / 5 * 2) mod++; // 3
+					if (t > 68750 + (69416 - 68750) / 5 * 3) mod++; // 4
+					if (t > 68750 + (69416 - 68750) / 5 * 4) mod++; // 5
+					if (t > 69416) mod++; // 6
+					if ((i % 8) < mod) {
+						lines[i].update(scene.time, v4(1f));
+						lines[i].draw(scene.g);
+					}
 				}
 
 				for (int i = 0; i < dots.Length; i++) {
-					dots[i].update(scene.time, v4(1f, 1f, 0f, 1f), project(_points[i]));
-					dots[i].draw(scene.g);
+					int mod = 0;
+					if (t > 69666) mod++;
+					if (t > 70041) mod++;
+					if (t > 70458) mod++; // 1
+					if (t > 70458 + (71208 - 70458) / 5 * 1) mod++; // 2
+					if (t > 70458 + (71208 - 70458) / 5 * 2) mod++; // 3
+					if (t > 70458 + (71208 - 70458) / 5 * 3) mod++; // 4
+					if (t > 70458 + (71208 - 70458) / 5 * 4) mod++; // 5
+					if (t > 71208) mod++; // 6
+					if ((i % 8) < mod) {
+						dots[i].update(scene.time, v4(1f, 1f, 0f, 1f), project(_points[i]));
+						dots[i].draw(scene.g);
+					}
 				}
 			//}
 			// tris
@@ -268,7 +291,7 @@ partial class all{
 			if (!rendering) {
 				size = 2030333;
 			}
-			string sizestr = string.Format("{0,8:####.000}", (size / 1000f));
+			string sizestr = string.Format("{0,8:###0.000}", (size / 1000f));
 
 			bool[] sizetextshown = new bool[sizetext.Length];
 			if (flicker_text_state) {
@@ -292,7 +315,6 @@ partial class all{
 			for (int i = 0; i < sizetextshown.Length; i++) {
 				if (!sizetextshown[i]) {
 					sizetext[i].update(scene.time, null, null);
-					//sizetext[i].update(scene.time, v4(v3(0f), 1f), sizetextloc[i]);
 				}
 			}
 

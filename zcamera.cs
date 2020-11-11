@@ -129,7 +129,7 @@ partial class all
 
 			if (t < 5041) {
 				// intro
-				dp = v3(lerp(-1000f, 1000f, progress(0, 5041, t)), 0f, 0f);
+				dp = v3(lerp(-1000f, 1000f, progress(2000, 5041, t)), 0f, 0f);
 				dir = v3(10f, 0f, 0f);
 			} else if (t < 9950) {
 				// first circling
@@ -164,7 +164,7 @@ partial class all
 				if (tt > 17833) f += size;
 				dp = v3(-lerp(-700f, 650f, f), 100f, -25f);
 				dir = v3(0f, 1f, 0f);
-			} else if (71208 <= t && t < 104085) {
+			} else if (67458/*71208*/ <= t && t < 104085) {
 				// harrier breakdown
 				dp = v3(-38f, 40f, -20f);
 				dir = dp - v3(0f, 20f, -5f);
