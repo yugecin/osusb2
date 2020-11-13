@@ -22,7 +22,7 @@ partial class all{
 			"Scale",
 			"82 verts",
 			"215 lines",
-			"145 tris",
+			"145 tris (x2)",
 			"triangle commands size (KB):",
 		};
 		vec2[] textlocstart = {

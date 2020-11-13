@@ -10,6 +10,12 @@ partial class all{
 	public static vec3 sunpos = v3(0f); // see zcamera
 	class Zharrier : Z {
 
+		public static vec3 position;
+		public static float pitch;
+		public static float pitch2;
+		public static float roll;
+		public static float yaw;
+
 		vec3[] points;
 		vec3[] _points;
 		Otri2[] tris;
@@ -55,7 +61,7 @@ partial class all{
 					harr.tris[i][3]
 					), s);
 			}
-			move(points, Zcamera.mid);
+			move(points, v3(15f, 0f, 0f));
 		}
 
 		public override void draw(SCENE scene) {
@@ -69,6 +75,15 @@ partial class all{
 			}
 
 			copy(_points, points);
+			move(_points, position);
+			//turn(_points, position, quat(udata[0] / 100f, udata[1] / 100f, 0f));
+			//turn(_points, position, quat(0f, 0f, yaw));
+			//turn(_points, position, quat(pitch, 0f, 0f));
+			turn(_points, position, quat(pitch2, 0f, 0f));
+			turn(_points, position, quat(0f, roll, 0f));
+			turn(_points, position, quat(pitch, 0f, 0f));
+			turn(_points, position, quat(0f, 0f, yaw));
+			move(_points, Zcamera.mid);
 			Zcamera.adjust(_points);
 
 			pixelscreen.clear();

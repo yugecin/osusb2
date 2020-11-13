@@ -21,6 +21,8 @@ partial class all {
 		const int T_H2 = 20;
 		const float Z = -20f;
 
+		public static vec3 towerpos = v3(400f, -200f - H_W / 2, 0f);
+
 		vec3[] points;
 		vec3[] _points;
 		MultiRect[] rects;
@@ -136,7 +138,7 @@ partial class all {
 				points[i + 20] = points[i] + v3(400f, 0f, 0f);
 			}
 			for (i = ta; i < ta + 16; i++) {
-				points[i] += v3(400f, -200f - H_W / 2, 0f);
+				points[i] += towerpos;
 			}
 			_points = new vec3[points.Length];
 			move(points, Zcamera.mid);

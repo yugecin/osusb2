@@ -48,8 +48,8 @@ partial class all {
 	public static float sin(float a) {
 		return (float) Math.Sin(a);
 	}
-	public static float atan2(float a, float b) {
-		return (float) Math.Atan2(a, b);
+	public static float atan2(float y, float x) {
+		return (float) Math.Atan2(y, x);
 	}
 	public static float sqrt(float a) {
 		return (float) Math.Sqrt(a);
@@ -220,6 +220,19 @@ partial class all {
 		for (int i = 0; i < len; i++) {
 			dest[destidx + i] = v3(src[srcidx + i]);
 		}
+	}
+	public static float cubic(float a, float b, float p1, float p2, float t)
+	{
+		float ct = 1f - t;
+		return ct * ct * ct * a + 3 * ct * ct * t * p1 + 3 * ct * t * t * p2 + t * t * t * b;
+	}
+	public static vec3 cubic(vec3 a, vec3 b, vec3 p1, vec3 p2, float t)
+	{
+		return v3(
+			cubic(a.x, b.x, p1.x, p2.x, t),
+			cubic(a.y, b.y, p1.y, p2.y, t),
+			cubic(a.z, b.z, p1.z, p2.z, t)
+		);
 	}
 }
 }
