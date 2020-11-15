@@ -38,6 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="commands.cs" />
+    <Compile Include="bezcontrol.cs" />
+    <Compile Include="bez.cs" />
     <Compile Include="zctext.cs" />
     <Compile Include="zharrierbreakdown.cs" />
     <Compile Include="zairport2.cs" />

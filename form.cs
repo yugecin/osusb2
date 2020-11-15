@@ -11,8 +11,17 @@ using System.Windows.Forms;
 namespace osusb1 {
 partial class form : Form {
 
+	static NumericUpDown staticnuptime;
+	public static int getUItime()
+	{
+		return (int)staticnuptime.Value;
+	}
+
+	public static PictureBox preview;
+
 	public form() {
 		InitializeComponent();
+		preview = panel1;
 		trackBar1.ValueChanged += udata_ValueChanged;
 		trackBar2.ValueChanged += udata_ValueChanged;
 		trackBar3.ValueChanged += udata_ValueChanged;
@@ -22,6 +31,12 @@ partial class form : Form {
 		trackBar7.ValueChanged += udata_ValueChanged;
 		this.Text = all.osb;
 		all.Widescreen = chkwidescreen.Checked;
+		int height = 200, padding = 5;
+		pnlBezs.SuspendLayout();
+		for (int i = 0; i < all.bezs.Length; i++) {
+			pnlBezs.Controls.Add(new all.Bezcontrol(all.bezs[i], 0, (height + padding) * i, pnlBezs.Width, height));
+		}
+		pnlBezs.ResumeLayout();
 		refreshLists();
 		nuptime.Value = all.guistarttime;
 		nuptime.KeyDown += new KeyEventHandler(nuptime_KeyDown);
@@ -38,6 +53,7 @@ partial class form : Form {
 		abutton2.Click += new EventHandler(abutton_Click);
 		abutton3.Click += new EventHandler(abutton_Click);
 		abuttonsave.Click += new EventHandler(abuttonsave_Click);
+		staticnuptime = nuptime;
 	}
 
 	void abuttonsave_Click(object sender, EventArgs e)
@@ -234,6 +250,7 @@ partial class form : Form {
 		e.SuppressKeyPress = true;
 		all.debugmove(e.KeyCode);
 		panel1.Refresh();
+		all.Bezcontrol.invalidate();
 	}
 
 	void udata_ValueChanged(object sender, EventArgs e) {
@@ -242,6 +259,7 @@ partial class form : Form {
 		(Controls.Find("udata" + num, false)[0] as Label).Text = val.ToString();
 		all.udata[int.Parse(num)] = val;
 		panel1.Invalidate();
+		all.Bezcontrol.invalidate();
 	}
 
 	void panel1_Paint(object sender, PaintEventArgs e) {
@@ -250,11 +268,12 @@ partial class form : Form {
 		all.render((int) nuptime.Value, Graphics.FromImage(bm));
 		e.Graphics.DrawImage(bm, 0, 0);
 		*/
-		all.render((int) nuptime.Value, e.Graphics);
+		all.render(getUItime(), e.Graphics);
 	}
 
 	void nuptime_ValueChanged(object sender, EventArgs e) {
 		panel1.Invalidate();
+		all.Bezcontrol.invalidate();
 	}
 
 	private void chkwidescreen_CheckedChanged(object sender, EventArgs e) {
@@ -308,6 +327,17 @@ partial class form : Form {
 		all.dovariablething();
 		button2.Enabled = true;
 	}
+
+	private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+	{
+		all.Bez.selectDataIndex(comboBox1.SelectedIndex);
+		all.Bezcontrol.invalidate();
+	}
+
+	private void button3_Click(object sender, EventArgs e)
+	{
+		all.Bez.save();
+	}
 }
 
 partial class all {
@@ -318,6 +348,7 @@ partial class all {
 		CultureInfo customCulture = (CultureInfo) Thread.CurrentThread.CurrentCulture.Clone();
 		customCulture.NumberFormat.NumberDecimalSeparator = ".";
 		Thread.CurrentThread.CurrentCulture = customCulture;
+		Bez.init();
 		harr.read();
 		fft = new FFT();
 		zs = new List<Z>();

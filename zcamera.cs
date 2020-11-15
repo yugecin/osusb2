@@ -55,7 +55,7 @@ partial class all
 			Zcamera.adjust(sp);
 			sunpos = sp[0];
 
-			Zharrier.position = v3(0f);
+			//Zharrier.position = v3(0f);
 
 			dp = v3(0f);
 			vec3 dir = v3(0f);
@@ -166,11 +166,11 @@ partial class all
 				if (tt > 17833) f += size;
 				dp = v3(-lerp(-700f, 650f, f), 100f, -25f);
 				dir = v3(0f, 1f, 0f);
-			} else if (t < 24583) {
+			} else if (t < 33125) {
 				float f = progressx(18291, 24583, t);
 				float fat = f * 0.99f;
 				float fto = clamp(f + 0.1f, 0f, 1f);
-
+				/*
 				vec3 ha = v3(-600f, 0f, 0f);
 				vec3 hp1 = v3(1200f, 200f, 150f);
 				vec3 hp2 = v3(1000f, -800f, 350f);
@@ -183,12 +183,10 @@ partial class all
 				Zharrier.position = at;
 				Zharrier.yaw = atan2(atn.y - at.y, atn.x - at.x);
 				Zharrier.pitch = -atan2(to.z - at.z, (to.xy - at.xy).length());
-				Zharrier.roll = -(atan2(atn.x - at.x, atn.y - at.y) - atan2(to.x - at.x, to.y - at.y));
+				Zharrier.roll = -(atan2(atn.x - at.x, atn.y - at.y) - atan2(to.x - at.x, to.y - at.y));*/
 
-				vec3 negpos = v3(0f) - Zharrier.position;
-				dp = negpos + v3(100f, 0f, -10f);
-				dp = v3(0f, 0f, -100f) - v3(Zairport2.towerpos);
-				dir = dp - negpos;
+				dp = v3() - getCamPos(t);
+				dir = dp + getHarrPos(t);
 			} else if (67458/*71208*/ <= t && t < 104085) {
 				// harrier breakdown
 				dp = v3(-38f, 40f, -20f);

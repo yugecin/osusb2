@@ -234,5 +234,43 @@ partial class all {
 			cubic(a.z, b.z, p1.z, p2.z, t)
 		);
 	}
+	static string f2h(float f)
+	{
+		return b2h(swapendian(BitConverter.GetBytes(f)));
+	}
+	static float h2f(string h)
+	{
+		byte[] bytes = new byte[] {
+			(byte) ((v(h[0]) << 4) | v(h[1])),
+			(byte) ((v(h[2]) << 4) | v(h[3])),
+			(byte) ((v(h[4]) << 4) | v(h[5])),
+			(byte) ((v(h[6]) << 4) | v(h[7])),
+		};
+		return BitConverter.ToSingle(swapendian(bytes), 0);
+	}
+	static int v(char c)
+	{
+		if ('0' <= c && c <= '9') return c - '0';
+		if ('a' <= c && c <= 'f') return c - 'a' + 10;
+		return c - 'A' + 10;
+	}
+	static string b2h(byte[] b)
+	{
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < b.Length; i++) {
+			sb.Append(b[i].ToString("X2"));
+		}
+		return sb.ToString();
+	}
+	static byte[] swapendian(byte[] b)
+	{
+		byte x = b[3];
+		b[3] = b[0];
+		b[0] = x;
+		x = b[2];
+		b[2] = b[1];
+		b[1] = x;
+		return b;
+	}
 }
 }

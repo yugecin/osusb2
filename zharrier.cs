@@ -9,12 +9,13 @@ partial class all{
 	public static harrupdate haha;
 	public static vec3 sunpos = v3(0f); // see zcamera
 	class Zharrier : Z {
-
+		/*
 		public static vec3 position;
 		public static float pitch;
 		public static float pitch2;
 		public static float roll;
 		public static float yaw;
+		*/
 
 		vec3[] points;
 		vec3[] _points;
@@ -75,14 +76,18 @@ partial class all{
 			}
 
 			copy(_points, points);
+			turn(_points, v3(0f), quat(pitch2.valueAt(scene.time) * -10f, 0f, 0f));
+			turn(_points, v3(0f), quat(0f, roll.valueAt(scene.time) * 10f, 0f));
+			turn(_points, v3(0f), quat(pitch.valueAt(scene.time) * -10f, 0f, 0f));
+			turn(_points, v3(0f), quat(0f, 0f, yaw.valueAt(scene.time) * 10f));
+			move(_points, getHarrPos(scene.time));
+			/*
 			move(_points, position);
-			//turn(_points, position, quat(udata[0] / 100f, udata[1] / 100f, 0f));
-			//turn(_points, position, quat(0f, 0f, yaw));
-			//turn(_points, position, quat(pitch, 0f, 0f));
 			turn(_points, position, quat(pitch2, 0f, 0f));
 			turn(_points, position, quat(0f, roll, 0f));
 			turn(_points, position, quat(pitch, 0f, 0f));
 			turn(_points, position, quat(0f, 0f, yaw));
+			*/
 			move(_points, Zcamera.mid);
 			Zcamera.adjust(_points);
 

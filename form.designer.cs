@@ -46,7 +46,6 @@ namespace osusb1 {
 		this.chkwidescreen = new System.Windows.Forms.CheckBox();
 		this.chkComments = new System.Windows.Forms.CheckBox();
 		this.chkPhantom = new System.Windows.Forms.CheckBox();
-		this.label1 = new System.Windows.Forms.Label();
 		this.button2 = new System.Windows.Forms.Button();
 		this.listBox1 = new System.Windows.Forms.ListBox();
 		this.listBox2 = new System.Windows.Forms.ListBox();
@@ -58,6 +57,10 @@ namespace osusb1 {
 		this.abutton2 = new System.Windows.Forms.Button();
 		this.abutton3 = new System.Windows.Forms.Button();
 		this.abuttonsave = new System.Windows.Forms.Button();
+		this.pnlBezs = new System.Windows.Forms.Panel();
+		this.comboBox1 = new System.Windows.Forms.ComboBox();
+		this.label1 = new System.Windows.Forms.Label();
+		this.button3 = new System.Windows.Forms.Button();
 		((System.ComponentModel.ISupportInitialize)(this.panel1)).BeginInit();
 		((System.ComponentModel.ISupportInitialize)(this.nuptime)).BeginInit();
 		((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -88,7 +91,7 @@ namespace osusb1 {
             0,
             0,
             0});
-		this.nuptime.Location = new System.Drawing.Point(12, 498);
+		this.nuptime.Location = new System.Drawing.Point(12, 472);
 		this.nuptime.Maximum = new decimal(new int[] {
             500000,
             0,
@@ -106,7 +109,7 @@ namespace osusb1 {
 		// 
 		// button1
 		// 
-		this.button1.Location = new System.Drawing.Point(577, 495);
+		this.button1.Location = new System.Drawing.Point(577, 469);
 		this.button1.Name = "button1";
 		this.button1.Size = new System.Drawing.Size(75, 23);
 		this.button1.TabIndex = 2;
@@ -136,7 +139,7 @@ namespace osusb1 {
 		this.trackBar1.Maximum = 20;
 		this.trackBar1.Minimum = -20;
 		this.trackBar1.Name = "trackBar1";
-		this.trackBar1.Size = new System.Drawing.Size(181, 42);
+		this.trackBar1.Size = new System.Drawing.Size(181, 45);
 		this.trackBar1.TabIndex = 14;
 		this.trackBar1.Tag = "0";
 		// 
@@ -147,7 +150,7 @@ namespace osusb1 {
 		this.trackBar2.Maximum = 20;
 		this.trackBar2.Minimum = -20;
 		this.trackBar2.Name = "trackBar2";
-		this.trackBar2.Size = new System.Drawing.Size(181, 42);
+		this.trackBar2.Size = new System.Drawing.Size(181, 45);
 		this.trackBar2.TabIndex = 15;
 		this.trackBar2.Tag = "1";
 		// 
@@ -158,7 +161,7 @@ namespace osusb1 {
 		this.trackBar3.Maximum = 20;
 		this.trackBar3.Minimum = -20;
 		this.trackBar3.Name = "trackBar3";
-		this.trackBar3.Size = new System.Drawing.Size(181, 42);
+		this.trackBar3.Size = new System.Drawing.Size(181, 45);
 		this.trackBar3.TabIndex = 16;
 		this.trackBar3.Tag = "2";
 		// 
@@ -169,7 +172,7 @@ namespace osusb1 {
 		this.trackBar4.Maximum = 20;
 		this.trackBar4.Minimum = -20;
 		this.trackBar4.Name = "trackBar4";
-		this.trackBar4.Size = new System.Drawing.Size(181, 42);
+		this.trackBar4.Size = new System.Drawing.Size(181, 45);
 		this.trackBar4.TabIndex = 17;
 		this.trackBar4.Tag = "3";
 		// 
@@ -180,7 +183,7 @@ namespace osusb1 {
 		this.trackBar5.Maximum = 20;
 		this.trackBar5.Minimum = -20;
 		this.trackBar5.Name = "trackBar5";
-		this.trackBar5.Size = new System.Drawing.Size(181, 42);
+		this.trackBar5.Size = new System.Drawing.Size(181, 45);
 		this.trackBar5.TabIndex = 18;
 		this.trackBar5.Tag = "4";
 		// 
@@ -191,7 +194,7 @@ namespace osusb1 {
 		this.trackBar6.Maximum = 20;
 		this.trackBar6.Minimum = -20;
 		this.trackBar6.Name = "trackBar6";
-		this.trackBar6.Size = new System.Drawing.Size(181, 42);
+		this.trackBar6.Size = new System.Drawing.Size(181, 45);
 		this.trackBar6.TabIndex = 19;
 		this.trackBar6.Tag = "5";
 		// 
@@ -202,7 +205,7 @@ namespace osusb1 {
 		this.trackBar7.Maximum = 20;
 		this.trackBar7.Minimum = -20;
 		this.trackBar7.Name = "trackBar7";
-		this.trackBar7.Size = new System.Drawing.Size(181, 42);
+		this.trackBar7.Size = new System.Drawing.Size(181, 45);
 		this.trackBar7.TabIndex = 20;
 		this.trackBar7.Tag = "6";
 		// 
@@ -321,17 +324,6 @@ namespace osusb1 {
 		this.chkPhantom.Text = "Phantom";
 		this.chkPhantom.UseVisualStyleBackColor = true;
 		// 
-		// label1
-		// 
-		this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-		this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-		this.label1.Location = new System.Drawing.Point(1347, 458);
-		this.label1.Name = "label1";
-		this.label1.Size = new System.Drawing.Size(197, 81);
-		this.label1.TabIndex = 33;
-		this.label1.Text = "release things:\r\n change zrub phantomframedelta to 1\r\n decide dotcount for zrub (" +
-		    "3 or 4)\r\nchange t size?\r\n";
-		// 
 		// button2
 		// 
 		this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -350,7 +342,7 @@ namespace osusb1 {
 		this.listBox1.ItemHeight = 16;
 		this.listBox1.Location = new System.Drawing.Point(872, 12);
 		this.listBox1.Name = "listBox1";
-		this.listBox1.Size = new System.Drawing.Size(180, 452);
+		this.listBox1.Size = new System.Drawing.Size(180, 420);
 		this.listBox1.TabIndex = 35;
 		// 
 		// listBox2
@@ -360,7 +352,7 @@ namespace osusb1 {
 		this.listBox2.ItemHeight = 16;
 		this.listBox2.Location = new System.Drawing.Point(1058, 12);
 		this.listBox2.Name = "listBox2";
-		this.listBox2.Size = new System.Drawing.Size(137, 452);
+		this.listBox2.Size = new System.Drawing.Size(137, 420);
 		this.listBox2.TabIndex = 36;
 		// 
 		// listBox3
@@ -370,13 +362,13 @@ namespace osusb1 {
 		this.listBox3.ItemHeight = 16;
 		this.listBox3.Location = new System.Drawing.Point(1201, 13);
 		this.listBox3.Name = "listBox3";
-		this.listBox3.Size = new System.Drawing.Size(156, 452);
+		this.listBox3.Size = new System.Drawing.Size(156, 420);
 		this.listBox3.TabIndex = 37;
 		// 
 		// textBox1
 		// 
 		this.textBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-		this.textBox1.Location = new System.Drawing.Point(872, 472);
+		this.textBox1.Location = new System.Drawing.Point(872, 443);
 		this.textBox1.Name = "textBox1";
 		this.textBox1.Size = new System.Drawing.Size(180, 22);
 		this.textBox1.TabIndex = 38;
@@ -384,7 +376,7 @@ namespace osusb1 {
 		// textBox2
 		// 
 		this.textBox2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-		this.textBox2.Location = new System.Drawing.Point(1058, 472);
+		this.textBox2.Location = new System.Drawing.Point(1058, 443);
 		this.textBox2.Name = "textBox2";
 		this.textBox2.Size = new System.Drawing.Size(137, 22);
 		this.textBox2.TabIndex = 39;
@@ -392,14 +384,14 @@ namespace osusb1 {
 		// textBox3
 		// 
 		this.textBox3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-		this.textBox3.Location = new System.Drawing.Point(1201, 472);
+		this.textBox3.Location = new System.Drawing.Point(1201, 443);
 		this.textBox3.Name = "textBox3";
 		this.textBox3.Size = new System.Drawing.Size(156, 22);
 		this.textBox3.TabIndex = 40;
 		// 
 		// abutton1
 		// 
-		this.abutton1.Location = new System.Drawing.Point(872, 498);
+		this.abutton1.Location = new System.Drawing.Point(872, 469);
 		this.abutton1.Name = "abutton1";
 		this.abutton1.Size = new System.Drawing.Size(75, 23);
 		this.abutton1.TabIndex = 41;
@@ -408,7 +400,7 @@ namespace osusb1 {
 		// 
 		// abutton2
 		// 
-		this.abutton2.Location = new System.Drawing.Point(1058, 498);
+		this.abutton2.Location = new System.Drawing.Point(1058, 469);
 		this.abutton2.Name = "abutton2";
 		this.abutton2.Size = new System.Drawing.Size(75, 23);
 		this.abutton2.TabIndex = 42;
@@ -417,7 +409,7 @@ namespace osusb1 {
 		// 
 		// abutton3
 		// 
-		this.abutton3.Location = new System.Drawing.Point(1217, 498);
+		this.abutton3.Location = new System.Drawing.Point(1201, 469);
 		this.abutton3.Name = "abutton3";
 		this.abutton3.Size = new System.Drawing.Size(75, 23);
 		this.abutton3.TabIndex = 43;
@@ -426,18 +418,66 @@ namespace osusb1 {
 		// 
 		// abuttonsave
 		// 
-		this.abuttonsave.Location = new System.Drawing.Point(1314, 506);
+		this.abuttonsave.Location = new System.Drawing.Point(1305, 469);
 		this.abuttonsave.Name = "abuttonsave";
 		this.abuttonsave.Size = new System.Drawing.Size(75, 23);
 		this.abuttonsave.TabIndex = 44;
 		this.abuttonsave.Text = "SAVE!";
 		this.abuttonsave.UseVisualStyleBackColor = true;
 		// 
+		// pnlBezs
+		// 
+		this.pnlBezs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+			    | System.Windows.Forms.AnchorStyles.Left)
+			    | System.Windows.Forms.AnchorStyles.Right)));
+		this.pnlBezs.AutoScroll = true;
+		this.pnlBezs.Location = new System.Drawing.Point(1, 498);
+		this.pnlBezs.Name = "pnlBezs";
+		this.pnlBezs.Size = new System.Drawing.Size(1556, 381);
+		this.pnlBezs.TabIndex = 45;
+		// 
+		// comboBox1
+		// 
+		this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+		this.comboBox1.FormattingEnabled = true;
+		this.comboBox1.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C"});
+		this.comboBox1.Location = new System.Drawing.Point(4, 498);
+		this.comboBox1.Name = "comboBox1";
+		this.comboBox1.Size = new System.Drawing.Size(62, 21);
+		this.comboBox1.TabIndex = 0;
+		this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+		// 
+		// label1
+		// 
+		this.label1.AutoSize = true;
+		this.label1.Location = new System.Drawing.Point(4, 522);
+		this.label1.Name = "label1";
+		this.label1.Size = new System.Drawing.Size(89, 52);
+		this.label1.TabIndex = 1;
+		this.label1.Text = "yes yes these are\r\nnot actually\r\nbeziers, don\'t\r\nkill me";
+		// 
+		// button3
+		// 
+		this.button3.Location = new System.Drawing.Point(4, 577);
+		this.button3.Name = "button3";
+		this.button3.Size = new System.Drawing.Size(53, 23);
+		this.button3.TabIndex = 2;
+		this.button3.Text = "save";
+		this.button3.UseVisualStyleBackColor = true;
+		this.button3.Click += new System.EventHandler(this.button3_Click);
+		// 
 		// form
 		// 
 		this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 		this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		this.ClientSize = new System.Drawing.Size(1556, 530);
+		this.ClientSize = new System.Drawing.Size(1556, 880);
+		this.Controls.Add(this.comboBox1);
+		this.Controls.Add(this.label1);
+		this.Controls.Add(this.button3);
+		this.Controls.Add(this.pnlBezs);
 		this.Controls.Add(this.abuttonsave);
 		this.Controls.Add(this.abutton3);
 		this.Controls.Add(this.abutton2);
@@ -449,7 +489,6 @@ namespace osusb1 {
 		this.Controls.Add(this.listBox2);
 		this.Controls.Add(this.listBox1);
 		this.Controls.Add(this.button2);
-		this.Controls.Add(this.label1);
 		this.Controls.Add(this.chkPhantom);
 		this.Controls.Add(this.chkComments);
 		this.Controls.Add(this.chkwidescreen);
@@ -490,7 +529,6 @@ namespace osusb1 {
 
 	#endregion
 
-	private System.Windows.Forms.PictureBox panel1;
 	private System.Windows.Forms.NumericUpDown nuptime;
 	private System.Windows.Forms.Button button1;
 	private System.Windows.Forms.Timer timer1;
@@ -511,8 +549,7 @@ namespace osusb1 {
 	private System.Windows.Forms.Label udata6;
 	private System.Windows.Forms.CheckBox chkwidescreen;
 	private System.Windows.Forms.CheckBox chkComments;
-	private System.Windows.Forms.CheckBox chkPhantom;
-	private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.CheckBox chkPhantom;
 	private System.Windows.Forms.Button button2;
 		private System.Windows.Forms.ListBox listBox1;
 		private System.Windows.Forms.ListBox listBox2;
@@ -524,6 +561,11 @@ namespace osusb1 {
 		private System.Windows.Forms.Button abutton2;
 		private System.Windows.Forms.Button abutton3;
 		private System.Windows.Forms.Button abuttonsave;
+		private System.Windows.Forms.Panel pnlBezs;
+		private System.Windows.Forms.PictureBox panel1;
+		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button button3;
 }
 }
 
