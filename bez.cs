@@ -30,19 +30,19 @@ partial class all
 
 	public static vec3 getHarrPos(int time)
 	{
-		return v3(harrx.valueAt(time), harry.valueAt(time), harrz.valueAt(time)) * 1000f;
+		return v3(harrx.valueAt(time) * 1500f, harry.valueAt(time) * 1500f, (harrz.valueAt(time) + .75f) * 500f);
 	}
 
 	public static vec3 getCamPos(int time)
 	{
-		if (camattach.valueAt(time) >= 1f) {
+		if (camattach.valueAt(time) >= 0f) {
 			vec3 pos = getHarrPos(time);
 			pos.x += camoffx.valueAt(time) * 100f;
 			pos.y += camoffy.valueAt(time) * 100f;
 			pos.z += camoffz.valueAt(time) * 100f;
 			return pos;
 		} else {
-			return v3(camx.valueAt(time) * 1000f, camy.valueAt(time) * 1000f, (camz.valueAt(time) + 1) * 500f);
+			return v3(camx.valueAt(time) * 1000f, camy.valueAt(time) * 1000f, (camz.valueAt(time) + 1f) * 500f);
 		}
 	}
 
@@ -242,10 +242,10 @@ partial class all
 					}
 					vec2 newpt = v2(t, valueAt(t));
 					from[i + 1] = v2(newpt);
-					p1[i + 1] = v2(.1f, t);
-					p2[i + 1] = v2(.9f, t);
-					to[i + 1] = v2(to[i]);
-					p2[i] = v2(.9f, t);
+					p1[i + 1] = v2(.1f, newpt.y);
+					p2[i + 1] = v2(this.p2[i]);
+					to[i + 1] = v2(this.to[i]);
+					p2[i] = v2(.9f, newpt.y);
 					to[i] = v2(newpt);
 					numsegments++;
 					this.from = from;

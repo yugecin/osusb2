@@ -10,7 +10,7 @@ partial class all
 {
 	public class Bezcontrol : Panel
 	{
-		const int HS = 5;
+		const int HS = 1;
 		const int SS = HS * 2 + 1;
 		public static float controlpointscale = 4f;
 
@@ -124,7 +124,7 @@ partial class all
 
 			t = progress(0, w, mousex);
 			mousey = (int) (h - bez.valueAt(t) * h);
-			g.FillRectangle(bblue, mousex - 3, mousey - 3, 7, 7);
+			g.FillRectangle(bblue, mousex - 4, mousey - 4, 9, 9);
 			mousex = -5;
 			mousey = -5;
 		}

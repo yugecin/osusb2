@@ -181,10 +181,10 @@ partial class all{
 							vec3 a = lerp(_points[77], _points[76], y);
 							vec3 b = lerp(_points[75], _points[74], y);
 							vec4 p = project(lerp(a, b, x));
-							spectrumdots[i][j].update(scene.time, col, p);
-							spectrumdots[i][j].draw(scene.g);
+							spectrumdots2[i][j].update(scene.time, col, p);
+							spectrumdots2[i][j].draw(scene.g);
 						} else {
-							spectrumdots[i][j].update(scene.time, col, null);
+							spectrumdots2[i][j].update(scene.time, col, null);
 						}
 					}
 				}

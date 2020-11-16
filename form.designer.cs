@@ -342,7 +342,7 @@ namespace osusb1 {
 		this.listBox1.ItemHeight = 16;
 		this.listBox1.Location = new System.Drawing.Point(872, 12);
 		this.listBox1.Name = "listBox1";
-		this.listBox1.Size = new System.Drawing.Size(180, 420);
+		this.listBox1.Size = new System.Drawing.Size(155, 420);
 		this.listBox1.TabIndex = 35;
 		// 
 		// listBox2
@@ -350,9 +350,9 @@ namespace osusb1 {
 		this.listBox2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 		this.listBox2.FormattingEnabled = true;
 		this.listBox2.ItemHeight = 16;
-		this.listBox2.Location = new System.Drawing.Point(1058, 12);
+		this.listBox2.Location = new System.Drawing.Point(1033, 13);
 		this.listBox2.Name = "listBox2";
-		this.listBox2.Size = new System.Drawing.Size(137, 420);
+		this.listBox2.Size = new System.Drawing.Size(155, 420);
 		this.listBox2.TabIndex = 36;
 		// 
 		// listBox3
@@ -360,9 +360,9 @@ namespace osusb1 {
 		this.listBox3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 		this.listBox3.FormattingEnabled = true;
 		this.listBox3.ItemHeight = 16;
-		this.listBox3.Location = new System.Drawing.Point(1201, 13);
+		this.listBox3.Location = new System.Drawing.Point(1194, 12);
 		this.listBox3.Name = "listBox3";
-		this.listBox3.Size = new System.Drawing.Size(156, 420);
+		this.listBox3.Size = new System.Drawing.Size(155, 420);
 		this.listBox3.TabIndex = 37;
 		// 
 		// textBox1
@@ -370,23 +370,23 @@ namespace osusb1 {
 		this.textBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 		this.textBox1.Location = new System.Drawing.Point(872, 443);
 		this.textBox1.Name = "textBox1";
-		this.textBox1.Size = new System.Drawing.Size(180, 22);
+		this.textBox1.Size = new System.Drawing.Size(155, 22);
 		this.textBox1.TabIndex = 38;
 		// 
 		// textBox2
 		// 
 		this.textBox2.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-		this.textBox2.Location = new System.Drawing.Point(1058, 443);
+		this.textBox2.Location = new System.Drawing.Point(1033, 443);
 		this.textBox2.Name = "textBox2";
-		this.textBox2.Size = new System.Drawing.Size(137, 22);
+		this.textBox2.Size = new System.Drawing.Size(155, 22);
 		this.textBox2.TabIndex = 39;
 		// 
 		// textBox3
 		// 
 		this.textBox3.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-		this.textBox3.Location = new System.Drawing.Point(1201, 443);
+		this.textBox3.Location = new System.Drawing.Point(1194, 443);
 		this.textBox3.Name = "textBox3";
-		this.textBox3.Size = new System.Drawing.Size(156, 22);
+		this.textBox3.Size = new System.Drawing.Size(155, 22);
 		this.textBox3.TabIndex = 40;
 		// 
 		// abutton1
@@ -400,7 +400,7 @@ namespace osusb1 {
 		// 
 		// abutton2
 		// 
-		this.abutton2.Location = new System.Drawing.Point(1058, 469);
+		this.abutton2.Location = new System.Drawing.Point(1033, 469);
 		this.abutton2.Name = "abutton2";
 		this.abutton2.Size = new System.Drawing.Size(75, 23);
 		this.abutton2.TabIndex = 42;
@@ -409,7 +409,7 @@ namespace osusb1 {
 		// 
 		// abutton3
 		// 
-		this.abutton3.Location = new System.Drawing.Point(1201, 469);
+		this.abutton3.Location = new System.Drawing.Point(1194, 469);
 		this.abutton3.Name = "abutton3";
 		this.abutton3.Size = new System.Drawing.Size(75, 23);
 		this.abutton3.TabIndex = 43;
@@ -418,7 +418,7 @@ namespace osusb1 {
 		// 
 		// abuttonsave
 		// 
-		this.abuttonsave.Location = new System.Drawing.Point(1305, 469);
+		this.abuttonsave.Location = new System.Drawing.Point(1274, 469);
 		this.abuttonsave.Name = "abuttonsave";
 		this.abuttonsave.Size = new System.Drawing.Size(75, 23);
 		this.abuttonsave.TabIndex = 44;

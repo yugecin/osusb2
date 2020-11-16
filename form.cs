@@ -31,7 +31,7 @@ partial class form : Form {
 		trackBar7.ValueChanged += udata_ValueChanged;
 		this.Text = all.osb;
 		all.Widescreen = chkwidescreen.Checked;
-		int height = 200, padding = 5;
+		int height = 300, padding = 5;
 		pnlBezs.SuspendLayout();
 		for (int i = 0; i < all.bezs.Length; i++) {
 			pnlBezs.Controls.Add(new all.Bezcontrol(all.bezs[i], 0, (height + padding) * i, pnlBezs.Width, height));
