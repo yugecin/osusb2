@@ -67,7 +67,7 @@ partial class all {
 			return new PointF(x, y);
 		}
 		public override string ToString() {
-			return string.Format("v2({0},{1})", x, y);
+			return string.Format("v2({0}f, {1}f)", x, y);
 		}
 		public override bool Equals(object obj) {
 			vec2 o = obj as vec2;
@@ -175,7 +175,7 @@ partial class all {
 			return new vec3(x / l, y / l, z / l);
 		}
 		public override string ToString() {
-			return string.Format("v3({0},{1},{2})", x, y, z);
+			return string.Format("v3({0}f, {1}f, {2}f)", x, y, z);
 		}
 		public override bool Equals(object obj) {
 			vec3 o = obj as vec3;

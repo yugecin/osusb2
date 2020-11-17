@@ -378,7 +378,7 @@ partial class all {
 
 	public static int DECIMALS_PRECISE = 7;
 
-	public static int guistarttime = 18291-1000;
+	public static int guistarttime = 35900;
 
 	static void init() {
 		int from1 = 2000, to1 = 67458;
@@ -387,12 +387,12 @@ partial class all {
 		zs.Add(new Zairport2(from1, to1));
 		zs.Add(new Zltext(from1, to1, "robin_be presents", v3(0f, 450f, -20f)));
 		zs.Add(new Zltext(from1, to1, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
-		zs.Add(new Zctext(30000, 33000, Zctext.luki, v3(0f, 0f, 100f), 1));
-		zs.Add(new Zctext(30000, 33000, Zctext.herakles, v3(0f, 0f, 150f), 2));
-		zs.Add(new Zctext(30000, 33000, Zctext.em, v3(0f, 0f, 200f), 3));
-		zs.Add(new Zctext(30000, 33000, Zctext.quack, v3(0f, 0f, 250f), 4));
-		zs.Add(new Zharrier(from1, to1));
-		zs.Add(new Zharrierbreakdown(to1, 104085));
+		zs.Add(new Zctext(34000, 41000, Zctext.em));
+		zs.Add(new Zctext(41000, 47000, Zctext.herakles));
+		zs.Add(new Zctext(47000, 52000, Zctext.quack));
+		zs.Add(new Zctext(52000, 56541, Zctext.luki));
+		zs.Add(new Zharrier(2000, 34000));
+		//zs.Add(new Zharrierbreakdown(to1, 104085));
 		foreach (Z z in zs) {
 			z.framedelta = 1000 / 20;
 		}

@@ -166,7 +166,7 @@ partial class all
 				if (tt > 17833) f += size;
 				dp = v3(-lerp(-700f, 650f, f), 100f, -25f);
 				dir = v3(0f, 1f, 0f);
-			} else if (t < 33125) {
+			} else if (t < 31400) {
 				float f = progressx(18291, 24583, t);
 				float fat = f * 0.99f;
 				float fto = clamp(f + 0.1f, 0f, 1f);
@@ -187,6 +187,46 @@ partial class all
 
 				dp = v3() - getCamPos(t);
 				dir = dp + getHarrPos(t);
+				//Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
+			} else if (t < 56541) {
+				vec3 _00_pos = v3(-1097.832f, -1175.126f, 271.0345f);
+				vec3 _00_lok = v3(-1077.637f, -1267.603f, 285.5392f);
+				vec3 _01_lok = v3(0f, 0f, 100f);
+
+				vec3 _05_pos = v3(759.1069f, -193.1827f, 289.7183f);
+				vec3 _05_lok = lerp(v3(), _05_pos, 0.9f);
+				_05_lok.z = _05_pos.z;
+				vec3 _05_lokb = v3(_05_lok);
+				_05_lok = _05_pos - (_05_pos - _05_lok) * 5f;
+
+				vec3 _10_pos = _05_pos + v3(-30f, 40f, 0f);
+				if (t < 33125) {
+					float f = progress(31400, 33125, t);
+					dp = v3() - _00_pos;
+					dir = dp + lerp(_00_lok, _01_lok, f);
+				} else if (t < 35708) {
+					float f = greetprogress(33125, 35708, 34041, 34791, t, .11f);
+					vec3 to = lerp(_00_pos, _05_pos, f);
+					//to = quadratic(_00_pos, _05_pos, v3(800f, -700f, 0f), f);
+					//to.z = lerp(_00_pos.z, _05_pos.z, f);
+					dp = v3() - to;
+					dir = dp + lerp(_01_lok, _05_lok, f);
+				} else if (t < 39750) {
+					float f = progress(36458, 39750, t);
+					dp = v3() - lerp(_05_pos, _10_pos, f);
+					dir = dp + _05_lokb;
+				}
+
+				if (t < 41000) {
+					Zctext.position = _05_lokb;
+					Zctext.rotation = quat(0f, 0f, 1.5f);
+				} else if (t < 47000) {
+
+				} else if (t < 52000) {
+
+				} else if (t < 56541) {
+
+				}
 			} else if (67458/*71208*/ <= t && t < 104085) {
 				// harrier breakdown
 				dp = v3(-38f, 40f, -20f);
@@ -213,6 +253,26 @@ partial class all
 		}
 
 		public override void fin(Writer w) {
+		}
+
+		private float greetprogress(int a, int b, int xa, int xb, int time, float mod)
+		{
+			xa -= 100;
+			xb -= 100;
+			if (time < xa) {
+				return progress(a, xa, time) * .5f;
+			}
+			if (time < xb) {
+				int mid = (xa + xb) / 2;
+				float p;
+				if (time < mid) {
+					p = progress(xa, mid, time);
+				} else {
+					p = progress(xb, mid, time);
+				}
+				return 0.5f - (int) (p * 6) / 6f * mod;
+			}
+			return .5f + progress(xb, b, time) * 0.5f;
 		}
 
 	}

@@ -79,10 +79,16 @@ partial class all {
 
 		Odot[] dots;
 		vec3[] pos;
+		vec3[] tripos;
+		vec3[] _tripos;
+		Tri tri;
 
 		public const float SIZE = 0.3f;
 
-		public Zctext(int start, int stop, string[] text, vec3 mid, int rotation) {
+		public static vec3 position = v3();
+		public static vec4 rotation = v4();
+
+		public Zctext(int start, int stop, string[] text) {
 			this.start = start;
 			this.stop = stop;
 			framedelta = 50;
@@ -94,17 +100,29 @@ partial class all {
 			dots = new Odot[numdots];
 			pos = new vec3[numdots];
 
-			vec3 offset = /*mid +*/ v3(-text[0].Length / 2 * SIZE, 0f, -text.Length / 2 * SIZE);
+			tripos = new vec3[] { v3(0f), v3(10f, 0f, 0f), v3(10f, 0f, -10f) };
+			_tripos = new vec3[tripos.Length];
+			tri = new Tri(this, Color.Wheat, _tripos, 0, 1, 2);
+
+			float maxx = 0f;
+			float minz = 0f;
 			int idx = 0;
 			for (int i = 0; i < text.Length; i++ ) {
 				for (int j = 0; j < text[i].Length; j++) {
 					if (text[i][j] == 'x') {
 						dots[idx] = new Odot("2", 0);
-						pos[idx] = offset + v3(j * SIZE, 0f, (text.Length - i) * SIZE);
+						pos[idx] = v3(j, 0f, -i) * SIZE;
+						maxx = max(maxx, pos[idx].x);
+						minz = min(minz, pos[idx].z);
 						idx++;
 					}
 				}
 			}
+			for (int i = 0; i < pos.Length; i++) {
+				pos[i].x -= maxx / 2;
+				pos[i].z -= minz / 2;
+			}
+			/*
 			switch (rotation) {
 			case 1:
 				turn(pos, v3(0f), quat(0f, 0f, 1f));
@@ -115,8 +133,8 @@ partial class all {
 				break;
 			case 4:
 				break;
-			}
-			move(pos, mid);
+			}*/
+			//move(pos, mid);
 		}
 
 
@@ -125,11 +143,24 @@ partial class all {
 			ICommand.round_move_decimals.Push(DECIMALS_PRECISE);
 			ICommand.round_scale_decimals.Push(DECIMALS_PRECISE);
 			ICommand.round_rot_decimals.Push(DECIMALS_PRECISE);
+			vec3[] vecs = new vec3[1];
 			for (int i = 0; i < dots.Length; i++) {
-				vec3[] vecs = new vec3[] { v3(pos[i]) };
+				vecs[0] = v3(pos[i]);
+				turn(vecs, v3(), rotation);
+				move(vecs, position);
+				move(vecs, Zcamera.mid);
 				Zcamera.adjust(vecs);
-				dots[i].update(scene.time, v4(1f), project(vecs[0]));
-				dots[i].draw(scene.g);
+				copy(_tripos, tripos);
+				turn(_tripos, v3(), rotation);
+				move(_tripos, position);
+				move(_tripos, Zcamera.mid);
+				Zcamera.adjust(_tripos);
+				if (tri.shouldcull()) {
+					dots[i].update(scene.time, v4(1f), null);
+				} else {
+					dots[i].update(scene.time, v4(1f), project(vecs[0]));
+					dots[i].draw(scene.g);
+				}
 			}
 			ICommand.round_move_decimals.Pop();
 			ICommand.round_scale_decimals.Pop();

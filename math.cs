@@ -234,6 +234,19 @@ partial class all {
 			cubic(a.z, b.z, p1.z, p2.z, t)
 		);
 	}
+	public static float quadratic(float a, float b, float p, float t)
+	{
+		float ct = 1f - t;
+		return ct * ct * a + ct * 2 * t * p + t * t * b;
+	}
+	public static vec3 quadratic(vec3 a, vec3 b, vec3 p, float t)
+	{
+		return v3(
+			quadratic(a.x, b.x, p.x, t),
+			quadratic(a.y, b.y, p.y, t),
+			quadratic(a.z, b.z, p.z, t)
+		);
+	}
 	static string f2h(float f)
 	{
 		return b2h(swapendian(BitConverter.GetBytes(f)));
