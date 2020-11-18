@@ -378,7 +378,7 @@ partial class all {
 
 	public static int DECIMALS_PRECISE = 7;
 
-	public static int guistarttime = 45500;
+	public static int guistarttime = 51200;
 
 	static void init() {
 		int from1 = 2000, to1 = 67458;
@@ -391,7 +391,7 @@ partial class all {
 		zs.Add(new Zctext(40000, 47000, Zctext.herakles));
 		zs.Add(new Zctext(47000, 52000, Zctext.quack));
 		zs.Add(new Zctext(52000, 56541, Zctext.luki));
-		zs.Add(new Zharrier(2000, 34000));
+		zs.Add(new Zharrier(17650, 34000));
 		//zs.Add(new Zharrierbreakdown(to1, 104085));
 		foreach (Z z in zs) {
 			z.framedelta = 1000 / 20;

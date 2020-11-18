@@ -61,72 +61,6 @@ partial class all
 			vec3 dir = v3(0f);
 			float rz = 0f;
 
-			if (scene.time < T2) {
-
-				// Defaults for easy camera moving around navigation:
-				dir = v3(0f, 5f, -1.0f);
-				dp.y = 5.0f;
-
-				dir = v3(0f, 5f, -1.0f);
-				dp.y = 25.0f;
-				dp.z -= 3.0f + udata[0];
-				dp.y += 2 * udata[1];
-				dp.z -= 0.7f * udata[1];
-
-
-				//dp.y -= lerp(0f, 20f, progress(0, 5000, scene.time));
-				//dp.x -= lerp(0f, 10f, progress(0, 5000, scene.time));
-				//dp.z -= lerp(10f, 20f, progress(0, 5000, scene.time));
-
-				//dp.z -= cos(progress(0, 5000, scene.time)) * 20;
-				//dp.y += -20 + 20 * sin(progress(0, 5000, scene.time));
-				//dp.x += 30 * sin(progress(0, 5000, scene.time));
-
-				//dp.y -= 70.0f;
-				
-				dir = dp - v3(0);
-
-				/*
-				float pr = progress(T1, T2, scene.time);
-				vec3 fr = v3(25, 5f, -10f);
-				vec3 to = v3(-15, 40f, -10f);
-				dp += lerp(fr, to, pr);
-				fr = v3(1f, 0f, 0f);
-				to = v3(-.3f, 1f, 0f);
-				dir = lerp(fr, to, pr);
-				//rz = lerp(-PI2, 0, pr);
-				*/
-			} else if (scene.time < T3) {
-				dir = v3(0f, 1f, 0f);
-				float pr = progress(T2, T3, scene.time);
-				vec3 fr = v3(Zltext.SIZE * -20, 25f, -10f);
-				vec3 to = v3(Zltext.SIZE * 15, 25f, -10f);
-				dp += lerp(fr, to, pr);
-			} else if (scene.time < T4) {
-				float pr = progress(T3, T4, scene.time);
-				float frangle = -PI2;
-				float toangle = PI4;
-				vec3 fr = v3(0f, 25f + 10f * cos(frangle), -10f + 10f * sin(frangle));
-				vec3 to = v3(0f, 25f + 10f * cos(toangle), -10f + 10f * sin(toangle));
-				dp += lerp(fr, to, pr);
-				dir = dp - v3(0f, 0f, -10f);
-				float fx = 25;
-				float tx = -5;
-				dp.x = lerp(fx, tx, eq_cub(pr, v2(.5f, .6f), v2(.9f, 1f))) * Zltext.SIZE;
-				rz = PI4 / 3f;
-			} else {
-				float pr = progress(T4, T5, scene.time);
-				vec3 fr = v3(Zltext.SIZE * -35, 25f, -10f);
-				vec3 to = v3(Zltext.SIZE * 35, 25f, -10f);
-				dp += lerp(fr, to, eq_cub(pr, v2(.2f, .4f), v2(.9f, .6f)));
-				dir = dp - v3(0f, 0f, -10f);
-				dp.x += udata[0];
-				dp.y += udata[1];
-				dp.z += udata[2];
-				//rz = lerp(-PI2, 0, pr);
-				rz = 0f;
-			}
-
 			int t = scene.time;
 
 			if (t < 5041) {
@@ -191,7 +125,7 @@ partial class all
 				if (!rendering) {
 					Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
 				}
-			} else if (t < 56541) {
+			} else if (t < 56333) {
 				// greets
 				vec3 _00_pos = v3(-1097.832f, -1175.126f, 271.0345f);
 				vec3 _00_lok = v3(-1077.637f, -1267.603f, 285.5392f);
@@ -219,6 +153,13 @@ partial class all
 				vec3 qua_int = lerp(her_pos2, qua_pos, 0.2f) + v3(0, -200f, 0);
 				vec3 qua_int2 = lerp(her_pos2, qua_pos, 0.8f) + v3(0, -200f, 0);
 				vec3 qua_pos2 = v3(-748.7392f, -240.6331f, 80f);
+
+				vec3 luk_pos = v3(632.1013f, 358.0017f, 48.1202f);
+				vec3 luk_lok = v3(-263.8631f, 1.909196f, 270f);
+				vec3 luk_pos2 = luk_pos + v3(0f, -40f, 0f);
+				vec3 luk_int = lerp(qua_pos2, luk_pos, 0.5f) + v3(0f, 500f, 200f);
+				vec3 luk_lokint = lerp(qua_lok, luk_lok, 0.5f) + v3(0f, 0f, -400f);
+
 				if (t < 33125) {
 					// transition from harr
 					float f = progress(31400, 33125, t);
@@ -250,7 +191,7 @@ partial class all
 					dp = v3() - lerp(her_pos, her_pos2, f);
 					dir = dp + lerp(her_lok, her_lok2, f);
 					rz = 1f;
-				} else if (t < 49000) {
+				} else if (t < 48850) {
 					// transition to quack
 					float f = greetprogress(46375, 48850, 47333, 48000, t, .11f);
 					dp = v3() - cubic(her_pos2, qua_pos, qua_int, qua_int2, f);
@@ -262,6 +203,17 @@ partial class all
 					dp = v3() - lerp(qua_pos, qua_pos2, f);
 					dir = dp + qua_lok;
 					rz = lerp(0f, -0.2f, f);
+				} else if (t < 53900) {
+					// transition to luki
+					float f = greetprogress(51333, 53900, 52291, 53000, t, .11f);
+					dp = v3() - quadratic(qua_pos2, luk_pos, luk_int, f);
+					dir = dp + quadratic(qua_lok, luk_lok, luk_lokint, f);
+					rz = lerp(-0.2f, 0f, f);
+				} else {
+					// around luki
+					float f = progress(53900, 56333, t);
+					dp = v3() - lerp(luk_pos, luk_pos2, f);
+					dir = dp + luk_lok;
 				}
 
 				if (t < 40000) {
@@ -289,7 +241,13 @@ partial class all
 					Zctext.bgcol = v4(.4f, .7f, 1f, 1f - eq_in_expo(f));
 					Zctext.bgstyle = 1;
 				} else if (t < 56541) {
-
+					Zctext.position = lerp(luk_lok, lerp(luk_pos, luk_pos2, 0.6f), 0.95f);
+					Zctext.rotation = quat(0f, 0f, 1.9f);
+					float f = progress(54400, 55800, t);
+					Zctext.showbg = f >= 0f;
+					Zctext.bgsize = eq_out_circ(clamp(f * 2.2f, 0f, 1f));
+					Zctext.bgcol = v4(.4f, .7f, 1f, 1f - eq_in_expo(f));
+					Zctext.bgstyle = 1;
 				}
 			} else if (67458/*71208*/ <= t && t < 104085) {
 				// harrier breakdown
