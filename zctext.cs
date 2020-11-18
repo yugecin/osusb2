@@ -86,6 +86,8 @@ partial class all {
 		vec3[] _tripos;
 		Tri tri;
 
+		vec2[] starbgpoints;
+
 		public const float SIZE = 0.3f;
 
 		public static vec3 position = v3();
@@ -93,11 +95,23 @@ partial class all {
 		public static float bgsize;
 		public static vec4 bgcol = v4();
 		public static bool showbg;
+		public static int bgstyle;
 
 		public Zctext(int start, int stop, string[] text) {
 			this.start = start;
 			this.stop = stop;
 			framedelta = 50;
+
+			starbgpoints = new vec2[10];
+			float angleIncRads = PI * 36f / 180f;
+			float ang = PI2;
+			float maxrad = 1f;
+			float minrad = .35f;
+			for (int i = 0; i < 10; i++) {
+				float rad = i % 2 == 1 ? minrad : maxrad;
+				starbgpoints[i] = v2(cos(ang) * rad, sin(ang) * rad);
+				ang += angleIncRads;
+			}
 
 			int numdots = 0;
 			foreach (string line in text) {
@@ -164,11 +178,21 @@ partial class all {
 				if (tri.shouldcull() || bgcol.w < 0f || bgsize < 0f || !showbg) {
 					bg[i].update(scene.time, v4(1f), null);
 				} else {
-					float f = i / (float) bg.Length * PI * 2f;
-					float r = 2f - 2f * sin(f) + sin(f) * sqrt(abs(cos(f))) / (sin(f) + 1.4f);
-					r *= bgsize;
-					vec3 v = v3(cos(f) * r * 10f * SIZE, 0f, sin(f) * r * 10f * SIZE);
-					v.z += bgsize * 4.5f;
+					float f = i / (float) bg.Length;
+					vec3 v = v3();
+					if (bgstyle == 0) {
+						f *= PI * 2f;
+						float r = 2f - 2f * sin(f) + sin(f) * sqrt(abs(cos(f))) / (sin(f) + 1.4f);
+						r *= bgsize;
+						v.x = cos(f) * r * 10f * SIZE;
+						v.z = sin(f) * r * 10f * SIZE;
+						v.z += bgsize * 4.5f;
+					} else if (bgstyle == 1) {
+						int part = (int) (f / 0.1f);
+						float tt = progress(part * 0.1f, (part + 1) * 0.1f, f);
+						vec2 p = lerp(starbgpoints[part], starbgpoints[(part + 1) % 10], tt);
+						v = lerp(v3(), v3(p.x, 0f, p.y) * 9f, bgsize);
+					}
 					v.x = v.x - v.x % SIZE;
 					v.z = v.z - v.z % SIZE;
 					vecs[0] = v;

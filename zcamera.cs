@@ -188,7 +188,9 @@ partial class all
 
 				dp = v3() - getCamPos(t);
 				dir = dp + getHarrPos(t);
-				//Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
+				if (!rendering) {
+					Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
+				}
 			} else if (t < 56541) {
 				// greets
 				vec3 _00_pos = v3(-1097.832f, -1175.126f, 271.0345f);
@@ -202,6 +204,14 @@ partial class all
 				_05_lok = _05_pos - (_05_pos - _05_lok) * 5f;
 
 				vec3 _10_pos = _05_pos + v3(-30f, 40f, 0f);
+
+				vec3 her_dir = v3(0f, -1f, 0f);
+				vec3 her_pos = v3(398f, -145.85317f, 5f);
+				vec3 her_lok = her_pos + her_dir * 50f;
+				vec3 her_int = lerp(_10_pos, her_pos, 0.2f) + v3(0, 200f, 0f);
+				vec3 her_int2 = lerp(_10_pos, her_pos, 0.8f) + v3(0, 200f, 0f);
+				vec3 her_pos2 = v3(398f, -145.85317f, 28f);
+				vec3 her_lok2 = her_pos2 + her_dir * 50f;
 				if (t < 33125) {
 					// transition from harr
 					float f = progress(31400, 33125, t);
@@ -220,6 +230,21 @@ partial class all
 					float f = progress(36458, 39750, t);
 					dp = v3() - lerp(_05_pos, _10_pos, f);
 					dir = dp + _05_lokb;
+				} else if (t < 42333) {
+					// transition to herakles
+					float f = greetprogress(39750, 42333, 40666, 41416, t, .11f);
+					dp = v3() - lerp(_10_pos, her_pos, f);
+					dp = v3() - cubic(_10_pos, her_pos, her_int, her_int2, f);
+					dir = dp + lerp(_05_lokb, her_lok, f);
+					rz = lerp(0f, 1f, eq_in_quart(f));
+				} else if (t < 46375) {
+					// around herakles
+					float f = progress(42333, 46375, t);
+					dp = v3() - lerp(her_pos, her_pos2, f);
+					dir = dp + lerp(her_lok, her_lok2, f);
+					rz = 1f;
+				} else if (t < 47000) {
+					// transition to quack
 				}
 
 				if (t < 41000) {
@@ -229,8 +254,15 @@ partial class all
 					Zctext.showbg = f >= 0f;
 					Zctext.bgsize = eq_out_circ(clamp(f * 2.2f, 0f, 1f));
 					Zctext.bgcol = v4(1f, .42f, .8f, 1f - eq_in_expo(f));
+					Zctext.bgstyle = 0;
 				} else if (t < 47000) {
-
+					Zctext.position = v3(400f, -205f, 20f);
+					Zctext.rotation = quat(-PI2, 0f, PI);
+					float f = progress(43040, 44750, t);
+					Zctext.showbg = f >= 0f;
+					Zctext.bgsize = eq_out_circ(clamp(f * 2.2f, 0f, 1f));
+					Zctext.bgcol = v4(.4f, .7f, 1f, 1f - eq_in_expo(f));
+					Zctext.bgstyle = 1;
 				} else if (t < 52000) {
 
 				} else if (t < 56541) {
