@@ -40,14 +40,14 @@
     <Compile Include="commands.cs" />
     <Compile Include="bezcontrol.cs" />
     <Compile Include="bez.cs" />
+    <Compile Include="cube.cs" />
+    <Compile Include="pcube.cs" />
     <Compile Include="zctext.cs" />
     <Compile Include="zharrierbreakdown.cs" />
     <Compile Include="zairport2.cs" />
     <Compile Include="harr.cs" />
-    <Compile Include="odottedrect.cs" />
     <Compile Include="otri2.cs" />
     <Compile Include="zharrier.cs" />
-    <Compile Include="cube.cs" />
     <Compile Include="equation.cs" />
     <Compile Include="fft.cs" />
     <Compile Include="font.cs" />
@@ -62,7 +62,6 @@
     <Compile Include="oline.cs" />
     <Compile Include="orect.cs" />
     <Compile Include="otri.cs" />
-    <Compile Include="pcube.cs" />
     <Compile Include="pixelscreen.cs" />
     <Compile Include="projection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,11 +98,6 @@
     <Compile Include="z.cs" />
     <Compile Include="zcamera.cs" />
     <Compile Include="zltext.cs" />
-    <Compile Include="zstarfield.cs" />
-    <Compile Include="zstart.cs" />
-    <Compile Include="ztestfont.cs" />
-    <Compile Include="ztestfont2.cs" />
-    <Compile Include="ztor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
