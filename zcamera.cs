@@ -212,6 +212,13 @@ partial class all
 				vec3 her_int2 = lerp(_10_pos, her_pos, 0.8f) + v3(0, 200f, 0f);
 				vec3 her_pos2 = v3(398f, -145.85317f, 28f);
 				vec3 her_lok2 = her_pos2 + her_dir * 50f;
+
+				vec3 qua_lok = v3(300f, 80f, 230f);
+				vec3 qua_pos = v3(-748.7392f, -298.6331f, 80f);
+				qua_lok = lerp(qua_lok, qua_pos, 0.4f);
+				vec3 qua_int = lerp(her_pos2, qua_pos, 0.2f) + v3(0, -200f, 0);
+				vec3 qua_int2 = lerp(her_pos2, qua_pos, 0.8f) + v3(0, -200f, 0);
+				vec3 qua_pos2 = v3(-748.7392f, -240.6331f, 80f);
 				if (t < 33125) {
 					// transition from harr
 					float f = progress(31400, 33125, t);
@@ -243,8 +250,18 @@ partial class all
 					dp = v3() - lerp(her_pos, her_pos2, f);
 					dir = dp + lerp(her_lok, her_lok2, f);
 					rz = 1f;
-				} else if (t < 47000) {
+				} else if (t < 49000) {
 					// transition to quack
+					float f = greetprogress(46375, 49000, 47333, 48000, t, .11f);
+					dp = v3() - cubic(her_pos2, qua_pos, qua_int, qua_int2, f);
+					dir = dp + lerp(her_lok2, qua_lok, eq_in_cubic(f));
+					rz = lerp(1f, 0f, f);
+				} else if (t < 51333) {
+					// around quack
+					float f = progress(49083, 51333, t);
+					dp = v3() - lerp(qua_pos, qua_pos2, f);
+					dir = dp + qua_lok;
+					rz = lerp(0f, -0.2f, f);
 				}
 
 				if (t < 41000) {
@@ -264,7 +281,13 @@ partial class all
 					Zctext.bgcol = v4(.4f, .7f, 1f, 1f - eq_in_expo(f));
 					Zctext.bgstyle = 1;
 				} else if (t < 52000) {
-
+					Zctext.position = lerp(qua_lok, lerp(qua_pos, qua_pos2, 0.8f), 0.9f);
+					Zctext.rotation = quat(0f, 0f, -1.5f);
+					float f = progress(49583, 50916, t);
+					Zctext.showbg = f >= 0f;
+					Zctext.bgsize = eq_out_circ(clamp(f * 2.2f, 0f, 1f));
+					Zctext.bgcol = v4(.4f, .7f, 1f, 1f - eq_in_expo(f));
+					Zctext.bgstyle = 1;
 				} else if (t < 56541) {
 
 				}
