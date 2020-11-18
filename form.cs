@@ -387,8 +387,8 @@ partial class all {
 		zs.Add(new Zairport2(from1, to1));
 		zs.Add(new Zltext(from1, to1, "robin_be presents", v3(0f, 450f, -20f)));
 		zs.Add(new Zltext(from1, to1, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
-		zs.Add(new Zctext(34000, 41000, Zctext.em));
-		zs.Add(new Zctext(41000, 47000, Zctext.herakles));
+		zs.Add(new Zctext(34000, 40000, Zctext.em));
+		zs.Add(new Zctext(40000, 47000, Zctext.herakles));
 		zs.Add(new Zctext(47000, 52000, Zctext.quack));
 		zs.Add(new Zctext(52000, 56541, Zctext.luki));
 		zs.Add(new Zharrier(2000, 34000));

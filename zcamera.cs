@@ -208,8 +208,8 @@ partial class all
 				vec3 her_dir = v3(0f, -1f, 0f);
 				vec3 her_pos = v3(398f, -145.85317f, 5f);
 				vec3 her_lok = her_pos + her_dir * 50f;
-				vec3 her_int = lerp(_10_pos, her_pos, 0.2f) + v3(0, 200f, 0f);
-				vec3 her_int2 = lerp(_10_pos, her_pos, 0.8f) + v3(0, 200f, 0f);
+				vec3 her_int = lerp(_10_pos, her_pos, 0.2f) + v3(0, 400f, 0f);
+				vec3 her_int2 = lerp(_10_pos, her_pos, 0.8f) + v3(0, 400f, 0f);
 				vec3 her_pos2 = v3(398f, -145.85317f, 28f);
 				vec3 her_lok2 = her_pos2 + her_dir * 50f;
 
@@ -252,19 +252,19 @@ partial class all
 					rz = 1f;
 				} else if (t < 49000) {
 					// transition to quack
-					float f = greetprogress(46375, 49000, 47333, 48000, t, .11f);
+					float f = greetprogress(46375, 48850, 47333, 48000, t, .11f);
 					dp = v3() - cubic(her_pos2, qua_pos, qua_int, qua_int2, f);
 					dir = dp + lerp(her_lok2, qua_lok, eq_in_cubic(f));
 					rz = lerp(1f, 0f, f);
 				} else if (t < 51333) {
 					// around quack
-					float f = progress(49083, 51333, t);
+					float f = progress(48850, 51333, t);
 					dp = v3() - lerp(qua_pos, qua_pos2, f);
 					dir = dp + qua_lok;
 					rz = lerp(0f, -0.2f, f);
 				}
 
-				if (t < 41000) {
+				if (t < 40000) {
 					Zctext.position = _05_lokb;
 					Zctext.rotation = quat(0f, 0f, 1.5f);
 					float f = progress(36458, 39125, t);
