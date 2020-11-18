@@ -94,10 +94,12 @@ partial class all{
 			}
 
 			copy(_points, points);
-			turn(_points, v3(0f), quat(pitch2.valueAt(scene.time) * -2f, 0f, 0f));
-			turn(_points, v3(0f), quat(0f, roll.valueAt(scene.time) * 5f, 0f));
-			turn(_points, v3(0f), quat(pitch.valueAt(scene.time) * -5f, 0f, 0f));
-			turn(_points, v3(0f), quat(0f, 0f, yaw.valueAt(scene.time) * 5f));
+			if (lockedharrpos == null) {
+				turn(_points, v3(0f), quat(pitch2.valueAt(scene.time) * -2f, 0f, 0f));
+				turn(_points, v3(0f), quat(0f, roll.valueAt(scene.time) * 5f, 0f));
+				turn(_points, v3(0f), quat(pitch.valueAt(scene.time) * -5f, 0f, 0f));
+				turn(_points, v3(0f), quat(0f, 0f, yaw.valueAt(scene.time) * 5f));
+			}
 			move(_points, getHarrPos(scene.time));
 			/*
 			move(_points, position);

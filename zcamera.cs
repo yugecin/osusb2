@@ -56,6 +56,7 @@ partial class all
 			sunpos = sp[0];
 
 			//Zharrier.position = v3(0f);
+			lockedharrpos = null;
 
 			dp = v3(0f);
 			vec3 dir = v3(0f);
@@ -249,7 +250,40 @@ partial class all
 					Zctext.bgcol = v4(.4f, .7f, 1f, 1f - eq_in_expo(f));
 					Zctext.bgstyle = 1;
 				}
-			} else if (67458/*71208*/ <= t && t < 104085) {
+			} else if (t < 58000) {
+				vec3 cpos;
+				int seg = (58000 - 56333) / 6;
+				switch ((t - 56333) / seg) {
+				case 0:
+					cpos = v3(10f, 0f, -2f);
+					break;
+				case 1:
+					cpos = v3(7f, 10f, 0f);
+					break;
+				case 2:
+					cpos = v3(0f, -5f, 1f);
+					break;
+				case 3:
+					cpos = v3(-9f, 0f, 10f);
+					break;
+				case 4:
+					cpos = v3(3f, 8f, 4f);
+					break;
+				default:
+					cpos = v3(10f, -10f, 7f);
+					rz = 2.3f;
+					break;
+				}
+				lockedharrpos = v3(0f);
+				dp = v3() - (getHarrPos(t) + cpos.norm() * 50f);
+				dir = dp + getHarrPos(t);
+			} else if (t < 67458) {
+				dp = v3() - getCamPos(t);
+				dir = dp + getHarrPos(t);
+				if (!rendering) {
+					Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
+				}
+			} else if (t < 104085) {
 				// harrier breakdown
 				dp = v3(-38f, 40f, -20f);
 				dir = dp - v3(0f, 20f, -5f);

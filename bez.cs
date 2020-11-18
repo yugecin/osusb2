@@ -28,8 +28,12 @@ partial class all
 		camx, camy, camz, camr, camattach, camoffx, camoffy, camoffz
 	};
 
+	public static vec3 lockedharrpos;
 	public static vec3 getHarrPos(int time)
 	{
+		if (lockedharrpos != null) {
+			return lockedharrpos;
+		}
 		return v3(harrx.valueAt(time) * 1500f, harry.valueAt(time) * 1500f, (harrz.valueAt(time) + .75f) * 500f);
 	}
 
