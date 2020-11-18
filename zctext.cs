@@ -77,8 +77,11 @@ partial class all {
 
 		};
 
+		const int BG_DETAIL = 300;
+
 		Odot[] dots;
 		vec3[] pos;
+		Odot[] bg;
 		vec3[] tripos;
 		vec3[] _tripos;
 		Tri tri;
@@ -87,6 +90,9 @@ partial class all {
 
 		public static vec3 position = v3();
 		public static vec4 rotation = v4();
+		public static float bgsize;
+		public static vec4 bgcol = v4();
+		public static bool showbg;
 
 		public Zctext(int start, int stop, string[] text) {
 			this.start = start;
@@ -99,6 +105,11 @@ partial class all {
 			}
 			dots = new Odot[numdots];
 			pos = new vec3[numdots];
+
+			bg = new Odot[BG_DETAIL];
+			for (int i = 0; i < BG_DETAIL; i++) {
+				bg[i] = new Odot("2", Sprite.EASE_FADE);
+			}
 
 			tripos = new vec3[] { v3(0f), v3(10f, 0f, 0f), v3(10f, 0f, -10f) };
 			_tripos = new vec3[tripos.Length];
@@ -143,21 +154,41 @@ partial class all {
 			ICommand.round_move_decimals.Push(DECIMALS_PRECISE);
 			ICommand.round_scale_decimals.Push(DECIMALS_PRECISE);
 			ICommand.round_rot_decimals.Push(DECIMALS_PRECISE);
+			copy(_tripos, tripos);
+			turn(_tripos, v3(), rotation);
+			move(_tripos, position);
+			move(_tripos, Zcamera.mid);
+			Zcamera.adjust(_tripos);
 			vec3[] vecs = new vec3[1];
+			for (int i = 0; i < bg.Length; i++) {
+				if (tri.shouldcull() || bgcol.w < 0f || bgsize < 0f || !showbg) {
+					bg[i].update(scene.time, v4(1f), null);
+				} else {
+					float f = i / (float) bg.Length * PI * 2f;
+					float r = 2f - 2f * sin(f) + sin(f) * sqrt(abs(cos(f))) / (sin(f) + 1.4f);
+					r *= bgsize;
+					vec3 v = v3(cos(f) * r * 10f * SIZE, 0f, sin(f) * r * 10f * SIZE);
+					v.z += bgsize * 4.5f;
+					v.x = v.x - v.x % SIZE;
+					v.z = v.z - v.z % SIZE;
+					vecs[0] = v;
+					turn(vecs, v3(), rotation);
+					move(vecs, position);
+					move(vecs, Zcamera.mid);
+					Zcamera.adjust(vecs);
+					bg[i].update(scene.time, bgcol, project(vecs[0]));
+					bg[i].draw(scene.g);
+				}
+			}
 			for (int i = 0; i < dots.Length; i++) {
-				vecs[0] = v3(pos[i]);
-				turn(vecs, v3(), rotation);
-				move(vecs, position);
-				move(vecs, Zcamera.mid);
-				Zcamera.adjust(vecs);
-				copy(_tripos, tripos);
-				turn(_tripos, v3(), rotation);
-				move(_tripos, position);
-				move(_tripos, Zcamera.mid);
-				Zcamera.adjust(_tripos);
 				if (tri.shouldcull()) {
 					dots[i].update(scene.time, v4(1f), null);
 				} else {
+					vecs[0] = v3(pos[i]);
+					turn(vecs, v3(), rotation);
+					move(vecs, position);
+					move(vecs, Zcamera.mid);
+					Zcamera.adjust(vecs);
 					dots[i].update(scene.time, v4(1f), project(vecs[0]));
 					dots[i].draw(scene.g);
 				}
@@ -171,6 +202,9 @@ partial class all {
 			ICommand.round_move_decimals.Push(DECIMALS_PRECISE);
 			ICommand.round_scale_decimals.Push(DECIMALS_PRECISE);
 			ICommand.round_rot_decimals.Push(DECIMALS_PRECISE);
+			foreach (Odot dot in bg) {
+				dot.fin(w);
+			}
 			foreach (Odot dot in dots) {
 				dot.fin(w);
 			}

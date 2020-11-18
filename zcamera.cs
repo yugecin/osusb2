@@ -167,6 +167,7 @@ partial class all
 				dp = v3(-lerp(-700f, 650f, f), 100f, -25f);
 				dir = v3(0f, 1f, 0f);
 			} else if (t < 31400) {
+				// harr
 				float f = progressx(18291, 24583, t);
 				float fat = f * 0.99f;
 				float fto = clamp(f + 0.1f, 0f, 1f);
@@ -189,6 +190,7 @@ partial class all
 				dir = dp + getHarrPos(t);
 				//Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
 			} else if (t < 56541) {
+				// greets
 				vec3 _00_pos = v3(-1097.832f, -1175.126f, 271.0345f);
 				vec3 _00_lok = v3(-1077.637f, -1267.603f, 285.5392f);
 				vec3 _01_lok = v3(0f, 0f, 100f);
@@ -201,10 +203,12 @@ partial class all
 
 				vec3 _10_pos = _05_pos + v3(-30f, 40f, 0f);
 				if (t < 33125) {
+					// transition from harr
 					float f = progress(31400, 33125, t);
 					dp = v3() - _00_pos;
 					dir = dp + lerp(_00_lok, _01_lok, f);
 				} else if (t < 35708) {
+					// transition to em
 					float f = greetprogress(33125, 35708, 34041, 34791, t, .11f);
 					vec3 to = lerp(_00_pos, _05_pos, f);
 					//to = quadratic(_00_pos, _05_pos, v3(800f, -700f, 0f), f);
@@ -212,6 +216,7 @@ partial class all
 					dp = v3() - to;
 					dir = dp + lerp(_01_lok, _05_lok, f);
 				} else if (t < 39750) {
+					// around em
 					float f = progress(36458, 39750, t);
 					dp = v3() - lerp(_05_pos, _10_pos, f);
 					dir = dp + _05_lokb;
@@ -220,6 +225,10 @@ partial class all
 				if (t < 41000) {
 					Zctext.position = _05_lokb;
 					Zctext.rotation = quat(0f, 0f, 1.5f);
+					float f = progress(36458, 39125, t);
+					Zctext.showbg = f >= 0f;
+					Zctext.bgsize = eq_out_circ(clamp(f * 2.2f, 0f, 1f));
+					Zctext.bgcol = v4(1f, .42f, .8f, 1f - eq_in_expo(f));
 				} else if (t < 47000) {
 
 				} else if (t < 52000) {
