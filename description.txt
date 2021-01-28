@@ -1,0 +1,22 @@
+https://github.com/yugecin/osusb2
+"omg he's back"
+Well, not really.
+
+Consider this maybe my resignation from osu! things. The game doesn't really interest me much at this point. It's been nearly three years since I played much and I even gave my drawing tablet away over a year ago. Heck, even most of the things I did on opsu!(dance) was more UI related than gameplay related, especially in the later stages.
+
+I've had this idea for a while now and this was certainly something I really wanted to make. Most of the time I didn't really wanted to work on it though, I just wanted it done (yeah not such a good attitude). But I found the fun again when finally forcing myself to actually do something (and then wrote hack after hack to make it work).
+
+Unlike last time, I didn't want to think about the size limit to still make it uploadable as an actual beatmap. So this is kind of like shooting a bazooka of storyboard commands instead of trying to optimize it a bit to have a smaller file size. That's also why you have to run the program to generate the storyboard instead of just downloading the mapfile to run it on your own pc. The video you looked at used a 3GB storyboard file (60fps).
+
+Stuff is kinda inspired from Sean Barrett's stb_voxel_render video, it's a gem, watch it here: https://youtu.be/2vnTtiLrV1w
+
+Anyways so as I said, you shouldn't really expect more osu! related content from me. It's also been over a year since my last video so I guess it's not such a big surprise. I suggest you check out Wieku's channel if you crave more osu! cursordance/custom client/knockout etc stuff: https://youtube.com/c/Wieku He's been making some cool stuffs.
+
+I might still upload random videos in the future, who knows.
+Thanks for the ride, although this doesn't have to be the end.
+
+spread love
+take care
+Robin
+
+Music: http://www.bensound.com

@@ -39,15 +39,29 @@ partial class all
 
 	public static vec3 getCamPos(int time)
 	{
-		if (camattach.valueAt(time) >= 0f) {
+		float cav = camattach.valueAt(time);
+		if (cav > .5f) {
 			vec3 pos = getHarrPos(time);
 			pos.x += camoffx.valueAt(time) * 100f;
 			pos.y += camoffy.valueAt(time) * 100f;
 			pos.z += camoffz.valueAt(time) * 100f;
 			return pos;
-		} else {
+		} else if (cav < -.5f) {
 			return v3(camx.valueAt(time) * 1000f, camy.valueAt(time) * 1000f, (camz.valueAt(time) + 1f) * 500f);
+		} else if (cav < 0f) {
+			vec3 pos = v3();
+			pos.x += camoffx.valueAt(time);
+			pos.y += camoffy.valueAt(time);
+			pos.z += camoffz.valueAt(time);
+			pos = pos.norm() * 50f;
+			pos = turn(pos, v3(0f), quat(pitch2.valueAt(time) * -2f, 0f, 0f));
+			pos = turn(pos, v3(0f), quat(0f, roll.valueAt(time) * 5f, 0f));
+			pos = turn(pos, v3(0f), quat(pitch.valueAt(time) * -5f, 0f, 0f));
+			pos = turn(pos, v3(0f), quat(0f, 0f, yaw.valueAt(time) * 5f));
+			pos += getHarrPos(time);
+			return pos;
 		}
+		return v3();
 	}
 
 	public class Bez

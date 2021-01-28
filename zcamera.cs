@@ -280,6 +280,7 @@ partial class all
 			} else if (t < 67458) {
 				dp = v3() - getCamPos(t);
 				dir = dp + getHarrPos(t);
+				rz = roll.valueAt(t) * 5f;
 				if (!rendering) {
 					Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
 				}
