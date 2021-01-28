@@ -213,6 +213,11 @@ partial class all{
 					}
 				}
 			//}
+
+			if (t < 71208) {
+				goto skipnonlinenondots;
+			}
+
 			// tris
 			float faster = 1.2f;
 			if (t < 96080) {
@@ -317,6 +322,7 @@ partial class all{
 					sizetext[i].update(scene.time, null, null);
 				}
 			}
+skipnonlinenondots:
 
 			ICommand.round_move_decimals.Pop();
 			ICommand.round_scale_decimals.Pop();
