@@ -150,10 +150,18 @@ partial class all{
 
 			copy(_points, points);
 
-			float prg = progressx(71208, scene.endtime, scene.time);
+			int t = scene.time;
+
+			float prg = progressx(71208, 97666, scene.time);
 			turn(_points, Zcamera.mid, quat(0f, 0f, cos(prg * 40f) * .18f));
 			turn(_points, Zcamera.mid, quat(0f, -cos(prg * 30f) * .18f, 0f));
-
+			if (t >= 97666) {
+				move(_points, v3(progressx(97666, scene.endtime, scene.time) * 20f, 0f, 0f));
+				float x = t - 97666;
+				turn(_points, Zcamera.mid, quat(0f, 0f, x * .00014f));
+				turn(_points, Zcamera.mid, quat(0f, x * -.0014f, 0f));
+				turn(_points, Zcamera.mid, quat(x * .0005f, 0f, 0f));
+			}
 			Zcamera.adjust(_points);
 
 			pixelscreen.clear();
@@ -167,8 +175,6 @@ partial class all{
 					});
 			}
 			//pixelscreen.draw(scene);
-
-			int t = scene.time;
 
 			bool showmov = false, showrot = false, showscale = false;
 
