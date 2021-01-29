@@ -228,7 +228,9 @@ partial class all{
 				showmov |= t < 76166 && t >= 71208;
 				showrot |= t < 76166 && t >= 72958;
 				showscale |= t < 76166 && t >= 74583;
+				if (t < 74583) tris[129].settings &= ~Otri2.SETTING_SHADED;
 				drawtri(tris[129], scene, pixelscreen);
+				tris[129].settings |= Otri2.SETTING_SHADED;
 				Otri2.custom_position = v2(325f, 100f);
 				Otri2.position_factor = progressxy(77875, 79500, scene.time, faster);
 				Otri2.rotation_factor = progressxy(79500, 81125, scene.time, faster);
@@ -236,7 +238,9 @@ partial class all{
 				showmov |= t < 82791 && t >= 77875;
 				showrot |= t < 82791 && t >= 79500;
 				showscale |= t < 82791 && t >= 81125;
+				if (t < 82791) tris[108].settings &= ~Otri2.SETTING_SHADED;
 				drawtri(tris[108], scene, pixelscreen);
+				tris[108].settings |= Otri2.SETTING_SHADED;
 				Otri2.custom_position = v2(450f, 100f);
 				Otri2.position_factor = progressxy(84458, 86125, scene.time, faster);
 				Otri2.rotation_factor = progressxy(86125, 87791, scene.time, faster);
@@ -244,7 +248,9 @@ partial class all{
 				showmov |= t < 89375 && t >= 84458;
 				showrot |= t < 89375 && t >= 86125;
 				showscale |= t < 89375 && t >= 87791;
+				if (t < 89375) tris[135].settings &= ~Otri2.SETTING_SHADED;
 				drawtri(tris[135], scene, pixelscreen);
+				tris[135].settings |= Otri2.SETTING_SHADED;
 				Otri2.custom_position = v2(575f, 100f);
 				Otri2.position_factor = progressxy(91040, 92792, scene.time, faster);
 				Otri2.rotation_factor = progressxy(92792, 94333, scene.time, faster);
@@ -252,7 +258,9 @@ partial class all{
 				showmov |= t < 96080 && t >= 91040;
 				showrot |= t < 96080 && t >= 92792;
 				showscale |= t < 96080 && t >= 94333;
+				if (t < 96080) tris[103].settings &= ~Otri2.SETTING_SHADED;
 				drawtri(tris[103], scene, pixelscreen);
+				tris[103].settings |= Otri2.SETTING_SHADED;
 				Otri2.position_factor = Otri2.rotation_factor = Otri2.scale_factor = 1f;
 			} else if (t < 97666) {
 				int mod = (int) (progressxy(96080, 97666, t, 3f) * 4f);

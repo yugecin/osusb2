@@ -16,7 +16,7 @@ partial class all {
 
 		public readonly Tri tri;
 		Otri[] tris;
-		int settings;
+		public int settings;
 
 		public Otri2(Tri tri, int settings)
 		{
