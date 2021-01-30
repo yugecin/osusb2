@@ -52,6 +52,10 @@ partial class all {
 		public static vec2 operator /(vec2 a, vec2 b) {
 			return new vec2(a.x / b.x, a.y / b.y);
 		}
+		// dot
+		public static float operator ^(vec2 a, vec2 b) {
+			return a.x * b.x + a.y * b.y;
+		}
 		public float distance(vec2 a) {
 			float dx = (x - a.x);
 			float dy = (y - a.y);
@@ -266,6 +270,22 @@ partial class all {
 			v = v * 31 + w;
 			return (int) (v * 100f);
 		}
+	}
+	public class vec6 {
+		public float x, y, z, w, u, v;
+		public vec4 xyzw { get { return new vec4(x, y, z, w); } }
+		public vec2 uv { get { return new vec2(u, v); } }
+		public vec6(vec4 xyzw, vec2 uv) {
+			this.x = xyzw.x;
+			this.y = xyzw.y;
+			this.z = xyzw.z;
+			this.w = xyzw.w;
+			this.u = uv.x;
+			this.v = uv.y;
+		}
+	}
+	public static vec6 v6(vec4 xyzw, vec2 uv) {
+		return new vec6(xyzw, uv);
 	}
 }
 }

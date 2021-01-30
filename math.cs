@@ -82,7 +82,13 @@ partial class all {
 		return clamp(x, a, b) - a;
 	}
 	public static float progress(float a, float b, float x) {
+		if (a == b) {
+			return 0f; // whatever
+		}
 		return (x - a) / (b - a);
+	}
+	public static vec2 progress(vec2 a, vec2 b, float x) {
+		return v2(progress(a.x, b.x, x), progress(a.y, b.y, x));
 	}
 	public static float progressx(float a, float b, float x) {
 		return clamp(progress(a, b, x), 0f, 1f);
@@ -96,6 +102,9 @@ partial class all {
 	public static vec3 lerp(vec3 a, vec3 b, float x) {
 		return v3(lerp(a.x, b.x, x), lerp(a.y, b.y, x), lerp(a.z, b.z, x));
 	}
+	public static vec4 lerp(vec4 a, vec4 b, float x) {
+		return v4(lerp(a.x, b.x, x), lerp(a.y, b.y, x), lerp(a.z, b.z, x), lerp(a.w, b.w, x));
+	}
 	public static float distance(vec2 a, vec2 b) {
 		return a.distance(b);
 	}
@@ -106,6 +115,9 @@ partial class all {
 		return (int) f;
 	}
 	public static float dot(vec3 a, vec3 b) {
+		return a ^ b;
+	}
+	public static float dot(vec2 a, vec2 b) {
 		return a ^ b;
 	}
 	public static vec3 floor(vec3 v) {

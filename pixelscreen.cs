@@ -6,11 +6,16 @@ using System.Text;
 
 namespace osusb1 {
 partial class all {
+	interface IColorOwner
+	{
+		Color getColor(int i, int j, int x, int y, float z, vec2 uv);
+	}
 	class Pixelscreen {
 
 		int x, y, hpixels, vpixels, pixelsize, hpixeloffset, vpixeloffset;
 
 		public object[,] owner;
+		public vec2[,] uv;
 		float[,] zbuf;
 		Odot[,] odot;
 
@@ -59,8 +64,9 @@ partial class all {
 		private void init()
 		{
 			this.zbuf = new float[hpixels,vpixels];
-			this.owner = new object[hpixels,vpixels];
-			this.odot = new Odot[hpixels,vpixels];
+			this.owner = new object[hpixels, vpixels];
+			this.odot = new Odot[hpixels, vpixels];
+			this.uv = new vec2[hpixels, vpixels];
 			this.hpixeloffset = this.x / pixelsize;
 			this.vpixeloffset = this.y / pixelsize;
 			for (int i = 0; i < hpixels; i++) {
@@ -81,13 +87,14 @@ partial class all {
 		public void draw(SCENE scene) {
 			for (int i = 0; i < hpixels; i++) {
 				for (int j = 0; j < vpixels; j++) {
-					if (owner[i, j] == null || !(owner[i,j] is Tri)) {
+					if (!(owner[i,j] is IColorOwner)) {
 						odot[i,j].update(scene.time, null, null, 0f);
 						odot[i,j].draw(scene.g);
 						continue;
 					}
-					vec4 res = col(((Tri) owner[i, j]).color);
-					vec4 pos = v4(x + i * pixelsize, y + j * pixelsize, 1f, 1f);
+					IColorOwner co = (IColorOwner) owner[i, j];
+					vec4 pos = v4(this.x + i * pixelsize, this.y + j * pixelsize, 1f, 1f);
+					vec4 res = col(co.getColor(i, j, (int) pos.x, (int) pos.y, zbuf[i, j], uv[i, j]));
 					odot[i,j].update(scene.time, res, pos);
 					odot[i,j].draw(scene.g);
 				}
@@ -272,12 +279,207 @@ partial class all {
 				}
 			}
 		}
+
+		// yes duplicate code, fuck all, I just want to be done with this.
+		public void tri_(object owner, vec6[] points)
+		{
+			if (points[0].z < 1 || points[1].z < 1 || points[2].z < 1) {
+				return;
+			}
+			Array.Sort(points, sorter6.instance);
+			if (points[0].y == points[1].y) {
+				toptri_(owner, points[0], points[1], points[2]);
+				return;
+			}
+			if (points[1].y == points[2].y) {
+				bottri_(owner, points[0], points[1], points[2]);
+				return;
+			}
+			float perc = progress(points[0].y, points[2].y, points[1].y);
+			vec6 phantom = v6(
+				lerp(points[0].xyzw, points[2].xyzw, perc),
+				lerp(points[0].uv, points[2].uv, perc)
+			);
+			bottri_(owner, points[0], phantom, points[1]);
+			toptri_(owner, phantom, points[1], points[2]);
+		}
+
+		private void toptri_(object owner, vec6 p0, vec6 p1, vec6 p2)
+		{
+			if (p1.x < p0.x) {
+				vec6 _ = p1;
+				p1 = p0;
+				p0 = _;
+			}
+			if (p0.y - p2.y == 0) {
+				return;
+			}
+
+			/*
+			 0  1
+			  \/
+			  2 
+			*/
+
+			float minx = min(p0.x, p2.x);
+			float miny = p0.y;
+			float maxx = max(p1.x, p2.x);
+			float maxy = p2.y;
+
+			int p_minx = -hpixeloffset + (int)minx / pixelsize;
+			int p_miny = -vpixeloffset + (int)miny / pixelsize;
+			int p_maxx = -hpixeloffset + (int)maxx / pixelsize + 1;
+			int p_maxy = -vpixeloffset + (int)maxy / pixelsize + 1;
+
+			p_miny = max(0, min(p_miny, vpixels - 1));
+			p_minx = max(0, min(p_minx, hpixels - 1));
+			p_maxy = max(0, min(p_maxy, vpixels));
+			p_maxx = max(0, min(p_maxx, hpixels));
+			for (int y = p_miny; y < p_maxy; y++) {
+				float realy = this.y + y * pixelsize + pixelsize / 2f;
+
+				for (int x = p_minx; x < p_maxx; x++) {
+					float realx = this.x + x * pixelsize + pixelsize / 2f;
+
+					if (realy < p0.y) {
+						continue;
+					}
+					if (realy >= p2.y) {
+						continue;
+					}
+
+					float ypercleft = progress(p0.y, p2.y, realy);
+					float xminbound = lerp(p0.x, p2.x, ypercleft);
+
+					float ypercright = progress(p1.y, p2.y, realy);
+					float xmaxbound = lerp(p1.x, p2.x, ypercright);
+
+					if (realx < xminbound) {
+						continue;
+					}
+					if (realx >= xmaxbound) {
+						continue;
+					}
+
+					float xperc = progress(xminbound, xmaxbound, realx);
+
+					float dist1 = lerp(p0.w, p2.w, ypercleft);
+					float dist2 = lerp(p1.w, p2.w, ypercright);
+					float realdist = lerp(dist1, dist2, xperc);
+
+					/*
+					if (realz < 1f) {
+						continue;
+					}
+					*/
+					if (this.owner[x, y] != null && zbuf[x, y] < realdist) {
+						continue;
+					}
+					vec2 uvleft = lerp(p0.uv, p2.uv, ypercleft);
+					vec2 uvright = lerp(p1.uv, p2.uv, ypercright);
+					uv[x, y] = lerp(uvleft, uvright, xperc);
+					zbuf[x, y] = realdist;
+					this.owner[x, y] = owner;
+				}
+			}
+		}
+
+		private void bottri_(object owner, vec6 p0, vec6 p1, vec6 p2)
+		{
+			if (p2.x < p1.x) {
+				vec6 _ = p2;
+				p2 = p1;
+				p1 = _;
+			}
+			if (p0.y - p2.y == 0) {
+				return;
+			}
+
+			/*
+			   0
+			  /\
+			  1 2 
+			*/
+
+			float minx = min(p0.x, p1.x);
+			float miny = p0.y;
+			float maxx = max(p0.x, p2.x);
+			float maxy = p2.y;
+
+			int p_minx = -hpixeloffset + (int)minx / pixelsize;
+			int p_miny = -vpixeloffset + (int)miny / pixelsize;
+			int p_maxx = -hpixeloffset + (int)maxx / pixelsize + 1;
+			int p_maxy = -vpixeloffset + (int)maxy / pixelsize + 1;
+
+			p_miny = max(0, min(p_miny, vpixels - 1));
+			p_minx = max(0, min(p_minx, hpixels - 1));
+			p_maxy = max(0, min(p_maxy, vpixels));
+			p_maxx = max(0, min(p_maxx, hpixels));
+
+			for (int y = p_miny; y < p_maxy; y++) {
+				float realy = this.y + y * pixelsize + pixelsize / 2f;
+
+				for (int x = p_minx; x < p_maxx; x++) {
+					float realx = this.x + x * pixelsize + pixelsize / 2f;
+
+					if (realy <= p0.y) {
+						continue;
+					}
+					if (realy >= p2.y) {
+						continue;
+					}
+
+					float ypercleft = progress(p0.y, p1.y, realy);
+					float xminbound = lerp(p0.x, p1.x, ypercleft);
+
+					float ypercright = progress(p0.y, p2.y, realy);
+					float xmaxbound = lerp(p0.x, p2.x, ypercright);
+
+					if (realx < xminbound) {
+						continue;
+					}
+					if (realx >= xmaxbound) {
+						continue;
+					}
+
+					float xperc = progress(xminbound, xmaxbound, realx);
+
+					float dist1 = lerp(p0.w, p1.w, ypercleft);
+					float dist2 = lerp(p0.w, p2.w, ypercright);
+					float realdist = lerp(dist1, dist2, xperc);
+
+					/*
+					if (realz < 1f) {
+						continue;
+					}
+					*/
+					if (this.owner[x, y] != null && zbuf[x, y] < realdist) {
+						continue;
+					}
+					vec2 uvleft = lerp(p0.uv, p1.uv, ypercleft);
+					vec2 uvright = lerp(p0.uv, p2.uv, ypercright);
+					uv[x, y] = lerp(uvleft, uvright, xperc);
+					zbuf[x, y] = realdist;
+					this.owner[x, y] = owner;
+				}
+			}
+		}
 	}
 
-	class sorter : IComparer<vec4> {
+	class sorter : IComparer<vec4>
+	{
 		public static sorter instance = new sorter();
 
-		public int Compare(vec4 a, vec4 b) {
+		public int Compare(vec4 a, vec4 b)
+		{
+			return a.y.CompareTo(b.y);
+		}
+	}
+
+	class sorter6 : IComparer<vec6> {
+		public static sorter6 instance = new sorter6();
+
+		public int Compare(vec6 a, vec6 b) {
 			return a.y.CompareTo(b.y);
 		}
 	}

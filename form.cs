@@ -360,7 +360,7 @@ partial class all {
 		Application.Run(new form());
 	}
 
-	public static string path = @"D:\games\osu!\Songs\beatmap-637369189818030795-bensound-dubstep";
+	public static string path = @"S:\games\osu!\Songs\beatmap-637369189818030795-bensound-dubstep";
 	public static string osb = path + @"\bensound - dubstep (yugecin).osb";
 	public static string osbx = path + @"\bensound - dubstep (yugecin))-.osb";
 
@@ -378,22 +378,23 @@ partial class all {
 
 	public static int DECIMALS_PRECISE = 7;
 
-	public static int guistarttime = 56333;
+	public static int guistarttime = 104085;
 
 	static void init() {
 		int from1 = 2000, to1 = 67458;
 		zs.Clear();
 		zs.Add(new Zcamera(2000, 124000));
-		zs.Add(new Zairport2(from1, to1));
-		zs.Add(new Zltext(from1, to1, "robin_be presents", v3(0f, 450f, -20f)));
-		zs.Add(new Zltext(from1, to1, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
-		zs.Add(new Zctext(34000, 40000, Zctext.em));
-		zs.Add(new Zctext(40000, 47000, Zctext.herakles));
-		zs.Add(new Zctext(47000, 52000, Zctext.quack));
-		zs.Add(new Zctext(52000, 56541, Zctext.luki));
-		zs.Add(new Zharrier(17650, 34000));
-		zs.Add(new Zharrier(56333, to1));
-		zs.Add(new Zharrierbreakdown(to1, 104085));
+		//zs.Add(new Zairport2(from1, to1));
+		//zs.Add(new Zltext(from1, to1, "robin_be presents", v3(0f, 450f, -20f)));
+		//zs.Add(new Zltext(from1, to1, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
+		//zs.Add(new Zctext(34000, 40000, Zctext.em));
+		//zs.Add(new Zctext(40000, 47000, Zctext.herakles));
+		//zs.Add(new Zctext(47000, 52000, Zctext.quack));
+		//zs.Add(new Zctext(52000, 56541, Zctext.luki));
+		//zs.Add(new Zharrier(17650, 34000));
+		//zs.Add(new Zharrier(56333, to1));
+		//zs.Add(new Zharrierbreakdown(to1, 104085));
+		zs.Add(new Zshad(104085, 120666));
 		foreach (Z z in zs) {
 			z.framedelta = 1000 / 20;
 		}

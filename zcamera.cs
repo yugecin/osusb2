@@ -288,6 +288,9 @@ partial class all
 				// harrier breakdown
 				dp = v3(-38f, 40f, -20f);
 				dir = dp - v3(0f, 20f, -5f);
+			} else {
+				dp = v3(0f);
+				dir = dp - v3(-10f, 0f, 0f);
 			}
 
 			vec2 vd = viewdir(dir);

@@ -5,7 +5,11 @@ using System.Text;
 
 namespace osusb1 {
 partial class all {
-	class Tri {
+	class Tri : IColorOwner {
+
+		Color IColorOwner.getColor(int i, int j, int x, int y, float z, vec2 uv) {
+			return this.color;
+		}
 
 		public object owner;
 		public Color color;
