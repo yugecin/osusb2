@@ -480,7 +480,7 @@ partial class all {
 		isPhantomFrame = false;
 		Console.WriteLine("Writing...");
 		using (StreamWriter w = new StreamWriter(osb)) {
-			w.Write("[32]\n");
+			w.Write("[Events]\n"); // because lazer is not happy with [32]
 			w.Write("4,0,1,b.png,0,0\n");
 			Writer writer = new Writer(w, comments);
 			fin(writer);

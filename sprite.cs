@@ -25,10 +25,10 @@ partial class all {
 		public const int SESDSM = INTERPOLATE_MOVE | 0x40;
 		public const int SESDSC = 0x80;
 		public const int EASE_ALL = EASE_FADE | EASE_SCALE | INTERPOLATE_MOVE;
-		public const string SPRITE_DOT_6_12 = "d";
-		public const string SPRITE_TRI = "t";
-		public const string SPRITE_SQUARE_2_2 = "2";
-		public const string SPRITE_SQUARE_6_6 = "";
+		public const string SPRITE_DOT_6_12 = "d.png"; /*lazer needs file extensions or it wont load*/
+		public const string SPRITE_TRI = "t.png";
+		public const string SPRITE_SQUARE_2_2 = "2.png";
+		public const string SPRITE_SQUARE_6_6 = ".png";
 
 		public static Dictionary<string, int> usagedata = new Dictionary<string,int>();
 		public static int easeCommandsSaved = 0;
