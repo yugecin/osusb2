@@ -46,8 +46,14 @@ partial class all {
 		public static vec2 operator -(vec2 a, vec2 b) {
 			return new vec2(a.x - b.x, a.y - b.y);
 		}
+		public static vec2 operator -(float a, vec2 b) {
+			return new vec2(a - b.x, a - b.y);
+		}
 		public static vec2 operator *(vec2 a, vec2 b) {
 			return new vec2(a.x * b.x, a.y * b.y);
+		}
+		public static vec2 operator *(float a, vec2 b) {
+			return new vec2(a * b.x, a * b.y);
 		}
 		public static vec2 operator /(vec2 a, vec2 b) {
 			return new vec2(a.x / b.x, a.y / b.y);

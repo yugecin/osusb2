@@ -368,6 +368,8 @@ partial class all {
 	static FFT fft;
 	static Font font;
 
+	static int iTime;
+
 	static bool rendering;
 	static bool isPhantomFrame;
 	public static bool processPhantom;
@@ -416,6 +418,7 @@ partial class all {
 		}
 
 		fft.Update(time);
+		iTime = time;
 
 		foreach (Z z in zs) {
 			if (z.start <= time && time < z.stop) {

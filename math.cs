@@ -28,6 +28,9 @@ partial class all {
 	public static float abs(float v) {
 		return (float) Math.Abs(v);
 	}
+	public static vec2 abs(vec2 a) {
+		return v2(abs(a.x), abs(a.y));
+	}
 	public static int sqrt(int a) {
 		return (int) Math.Sqrt(a);
 	}
@@ -49,7 +52,10 @@ partial class all {
 		return (float) Math.Sin(a);
 	}
 	public static float atan2(float y, float x) {
-		return (float) Math.Atan2(y, x);
+		return (float)Math.Atan2(y, x);
+	}
+	public static float atan(float xovery) {
+		return (float)Math.Atan(xovery);
 	}
 	public static float sqrt(float a) {
 		return (float) Math.Sqrt(a);
@@ -78,6 +84,9 @@ partial class all {
 	public static float clamp(float x, float a, float b) {
 		return min(max(x, a), b);
 	}
+	public static vec4 clamp(vec4 x, float a, float b) {
+		return v4(clamp(x.x,a,b),clamp(x.y,a,b),clamp(x.z,a,b),clamp(x.w,a,b));
+	}
 	public static float clampx(float x, float a, float b) {
 		return clamp(x, a, b) - a;
 	}
@@ -105,6 +114,9 @@ partial class all {
 	public static vec4 lerp(vec4 a, vec4 b, float x) {
 		return v4(lerp(a.x, b.x, x), lerp(a.y, b.y, x), lerp(a.z, b.z, x), lerp(a.w, b.w, x));
 	}
+	public static float length(vec2 a) {
+		return a.length();
+	}
 	public static float distance(vec2 a, vec2 b) {
 		return a.distance(b);
 	}
@@ -112,6 +124,7 @@ partial class all {
 		return a.distance(b);
 	}
 	public static int floor(float f) {
+		if (f < 0) return 0; // otherwise the osu logo shader triangles are diamonds?
 		return (int) f;
 	}
 	public static float dot(vec3 a, vec3 b) {
@@ -296,6 +309,20 @@ partial class all {
 		b[2] = b[1];
 		b[1] = x;
 		return b;
+	}
+	public static float smoothstep(float a, float b, float x) {
+		// TODO
+		if (x > a) return 1f;
+		return 0;
+	}
+	public static float mod(float x, float m) {
+		while (x > m) {
+			x -= m;
+		}
+		return x;
+	}
+	public static float fract(float x) {
+		return x - (int)x;
 	}
 }
 }
