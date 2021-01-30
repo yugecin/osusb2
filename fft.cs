@@ -96,7 +96,8 @@ class FFT {
 		return smoothframe;
 	}
 
-	public FRAME SmootherValue(int time) {
+	public FRAME SmootherValue(int time)
+	{
 		for (int i = 0; i < frames.Count; i++) {
 			if (frames[i].time > time) {
 				i = max(0, i - 1);
@@ -112,6 +113,29 @@ class FFT {
 				for (int j = 0; j < FREQS; j++) {
 					res.values[j] = lerp(one.values[j], two.values[j], p);
 				}
+				return res;
+			}
+		}
+		throw new Exception("hithere");
+	}
+
+	public FRAME SlowFalloffValue(int time)
+	{
+		for (int i = 0; i < frames.Count; i++) {
+			if (frames[i].time > time) {
+				i = max(0, i - 1);
+				if (i == frames.Count - 1) {
+					return frames[i];
+				}
+				FRAME res = new FRAME();
+				res.values = new float[FREQS];
+				for (int k = i; k >= 0 && k > i - 10; k--) {
+					FRAME a = frames[k];
+					for (int j = 0; j < FREQS; j++) {
+						res.values[j] = max(res.values[j], lerp(a.values[j], 0, (time - a.time) / 1200));
+					}
+				}
+				res.time = time;
 				return res;
 			}
 		}

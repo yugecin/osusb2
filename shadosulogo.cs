@@ -98,17 +98,17 @@ float mb(){
 }
 vec3 barz(float d,vec2 fc,float off,float sp) {
     float a=deg(atan2(fc-iResolution.xy/2f-.5f))/180f+1f;
-    a=mod(a+iTime/sp+off+mb()/3f,2f);
+    a=mod(a+iTime/sp+off/*+mb()/3*/,2f);
     a-=1f;
     if(a<0f)a=-a+0.01f;
     float m=mod(a,.025f);
     if(m<0.01f*(1f+d*.6f))return v3(0f);
     a-=m;
-    float[] fftvals = fft.SmootherValue(all.iTime).values;
-    float fftval = fftvals[(int) (fftvals.Length * a)];
-    float fftmod = 1 / max(0.01f, fftval) / 3.0f;
-    fftmod = max(fftmod, 1f);
-    fftval *= fftmod;
+    float[] fftvals = fft.SlowFalloffValue(all.iTime).values;
+    float fftval = fftvals[(int) (fftvals.Length * a)] * 1.5f;
+    //float fftmod = 1 / max(0.01f, fftval) / 3.0f;
+    //fftmod = max(fftmod, 1f);
+    //fftval *= fftmod;
     float v = clamp(/*texture(iChannel0,vec2(a,0.1f)).x*/fftval, 0f, 1f);
     if (v>d) return v3(1f);
     return v3(0f);
@@ -204,14 +204,13 @@ void mainImage(out vec4 fragColor, vec2 originaluv){
     if (dist > 0.4f) {
         col = v3(0.0f);
         if (dist<0.65f){
-            float sp=3f;
-            float el=.1f+.2f*mb();
+            float sp=6f;
             float d=(dist-.4f)/.25f;
             col += barz(d, fragCoord, 0f, sp);
             col += barz(d, fragCoord, .5f, sp);
             col += barz(d, fragCoord, 1f, sp);
             col += barz(d, fragCoord, 1.5f, sp);
-            col*=el;
+            col*=.1f+.2f/*mb()*/;
             col.x*=.75f;
             col.y*=.75f;
         }
