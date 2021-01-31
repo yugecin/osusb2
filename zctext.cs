@@ -122,7 +122,7 @@ partial class all {
 
 			bg = new Odot[BG_DETAIL];
 			for (int i = 0; i < BG_DETAIL; i++) {
-				bg[i] = new Odot("2", Sprite.EASE_FADE);
+				bg[i] = new Odot(Sprite.SPRITE_SQUARE_2_2, Sprite.EASE_FADE);
 			}
 
 			tripos = new vec3[] { v3(0f), v3(10f, 0f, 0f), v3(10f, 0f, -10f) };
@@ -135,7 +135,7 @@ partial class all {
 			for (int i = 0; i < text.Length; i++ ) {
 				for (int j = 0; j < text[i].Length; j++) {
 					if (text[i][j] == 'x') {
-						dots[idx] = new Odot("2", 0);
+						dots[idx] = new Odot(Sprite.SPRITE_SQUARE_2_2, 0);
 						pos[idx] = v3(j, 0f, -i) * SIZE;
 						maxx = max(maxx, pos[idx].x);
 						minz = min(minz, pos[idx].z);

@@ -40,7 +40,7 @@ partial class all{
 
 			haha = create;
 
-			dot = new Odot("", 0);
+			dot = new Odot(Sprite.SPRITE_SQUARE_6_6, 0);
 			harrpoint = v3(0f);
 
 			create();
@@ -52,7 +52,7 @@ partial class all{
 			_points = new vec3[points.Length];
 			dots = new Odot[harr.points.Length];
 			for (int i = 0; i < dots.Length; i++) {
-				dots[i] = new Odot("", 0);
+				dots[i] = new Odot(Sprite.SPRITE_SQUARE_6_6, 0);
 			}
 			lines = new Oline[harr.lines.Length];
 			for (int i = 0; i < lines.Length; i++) {
@@ -76,8 +76,8 @@ partial class all{
 				spectrumdots[i] = new Odot[SPECTRUM_WIDTH];
 				spectrumdots2[i] = new Odot[SPECTRUM_WIDTH];
 				for (int j = 0; j < SPECTRUM_WIDTH; j++) {
-					spectrumdots[i][j] = new Odot("", 0);
-					spectrumdots2[i][j] = new Odot("", 0);
+					spectrumdots[i][j] = new Odot(Sprite.SPRITE_SQUARE_6_6, 0);
+					spectrumdots2[i][j] = new Odot(Sprite.SPRITE_SQUARE_6_6, 0);
 				}
 			}
 		}

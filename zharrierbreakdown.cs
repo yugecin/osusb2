@@ -52,14 +52,14 @@ partial class all{
 			this.stop = stop;
 			framedelta = 50;
 
-			dot = new Odot("", 0);
+			dot = new Odot(Sprite.SPRITE_SQUARE_6_6, 0);
 			harrpoint = v3(0f);
 
 			points = copy(harr.points);
 			_points = new vec3[points.Length];
 			dots = new Odot[harr.points.Length];
 			for (int i = 0; i < dots.Length; i++) {
-				dots[i] = new Odot("", 0);
+				dots[i] = new Odot(Sprite.SPRITE_SQUARE_6_6, 0);
 			}
 			lines = new Oline[harr.lines.Length];
 			for (int i = 0; i < lines.Length; i++) {
@@ -80,7 +80,7 @@ partial class all{
 
 			sizetext = new Odot[8/*charwidth*/ * 8/*charheight*/ * 10];
 			for (int i = 0; i < sizetext.Length; i++) {
-				sizetext[i] = new Odot("2", 0);
+				sizetext[i] = new Odot(Sprite.SPRITE_SQUARE_2_2, 0);
 			}
 			sizetextloc = new vec4[sizetext.Length];
 			for (int i = 0; i < sizetextloc.Length; i++) {
@@ -117,7 +117,7 @@ partial class all{
 							if (((font.chardata[c][j] >> k) & 1) == 1) {
 								int x = xoff + k;
 								textloc[idx] = v2(x, j) * TEXTSPACING + textlocstart[q] + textoffset;
-								statictext[idx] = new Odot("2", 0);
+								statictext[idx] = new Odot(Sprite.SPRITE_SQUARE_2_2, 0);
 								movtext[idx] = q == 1;
 								rottext[idx] = q == 2;
 								scaletext[idx] = q == 3;
