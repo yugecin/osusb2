@@ -33,7 +33,7 @@ partial class all {
 		LINE[] lines;
 		IColorOwner[] sides = new IColorOwner[] {
 			shadsomejapanesecharacter.instance,
-			shadosulogo.instance,
+			shaddanser.instance,
 			shadsomejapanesecharacter.instance,
 			shadsomejapanesecharacter.instance,
 			shadsomejapanesecharacter.instance,
@@ -77,7 +77,7 @@ partial class all {
 		{
 			copy(_points, points);
 			turn(_points, v3(), quat(sin(scene.progress * 5f), 0f, sin(scene.progress) * .5f));
-			move(_points, v3(20f, 0f, -5f));
+			move(_points, v3(15f, 0f, -5f));
 			move(_points, Zcamera.mid);
 			Zcamera.adjust(_points);
 

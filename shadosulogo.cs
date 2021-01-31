@@ -259,7 +259,7 @@ void mainImage(out vec4 fragColor, vec2 originaluv){
 			return col.col();
 		}
 
-		static float fftval() {
+		public static float fftval() {
 			float[] values = fft.SmoothValue(all.iTime).values;
 			float v = 0.0f;
 			for (int i = 0; i < values.Length; i++) {
