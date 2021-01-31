@@ -251,46 +251,48 @@ partial class all
 					Zctext.bgstyle = 1;
 				}
 			} else if (t < 58000) {
-				vec3 cpos;
+				// transition to shad (first appearance)
+				float tt = t / 200f;
 				int seg = (58000 - 56333) / 6;
 				switch ((t - 56333) / seg) {
 				case 0:
-					cpos = v3(10f, 0f, -2f);
+					dp = v3(17f, 17f, -15f);
 					break;
 				case 1:
-					cpos = v3(7f, 10f, 0f);
+					dp = v3(-20f, -18f, 19f);
 					break;
 				case 2:
-					cpos = v3(0f, -5f, 1f);
+					dp = v3(20f, -18f, 0f);
 					break;
 				case 3:
-					cpos = v3(-9f, 0f, 10f);
+					dp = v3(20f, -20f, -20f);
 					break;
 				case 4:
-					cpos = v3(3f, 8f, 4f);
+					dp = v3(-16f, 5f, 15f);
 					break;
 				default:
-					cpos = v3(10f, -10f, 7f);
-					rz = 2.3f;
+					dp = v3(20f, -20f, -20f);
+					rz = 3.3f;
 					break;
 				}
-				lockedharrpos = v3(0f);
-				dp = v3() - (getHarrPos(t) + cpos.norm() * 50f);
-				dir = dp + getHarrPos(t);
+				dir = dp - v3(0f);
 			} else if (t < 67458) {
-				dp = v3() - getCamPos(t);
-				dir = dp + getHarrPos(t);
-				rz = roll.valueAt(t) * 5f;
-				if (!rendering) {
-					Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
-				}
+				// shad (first appearance)
+				float tt = t / 200f;
+				float a, b;
+				a = tt / -4f;
+				b = tt / 6f;
+				float xymod = (1f + .1f * abs(sin(b)));
+				dp = v3(25f * cos(a) * xymod, 25f * sin(a) * xymod, 14f * cos(b));
+				dir = dp - v3(0f);
 			} else if (t < 104085) {
 				// harrier breakdown
 				dp = v3(-38f, 40f, -20f);
 				dir = dp - v3(0f, 20f, -5f);
 			} else {
-				dp = v3(0f);
-				dir = dp - v3(-10f, 0f, 0f);
+				// shad (second appearance)
+				dp = v3(20f, 0f, 0f);
+				dir = dp - v3(0f);
 			}
 
 			vec2 vd = viewdir(dir);

@@ -57,8 +57,13 @@ partial class all {
 		shadfire()
 		{
 			texturedata = new byte[SIZE, SIZE];
+			reset();
+		}
+		public void reset()
+		{
+			lasttime = 0;
 			for (int i = 0; i < SIZE; i++) {
-				texturedata[i, SIZE - 1] = (byte) (cols.Length - 1);
+				texturedata[i, SIZE - 1] = (byte)(cols.Length - 1);
 			}
 		}
 		void dofire()

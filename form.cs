@@ -394,9 +394,29 @@ partial class all {
 		//zs.Add(new Zctext(47000, 52000, Zctext.quack));
 		//zs.Add(new Zctext(52000, 56541, Zctext.luki));
 		//zs.Add(new Zharrier(17650, 34000));
-		//zs.Add(new Zharrier(56333, to1));
+		zs.Add(new Zshad(56333, to1, new IColorOwner[] {
+			// right
+			// front
+			// back
+			// top
+			// bottom
+			// left
+			shadcheck.instance,
+			shadfire.instance,
+			shadsomejapanesecharacter.instance,
+			shademilyrobin.instance,
+			shadnew.instance,
+			shadcheck.instance,
+		}));
 		//zs.Add(new Zharrierbreakdown(to1, 104085));
-		zs.Add(new Zshad(104085, 120666));
+		zs.Add(new Zshad(104085, 124000, new IColorOwner[] {
+			shaddanser.instance,
+			shadfire.instance,
+			shaddanser.instance,
+			shaddanser.instance,
+			shaddanser.instance,
+			shaddanser.instance,
+		}));
 		foreach (Z z in zs) {
 			z.framedelta = 1000 / 20;
 		}
@@ -457,6 +477,7 @@ partial class all {
 				maxtime = z.stop;
 			}
 		}
+		((shadfire)shadfire.instance).reset();
 		Console.WriteLine("Rendering...");
 		int lastprogress = 1;
 		rendering = true;

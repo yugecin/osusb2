@@ -33,29 +33,17 @@ partial class all {
 		vec3[] points;
 		vec3[] _points;
 		LINE[] lines;
-		IColorOwner[] sides = new IColorOwner[] {
-			// right
-			// front
-			// back
-			// top
-			// bottom
-			// left
-			shademilyrobin.instance,
-			shadcheck.instance,
-			shaddanser.instance,
-			shadnew.instance,
-			shadfire.instance,
-			shadsomejapanesecharacter.instance,
-		};
+		IColorOwner[] sides;
 
 		Pixelscreen pixelscreen;
 
-		public Zshad(int start, int stop)
+		public Zshad(int start, int stop, IColorOwner[] sides)
 		{
 			this.start = start;
 			this.stop = stop;
 			framedelta = 50;
 
+			this.sides = sides;
 			this.points = new vec3[8];
 			this._points = new vec3[this.points.Length];
 
@@ -84,8 +72,20 @@ partial class all {
 		public override void draw(SCENE scene)
 		{
 			copy(_points, points);
-			turn(_points, v3(), quat(sin(scene.progress * 5f), 0f, sin(scene.progress) * .5f));
-			move(_points, v3(20f, 0f, -5f));
+			move(_points, v3(0f, 0f, -5.5f));
+			if (scene.time < 104085) {
+				// first shad
+				//turn(_points, v3(), quat(sin(scene.progress * 5f), 0f, sin(scene.progress) * .5f));
+			} else {
+				// second shad
+				//turn(_points, v3(), quat(sin(scene.progress * 5f), 0f, sin(scene.progress) * .5f));
+				float p = progressx(110791, 117250, scene.time);
+				float a = p * PI * 2;
+				float b = p * PI * 2;
+				turn(_points, v3(), quat(a, b, 0f));
+				p = progressx(122500, 124000, scene.time);
+				move(_points, v3(p * 100.0f, 0f, 0f));
+			}
 			move(_points, Zcamera.mid);
 			Zcamera.adjust(_points);
 
