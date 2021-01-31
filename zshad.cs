@@ -1,3 +1,5 @@
+//#define LINES
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -32,11 +34,17 @@ partial class all {
 		vec3[] _points;
 		LINE[] lines;
 		IColorOwner[] sides = new IColorOwner[] {
-			shadsomejapanesecharacter.instance,
+			// right
+			// front
+			// back
+			// top
+			// bottom
+			// left
+			shademilyrobin.instance,
+			shadcheck.instance,
 			shaddanser.instance,
-			shadsomejapanesecharacter.instance,
-			shadsomejapanesecharacter.instance,
-			shadsomejapanesecharacter.instance,
+			shadnew.instance,
+			shadfire.instance,
 			shadsomejapanesecharacter.instance,
 		};
 
@@ -77,7 +85,7 @@ partial class all {
 		{
 			copy(_points, points);
 			turn(_points, v3(), quat(sin(scene.progress * 5f), 0f, sin(scene.progress) * .5f));
-			move(_points, v3(15f, 0f, -5f));
+			move(_points, v3(20f, 0f, -5f));
 			move(_points, Zcamera.mid);
 			Zcamera.adjust(_points);
 
@@ -117,6 +125,7 @@ partial class all {
 			}
 			this.pixelscreen.draw(scene);
 
+#if LINES
 			ICommand.round_move_decimals.Push(5);
 			foreach (LINE l in lines) {
 				if (l.r1.shouldcull() && l.r2.shouldcull()) {
@@ -129,17 +138,20 @@ partial class all {
 				l.line.draw(scene.g);
 			}
 			ICommand.round_move_decimals.Pop();
+#endif
 		}
 
 		public override void fin(Writer w)
 		{
 			this.pixelscreen.fin(w);
-
+			
+#if LINES
 			ICommand.round_move_decimals.Push(5);
 			foreach (LINE l in lines) {
 				l.line.fin(w);
 			}
 			ICommand.round_move_decimals.Pop();
+#endif
 		}
 
 		Color IColorOwner.getColor(int i, int j, int x, int y, float z, vec2 uv)

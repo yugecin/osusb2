@@ -41,6 +41,9 @@
     <Compile Include="bezcontrol.cs" />
     <Compile Include="bez.cs" />
     <Compile Include="shaddanser.cs" />
+    <Compile Include="shadnew.cs" />
+    <Compile Include="shadfire.cs" />
+    <Compile Include="shadcheck.cs" />
     <Compile Include="shademilyrobin.cs" />
     <Compile Include="shadosulogo.cs" />
     <Compile Include="shadsomejapanesecharacter.cs" />

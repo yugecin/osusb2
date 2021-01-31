@@ -45,6 +45,9 @@ partial class all {
 	public static float cos(float a) {
 		return (float) Math.Cos(a);
 	}
+	public static vec3 cos(vec3 v) {
+		return v3(cos(v.x), cos(v.y), cos(v.z));
+	}
 	public static float tan(float a) {
 		return (float) Math.Tan(a);
 	}

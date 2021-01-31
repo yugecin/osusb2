@@ -10,9 +10,13 @@ partial class all {
 		public static IColorOwner instance = new shademilyrobin();
 		Bitmap bm;
 		shademilyrobin() {
-			using (FileStream fs = File.OpenRead("emilyrobin.bmp"))
-			{
-				bm = new Bitmap(fs);
+			try {
+				using (FileStream fs = File.OpenRead("emilyrobin.bmp"))
+				{
+					bm = new Bitmap(fs);
+				}
+			}catch (Exception e) {
+				Console.WriteLine(e);
 			}
 		}
 
@@ -21,6 +25,11 @@ partial class all {
 			if (bm == null) {
 				return v3(1f, 0f, 0f).col();
 			} else {
+				if (uv.x > 1f - shadborder || uv.y > 1f - shadborder ||
+					uv.x < shadborder || uv.y < shadborder)
+				{
+					return Color.White;
+				}
 				uv *= 1.2f;
 				uv -= 0.1f;
 				x = (int) (uv.x * bm.Width);

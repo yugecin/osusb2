@@ -229,10 +229,10 @@ void mainImage(out vec4 fragColor, vec2 originaluv){
     if(dist<0.3f) //for perf
     col+=v3(osu((uv-mid)/.3f));
 
-    /*col += step(originaluv.x, shadborder);
+    col += step(originaluv.x, shadborder);
     col += step(1f-shadborder, originaluv.x);
     col += step(originaluv.y, shadborder); 
-    col += step(1f-shadborder, originaluv.y);*/
+    col += step(1f-shadborder, originaluv.y);
     
     fragColor = v4(col,1f);
 }

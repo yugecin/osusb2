@@ -36,10 +36,10 @@ void mainImage(out vec4 fragColor, vec2 uv)
     float y = uv.y;
     vec3 col = v3(0f);
 
-    /*col += step(x, shadborder);
+    col += step(x, shadborder);
     col += step(1f-shadborder, x);
     col += step(y, shadborder); 
-    col += step(1f-shadborder, y);*/
+    col += step(1f-shadborder, y);
     col = col + 1f
         *smthstep(.135f+.015f*(x-.7f)/.07f,y)
         *smthstep(y,.8f+.05f*(x-.3f)/.04f)

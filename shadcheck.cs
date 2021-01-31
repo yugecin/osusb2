@@ -6,12 +6,12 @@ using System.IO;
 
 namespace osusb1 {
 partial class all {
-	class shaddanser : IColorOwner {
-		public static IColorOwner instance = new shaddanser();
+	class shadcheck : IColorOwner {
+		public static IColorOwner instance = new shadcheck();
 		Bitmap bm;
-		shaddanser() {
+		shadcheck() {
 			try {
-				using (FileStream fs = File.OpenRead("danser.png"))
+				using (FileStream fs = File.OpenRead("check.png"))
 				{
 					bm = new Bitmap(fs);
 				}
@@ -20,22 +20,18 @@ partial class all {
 			}
 		}
 
-		Color IColorOwner.getColor(int i, int j, int x, int y, float z, vec2 originaluv)
+		Color IColorOwner.getColor(int i, int j, int x, int y, float z, vec2 uv)
 		{
 			if (bm == null) {
 				return v3(1f, 0f, 0f).col();
 			} else {
-				if (originaluv.x > 1f - shadborder || originaluv.y > 1f - shadborder ||
-					originaluv.x < shadborder || originaluv.y < shadborder)
+				if (uv.x > 1f - shadborder || uv.y > 1f - shadborder ||
+					uv.x < shadborder || uv.y < shadborder)
 				{
 					return Color.White;
 				}
-				float s = 1.2f -shadosulogo.fftval() * .35f;
-				vec2 uv = (originaluv * 1.2f) - .1f;
-				uv = uv * s - (s - 1f) * .5f;
 				x = (int) (uv.x * bm.Width);
 				y = (int) (uv.y * bm.Height);
-
 				if (x > 0 && y > 0 && x < bm.Width && y < bm.Height) {
 					return bm.GetPixel(x, y);
 				}
