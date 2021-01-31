@@ -296,10 +296,10 @@ partial class all {
 				return;
 			}
 			float perc = progress(points[0].y, points[2].y, points[1].y);
-			vec6 phantom = v6(
-				lerp(points[0].xyzw, points[2].xyzw, perc),
-				lerp(points[0].uv, points[2].uv, perc)
-			);
+			// lerp of z & uv need to be corrected (perspective correction thingies)
+			float actualz = 1f / lerp(1f / points[0].w, 1f / points[2].w, perc);
+			vec2 uv = lerp(points[0].uv / points[0].w, points[2].uv / points[2].w, perc) * actualz;
+			vec6 phantom = v6(v4(lerp(points[0].xyz, points[2].xyz, perc), actualz), uv);
 			bottri_(owner, points[0], phantom, points[1]);
 			toptri_(owner, phantom, points[1], points[2]);
 		}
@@ -363,22 +363,23 @@ partial class all {
 
 					float xperc = progress(xminbound, xmaxbound, realx);
 
-					float dist1 = lerp(p0.w, p2.w, ypercleft);
-					float dist2 = lerp(p1.w, p2.w, ypercright);
-					float realdist = lerp(dist1, dist2, xperc);
+					float zleft = 1f / lerp(1f / p0.w, 1f / p2.w, ypercleft);
+					float zright = 1f / lerp(1f / p1.w, 1f / p2.w, ypercright);
+					float zreal = 1f / lerp(1f / zleft, 1f / zright, xperc);
 
 					/*
 					if (realz < 1f) {
 						continue;
 					}
 					*/
-					if (this.owner[x, y] != null && zbuf[x, y] < realdist) {
+					if (this.owner[x, y] != null && zbuf[x, y] < zreal) {
 						continue;
 					}
-					vec2 uvleft = lerp(p0.uv, p2.uv, ypercleft);
-					vec2 uvright = lerp(p1.uv, p2.uv, ypercright);
-					uv[x, y] = lerp(uvleft, uvright, xperc);
-					zbuf[x, y] = realdist;
+					vec2 uvleft = lerp(p0.uv / p0.w, p2.uv / p2.w, ypercleft) /** zleft*/;
+					vec2 uvright = lerp(p1.uv / p1.w, p2.uv / p2.w, ypercright) /** zright*/;
+					vec2 uvreal = lerp(uvleft /*/ zleft*/, uvright /*/ zright*/, xperc) * zreal;
+					uv[x, y] = uvreal;
+					zbuf[x, y] = zreal;
 					this.owner[x, y] = owner;
 				}
 			}
@@ -444,22 +445,23 @@ partial class all {
 
 					float xperc = progress(xminbound, xmaxbound, realx);
 
-					float dist1 = lerp(p0.w, p1.w, ypercleft);
-					float dist2 = lerp(p0.w, p2.w, ypercright);
-					float realdist = lerp(dist1, dist2, xperc);
+					float zleft = 1f / lerp(1f / p0.w, 1f / p1.w, ypercleft);
+					float zright = 1f / lerp(1f / p0.w, 1f / p2.w, ypercright);
+					float zreal = 1f / lerp(1f / zleft, 1f / zright, xperc);
 
 					/*
 					if (realz < 1f) {
 						continue;
 					}
 					*/
-					if (this.owner[x, y] != null && zbuf[x, y] < realdist) {
+					if (this.owner[x, y] != null && zbuf[x, y] < zreal) {
 						continue;
 					}
-					vec2 uvleft = lerp(p0.uv, p1.uv, ypercleft);
-					vec2 uvright = lerp(p0.uv, p2.uv, ypercright);
-					uv[x, y] = lerp(uvleft, uvright, xperc);
-					zbuf[x, y] = realdist;
+					vec2 uvleft = lerp(p0.uv / p0.w, p1.uv / p1.w, ypercleft) /** zleft*/;
+					vec2 uvright = lerp(p0.uv / p0.w, p2.uv / p2.w, ypercright) /** zright*/;
+					vec2 uvreal = lerp(uvleft /*/ zleft*/, uvright /*/ zright*/, xperc) * zreal;
+					uv[x, y] = uvreal;
+					zbuf[x, y] = zreal;
 					this.owner[x, y] = owner;
 				}
 			}

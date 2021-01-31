@@ -279,6 +279,7 @@ partial class all {
 	}
 	public class vec6 {
 		public float x, y, z, w, u, v;
+		public vec3 xyz { get { return new vec3(x, y, z); } }
 		public vec4 xyzw { get { return new vec4(x, y, z, w); } }
 		public vec2 uv { get { return new vec2(u, v); } }
 		public vec6(vec4 xyzw, vec2 uv) {
