@@ -25,10 +25,13 @@ partial class all {
 		public const int SESDSM = INTERPOLATE_MOVE | 0x40;
 		public const int SESDSC = 0x80;
 		public const int EASE_ALL = EASE_FADE | EASE_SCALE | INTERPOLATE_MOVE;
-		public const string SPRITE_DOT_6_12 = "d.png"; /*lazer needs file extensions or it wont load*/
-		public const string SPRITE_TRI = "t.png";
-		public const string SPRITE_SQUARE_2_2 = "2.png";
-		public const string SPRITE_SQUARE_6_6 = ".png";
+		public const string SPRITE_TRI = "t.png"; /*lazer needs file extensions or it wont load*/
+		public const string SPRITE_SQUARE_1_1 = "1.png";
+		public const string SPRITE_SQUARE_2_2 = ".png";
+		public const string SPRITE_SQUARE_3_3 = "3.png";
+		public const string SPRITE_SQUARE_4_4 = "4.png";
+		public const string SPRITE_SQUARE_5_5 = "5.png";
+		public const string SPRITE_SQUARE_6_6 = "6.png";
 
 		public static Dictionary<string, int> usagedata = new Dictionary<string,int>();
 		public static int easeCommandsSaved = 0;
@@ -39,10 +42,14 @@ partial class all {
 
 		private static Dictionary<string, SDATA> spritedata = new Dictionary<string,SDATA>();
 
-		static Sprite() {
-			spritedata.Add(SPRITE_SQUARE_6_6, new SDATA(6f, 6f));
+		static Sprite()
+		{
+			spritedata.Add(SPRITE_SQUARE_1_1, new SDATA(1f, 1f));
 			spritedata.Add(SPRITE_SQUARE_2_2, new SDATA(2f, 2f));
-			spritedata.Add(SPRITE_DOT_6_12, new SDATA(12f, 6f));
+			spritedata.Add(SPRITE_SQUARE_3_3, new SDATA(3f, 3f));
+			spritedata.Add(SPRITE_SQUARE_4_4, new SDATA(4f, 4f));
+			spritedata.Add(SPRITE_SQUARE_5_5, new SDATA(5f, 5f));
+			spritedata.Add(SPRITE_SQUARE_6_6, new SDATA(6f, 6f));
 			spritedata.Add(SPRITE_TRI, new SDATA(500f, 500f));
 		}
 
@@ -146,7 +153,12 @@ partial class all {
 			addCmd<MoveCommand, vec2>(pos, v2(-1f), movecmds, new MoveCommand(time, time, pos, pos), del);
 			addCmd<FadeCommand, float>(fade, 1f, fadecmds, new FadeCommand(time, time, fade, fade), FadeCommand.requiresUpdate);
 			rud<vec3> rr = ColorCommand.requiresUpdate;
-			if ((settings & SESDSC) > 0) {
+			if ((settings & SESDSC) > 0
+				|| colorcmds.Count == 0 /*1 Feb 2021, if sprite is always white, there will be no colorcmd but a fadecmd
+							 (because it won't appear if there's no cmd) but for some reason this sometimes
+							 resulted in the sprite not showing (very visible in pixelscreen), so making sure
+							 there's a colorcmd now...*/)
+			{
 				rr = rud_true<vec3>;
 			}
 			addCmd<ColorCommand, vec3>(col, v3(1f), colorcmds, new ColorCommand(time, time, col, col), rr);

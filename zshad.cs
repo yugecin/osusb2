@@ -90,14 +90,14 @@ partial class all {
 			Zcamera.adjust(_points);
 
 			pixelscreen.clear();
-			if (scene.time < scene.starttime + 100) {
+			/*if (scene.time < scene.starttime + 100) {
 				// disgusting hack beacuse the osushader would have ghost pixels on the first frames.
 				for (int i = 0; i < this.pixelscreen.owner.GetLength(0); i++) {
 					for (int j = 0; j < this.pixelscreen.owner.GetLength(1); j++) {
 						this.pixelscreen.owner[i, j] = this;
 					}
 				}
-			} else {
+			} else*/ {
 				for (int i = 0; i < this.c.rects.Length; i++) {
 					Rect r = this.c.rects[i];
 					if (r.shouldcull()) {

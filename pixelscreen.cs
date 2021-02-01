@@ -71,7 +71,7 @@ partial class all {
 			this.vpixeloffset = this.y / pixelsize;
 			for (int i = 0; i < hpixels; i++) {
 				for (int j = 0; j < vpixels; j++) {
-					odot[i,j] = new Odot(Sprite.SPRITE_SQUARE_6_6, 0);
+					odot[i,j] = new Odot(pixelsize == 2 ? ".png" : pixelsize + ".png", 0);
 				}
 			}
 		}
@@ -89,12 +89,16 @@ partial class all {
 				for (int j = 0; j < vpixels; j++) {
 					if (!(owner[i,j] is IColorOwner)) {
 						odot[i,j].update(scene.time, null, null, 0f);
-						odot[i,j].draw(scene.g);
 						continue;
 					}
 					IColorOwner co = (IColorOwner) owner[i, j];
 					vec4 pos = v4(this.x + i * pixelsize, this.y + j * pixelsize, 1f, 1f);
 					vec4 res = col(co.getColor(i, j, (int) pos.x, (int) pos.y, zbuf[i, j], uv[i, j]));
+					if (res.x == 0f && res.y == 0f && res.z == 0f) {
+						// this somehow fixes things /shrug
+						odot[i, j].update(scene.time, null, null, 0f);
+						continue;
+					}
 					odot[i,j].update(scene.time, res, pos);
 					odot[i,j].draw(scene.g);
 				}
