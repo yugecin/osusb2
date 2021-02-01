@@ -215,7 +215,7 @@ void mainImage(out vec4 fragColor, vec2 originaluv){
             col.y*=.75f;
         }
     } else
-    {}//if(dist>0.32f&&dist<0.37f)col=spin(col,fragCoord);
+        if(dist>0.32f&&dist<0.37f)col=spin(col,fragCoord);
     
     // Make circle logo shadow
     float dist_shad = distance(uv, v2(0.5f, 0.49f));

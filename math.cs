@@ -319,6 +319,9 @@ partial class all {
 		return 0;
 	}
 	public static float mod(float x, float m) {
+		while (x < 0 && m > 0) {
+			x += m;
+		}
 		while (x > m) {
 			x -= m;
 		}
