@@ -14,6 +14,8 @@ Anyways so as I said, you shouldn't really expect more osu! related content from
 
 Oh and I tried running it on lazer, but I don't have enough RAM (I have 8GB). Seems like lazer's storyboarding code is very inefficient today (Feb 2021) to run these kind of monstrosities. It makes me like stable even more, because somehow stable is very memory efficient for this (even more than danser when I tested it). Though Danser of course runs the storyboard the best.
 
+Sigh... yes I know, you could just make this in whatever modeler program you use and render a video and "convert" the video2storyboard... (for the cube scenes at least, not for the airport/plane because those are not simply pixels). Let's just appreciate I wrote a software renderer for this hmkay.
+
 I might still upload random videos in the future, who knows.
 Thanks for the ride, although this doesn't have to be the end.
 
@@ -24,3 +26,5 @@ Robin
 Music: "dubstep" by http://www.bensound.com
 
 Destroy the bell, unsubscribe, dislike and delete your last comment (not actual advice).
+
+Hi Wieku, you can also have a cookie.

@@ -278,12 +278,16 @@ partial class all
 				dir = dp - v3(0f);
 			} else if (t < 67458) {
 				// shad (first appearance)
-				float tt = t / 200f;
+				float tt = t;
+				tt += 2000.0f * step(64250, t);
+				tt += 2000.0f * step(64350, t);
+				tt /= 200.0f;
 				float a, b;
 				a = tt / -4f;
 				b = tt / 6f;
 				float xymod = (1f + .1f * abs(sin(b)));
-				dp = v3(25f * cos(a) * xymod, 25f * sin(a) * xymod, 14f * cos(b));
+				float dist = 25f + progressx(67458 - 500, 67458, t) * 200.0f;
+				dp = v3(dist * cos(a) * xymod, dist * sin(a) * xymod, 14f * cos(b));
 				dir = dp - v3(0f);
 			} else if (t < 104085) {
 				// harrier breakdown
