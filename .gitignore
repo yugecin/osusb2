@@ -3,5 +3,7 @@
 !/*.cs
 !/*.txt
 !/*.png
+!/*.bmp
+!/*.osu
 !/*.csproj
 !/*.resx
