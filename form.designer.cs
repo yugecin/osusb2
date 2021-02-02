@@ -58,7 +58,6 @@ namespace osusb1 {
 		this.abutton3 = new System.Windows.Forms.Button();
 		this.abuttonsave = new System.Windows.Forms.Button();
 		this.pnlBezs = new System.Windows.Forms.Panel();
-		this.comboBox1 = new System.Windows.Forms.ComboBox();
 		this.label1 = new System.Windows.Forms.Label();
 		this.button3 = new System.Windows.Forms.Button();
 		((System.ComponentModel.ISupportInitialize)(this.panel1)).BeginInit();
@@ -124,6 +123,7 @@ namespace osusb1 {
 		// btnexport
 		// 
 		this.btnexport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+		this.btnexport.Enabled = false;
 		this.btnexport.Location = new System.Drawing.Point(1424, 85);
 		this.btnexport.Name = "btnexport";
 		this.btnexport.Size = new System.Drawing.Size(120, 23);
@@ -139,7 +139,7 @@ namespace osusb1 {
 		this.trackBar1.Maximum = 20;
 		this.trackBar1.Minimum = -20;
 		this.trackBar1.Name = "trackBar1";
-		this.trackBar1.Size = new System.Drawing.Size(181, 45);
+		this.trackBar1.Size = new System.Drawing.Size(181, 42);
 		this.trackBar1.TabIndex = 14;
 		this.trackBar1.Tag = "0";
 		// 
@@ -150,7 +150,7 @@ namespace osusb1 {
 		this.trackBar2.Maximum = 20;
 		this.trackBar2.Minimum = -20;
 		this.trackBar2.Name = "trackBar2";
-		this.trackBar2.Size = new System.Drawing.Size(181, 45);
+		this.trackBar2.Size = new System.Drawing.Size(181, 42);
 		this.trackBar2.TabIndex = 15;
 		this.trackBar2.Tag = "1";
 		// 
@@ -161,7 +161,7 @@ namespace osusb1 {
 		this.trackBar3.Maximum = 20;
 		this.trackBar3.Minimum = -20;
 		this.trackBar3.Name = "trackBar3";
-		this.trackBar3.Size = new System.Drawing.Size(181, 45);
+		this.trackBar3.Size = new System.Drawing.Size(181, 42);
 		this.trackBar3.TabIndex = 16;
 		this.trackBar3.Tag = "2";
 		// 
@@ -172,7 +172,7 @@ namespace osusb1 {
 		this.trackBar4.Maximum = 20;
 		this.trackBar4.Minimum = -20;
 		this.trackBar4.Name = "trackBar4";
-		this.trackBar4.Size = new System.Drawing.Size(181, 45);
+		this.trackBar4.Size = new System.Drawing.Size(181, 42);
 		this.trackBar4.TabIndex = 17;
 		this.trackBar4.Tag = "3";
 		// 
@@ -183,7 +183,7 @@ namespace osusb1 {
 		this.trackBar5.Maximum = 20;
 		this.trackBar5.Minimum = -20;
 		this.trackBar5.Name = "trackBar5";
-		this.trackBar5.Size = new System.Drawing.Size(181, 45);
+		this.trackBar5.Size = new System.Drawing.Size(181, 42);
 		this.trackBar5.TabIndex = 18;
 		this.trackBar5.Tag = "4";
 		// 
@@ -194,7 +194,7 @@ namespace osusb1 {
 		this.trackBar6.Maximum = 20;
 		this.trackBar6.Minimum = -20;
 		this.trackBar6.Name = "trackBar6";
-		this.trackBar6.Size = new System.Drawing.Size(181, 45);
+		this.trackBar6.Size = new System.Drawing.Size(181, 42);
 		this.trackBar6.TabIndex = 19;
 		this.trackBar6.Tag = "5";
 		// 
@@ -205,7 +205,7 @@ namespace osusb1 {
 		this.trackBar7.Maximum = 20;
 		this.trackBar7.Minimum = -20;
 		this.trackBar7.Name = "trackBar7";
-		this.trackBar7.Size = new System.Drawing.Size(181, 45);
+		this.trackBar7.Size = new System.Drawing.Size(181, 42);
 		this.trackBar7.TabIndex = 20;
 		this.trackBar7.Tag = "6";
 		// 
@@ -436,20 +436,6 @@ namespace osusb1 {
 		this.pnlBezs.Size = new System.Drawing.Size(1556, 381);
 		this.pnlBezs.TabIndex = 45;
 		// 
-		// comboBox1
-		// 
-		this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-		this.comboBox1.FormattingEnabled = true;
-		this.comboBox1.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C"});
-		this.comboBox1.Location = new System.Drawing.Point(4, 498);
-		this.comboBox1.Name = "comboBox1";
-		this.comboBox1.Size = new System.Drawing.Size(62, 21);
-		this.comboBox1.TabIndex = 0;
-		this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-		// 
 		// label1
 		// 
 		this.label1.AutoSize = true;
@@ -474,7 +460,6 @@ namespace osusb1 {
 		this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 		this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		this.ClientSize = new System.Drawing.Size(1556, 880);
-		this.Controls.Add(this.comboBox1);
 		this.Controls.Add(this.label1);
 		this.Controls.Add(this.button3);
 		this.Controls.Add(this.pnlBezs);
@@ -563,7 +548,6 @@ namespace osusb1 {
 		private System.Windows.Forms.Button abuttonsave;
 		private System.Windows.Forms.Panel pnlBezs;
 		private System.Windows.Forms.PictureBox panel1;
-		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button3;
 }

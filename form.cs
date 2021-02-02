@@ -328,12 +328,6 @@ partial class form : Form {
 		button2.Enabled = true;
 	}
 
-	private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-	{
-		all.Bez.selectDataIndex(comboBox1.SelectedIndex);
-		all.Bezcontrol.invalidate();
-	}
-
 	private void button3_Click(object sender, EventArgs e)
 	{
 		all.Bez.save();
@@ -354,13 +348,26 @@ partial class all {
 		zs = new List<Z>();
 		font = new Font();
 		eq_init();
-		init();
 		Application.EnableVisualStyles();
 		Application.SetCompatibleTextRenderingDefault(false);
-		Application.Run(new form());
+		Application.Run(new opts());
+		//new form();
+		if (opts.export) {
+			export(false);
+		}
 	}
 
-	public static string path = @"S:\games\osu!\Songs\beatmap-637369189818030795-bensound-dubstep";
+	static IColorOwner[] shads = new IColorOwner[] {
+		shadcheck.instance,
+		shadfire.instance,
+		shadsomejapanesecharacter.instance,
+		shademilyrobin.instance,
+		shadnew.instance,
+		shaddanser.instance,
+		shadosulogo.instance,
+	};
+
+	public static string path = @"beatmap-637369189818030795-bensound-dubstep";
 	public static string osb = path + @"\bensound - dubstep (yugecin).osb";
 	public static string osbx = path + @"\bensound - dubstep (yugecin))-.osb";
 
@@ -380,45 +387,55 @@ partial class all {
 
 	public static int DECIMALS_PRECISE = 7;
 
-	public static int guistarttime = 104085;
+	public static int guistarttime = 8500;
 
-	static void init() {
-		int from1 = 2000, to1 = 67458;
+	public static void init() {
 		zs.Clear();
 		zs.Add(new Zcamera(2000, 124000));
-		//zs.Add(new Zairport2(from1, to1));
-		//zs.Add(new Zltext(from1, to1, "robin_be presents", v3(0f, 450f, -20f)));
-		//zs.Add(new Zltext(from1, to1, "osu! storyboard demo number two", v3(0f, 150f, -20f)));
-		//zs.Add(new Zctext(34000, 40000, Zctext.em));
-		//zs.Add(new Zctext(40000, 47000, Zctext.herakles));
-		//zs.Add(new Zctext(47000, 52000, Zctext.quack));
-		//zs.Add(new Zctext(52000, 56541, Zctext.luki));
-		//zs.Add(new Zharrier(17650, 34000));
-		zs.Add(new Zshad(56333, to1, new IColorOwner[] {
-			// right
-			// front
-			// back
-			// top
-			// bottom
-			// left
-			shadcheck.instance,
-			shadfire.instance,
-			shadsomejapanesecharacter.instance,
-			shademilyrobin.instance,
-			shadnew.instance,
-			shadcheck.instance,
-		}));
-		//zs.Add(new Zharrierbreakdown(to1, 104085));
-		zs.Add(new Zshad(104085, 124000, new IColorOwner[] {
-			shaddanser.instance,
-			shadfire.instance,
-			shaddanser.instance,
-			shaddanser.instance,
-			shaddanser.instance,
-			shaddanser.instance,
-		}));
-		foreach (Z z in zs) {
-			z.framedelta = 1000 / 20;
+		if (opts.enabled[0]) {
+			zs.Add(new Zairport2(2000, 56333).setFPS(opts.fps[0]));
+		}
+		if (opts.enabled[1]) {
+			zs.Add(new Zltext(2000, 56333, opts.txt1, v3(0f, 450f, -20f)).setFPS(opts.fps[1]));
+			zs.Add(new Zltext(2000, 56333, opts.txt2, v3(0f, 150f, -20f)).setFPS(opts.fps[1]));
+		}
+		if (opts.enabled[2]) {
+			zs.Add(new Zctext(34000, 40000, Zctext.em).setFPS(opts.fps[2]));
+			zs.Add(new Zctext(40000, 47000, Zctext.herakles).setFPS(opts.fps[2]));
+			zs.Add(new Zctext(47000, 52000, Zctext.quack).setFPS(opts.fps[2]));
+			zs.Add(new Zctext(52000, 56541, Zctext.luki).setFPS(opts.fps[2]));
+		}
+		if (opts.enabled[3]) {
+			zs.Add(new Zharrier(17650, 34000).setFPS(opts.fps[3]));
+		}
+		if (opts.enabled[4]) {
+			zs.Add(new Zshad(56333, 67458, opts.c1pxs, new IColorOwner[] {
+				// right
+				// front
+				// back
+				// top
+				// bottom
+				// left
+				shads[opts.c1idx[0]],
+				shads[opts.c1idx[1]],
+				shads[opts.c1idx[2]],
+				shads[opts.c1idx[3]],
+				shads[opts.c1idx[4]],
+				shads[opts.c1idx[5]],
+			}).setFPS(opts.fps[4]));
+		}
+		if (opts.enabled[5]) {
+			zs.Add(new Zharrierbreakdown(67458, 104085).setFPS(opts.fps[5]));
+		}
+		if (opts.enabled[6]) {
+			zs.Add(new Zshad(104085, 124000, opts.c2pxs, new IColorOwner[] {
+				shads[opts.c2idx[0]],
+				shads[opts.c2idx[1]],
+				shads[opts.c2idx[2]],
+				shads[opts.c2idx[3]],
+				shads[opts.c2idx[4]],
+				shads[opts.c2idx[5]],
+			}).setFPS(opts.fps[6]));
 		}
 		foreach (Z z in zs) {
 			if (z.framedelta == 0) {
@@ -477,6 +494,7 @@ partial class all {
 				maxtime = z.stop;
 			}
 		}
+		Directory.CreateDirectory(path);
 		((shadfire)shadfire.instance).reset();
 		Console.WriteLine("Rendering...");
 		int lastprogress = 1;

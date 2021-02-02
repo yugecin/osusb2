@@ -46,7 +46,7 @@ partial class all
 		{
 			this.start = start;
 			this.stop = stop;
-			framedelta = 15;
+			framedelta = 1;
 		}
 
 		public override void draw(SCENE scene) {
@@ -71,6 +71,12 @@ partial class all
 			} else if (t < 9950) {
 				// first circling
 				float f = progress(5041, 9950, t) + .7f;
+				if (t > 6625) {
+					f += .2f;
+				}
+				if (t > 8250) {
+					f += .2f;
+				}
 				dp = v3(500f * cos(f * 4f), 500f * sin(f * 4f), -200f);
 				dir = dp - v3(0f, 0f, 0f);
 			} else if (t < 11708) {
@@ -80,7 +86,10 @@ partial class all
 				dir = dp - v3(-lerp(-400f, 400f, f), -450f, -20f);
 			} else if (t < 14958) {
 				// more showoff
-				float f = progress(11708, 14666, t);
+				float f = progress(11708, 14666, t) - .1f;
+				if (t > 13200) {
+					f += .2f;
+				}
 				dp = v3(lerp(500f, -500f, f), 0f, -600f);
 				dir = dp - v3(lerp(500f, -500f, f), 0f, 0f);
 			} else if (t < 18291) {
@@ -123,9 +132,6 @@ partial class all
 
 				dp = v3() - getCamPos(t);
 				dir = dp + getHarrPos(t);
-				if (!rendering) {
-					Console.WriteLine(getCamPos(t) + " " + getHarrPos(t));
-				}
 			} else if (t < 56333) {
 				// greets
 				vec3 _00_pos = v3(-1097.832f, -1175.126f, 271.0345f);

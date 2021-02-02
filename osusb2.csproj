@@ -40,6 +40,12 @@
     <Compile Include="commands.cs" />
     <Compile Include="bezcontrol.cs" />
     <Compile Include="bez.cs" />
+    <Compile Include="opts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="opts.Designer.cs">
+      <DependentUpon>opts.cs</DependentUpon>
+    </Compile>
     <Compile Include="shaddanser.cs" />
     <Compile Include="shadnew.cs" />
     <Compile Include="shadfire.cs" />
@@ -76,6 +82,10 @@
     <EmbeddedResource Include="form.resx">
       <SubType>Designer</SubType>
       <DependentUpon>form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="opts.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>opts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -19,6 +19,12 @@ partial class all {
 		public static int sync(int time, int framedelta) {
 			return time - time % framedelta;
 		}
+
+		public Z setFPS(int fps)
+		{
+			this.framedelta = (int) (1000.0f / (float) fps);
+			return this;
+		}
 	}
 }
 }

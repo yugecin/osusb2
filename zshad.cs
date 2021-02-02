@@ -37,7 +37,7 @@ partial class all {
 
 		Pixelscreen pixelscreen;
 
-		public Zshad(int start, int stop, IColorOwner[] sides)
+		public Zshad(int start, int stop, int pixelsize, IColorOwner[] sides)
 		{
 			this.start = start;
 			this.stop = stop;
@@ -65,7 +65,7 @@ partial class all {
 				new LINE(r[Cube.B], r[Cube.U], 6, 5),
 			};
 
-			int pxs = 3;
+			int pxs = pixelsize;
 			this.pixelscreen = new Pixelscreen(/*widescreen mode*/854 / pxs, 480 / pxs, pxs);
 		}
 
