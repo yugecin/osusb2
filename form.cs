@@ -500,16 +500,16 @@ partial class all {
 		int lastprogress = 1;
 		rendering = true;
 		for (int i = mintime;;) {
-			int progress = (i - mintime) * 500 / (maxtime - mintime);
+			int progress = (i - mintime) * 1000 / (maxtime - mintime);
 			for (; lastprogress < progress; lastprogress++) {
 				Console.Write(".");
 				if ((lastprogress % 50) == 0) {
-					Console.WriteLine(" {0}%", lastprogress / 5);
+					Console.WriteLine(" {0}%", lastprogress / 10);
 				}
 			}
 			if (i < maxtime) {
 				render(i, null);
-			} else if (lastprogress >= 500) {
+			} else if (lastprogress >= 1000) {
 				Console.WriteLine(". 100%"); // dont judge lol
 				break;
 			}
