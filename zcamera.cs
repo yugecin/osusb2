@@ -141,19 +141,19 @@ partial class all
 				vec3 _10_pos = _05_pos + v3(-30f, 40f, 0f);
 
 				vec3 her_dir = v3(0f, -1f, 0f);
-				vec3 her_pos = v3(398f, -145.85317f, 5f);
+				vec3 her_pos = v3(398f, -115.85317f, 35f);
 				vec3 her_lok = her_pos + her_dir * 50f;
 				vec3 her_int = lerp(_10_pos, her_pos, 0.2f) + v3(0, 400f, 0f);
 				vec3 her_int2 = lerp(_10_pos, her_pos, 0.8f) + v3(0, 400f, 0f);
-				vec3 her_pos2 = v3(398f, -145.85317f, 28f);
+				vec3 her_pos2 = v3(398f, -115.85317f, 58f);
 				vec3 her_lok2 = her_pos2 + her_dir * 50f;
 
 				vec3 qua_lok = v3(300f, 80f, 230f);
-				vec3 qua_pos = v3(-748.7392f, -298.6331f, 80f);
+				vec3 qua_pos = v3(-748.7392f, -328.6331f, 80f);
 				qua_lok = lerp(qua_lok, qua_pos, 0.4f);
 				vec3 qua_int = lerp(her_pos2, qua_pos, 0.2f) + v3(0, -200f, 0);
 				vec3 qua_int2 = lerp(her_pos2, qua_pos, 0.8f) + v3(0, -200f, 0);
-				vec3 qua_pos2 = v3(-748.7392f, -240.6331f, 80f);
+				vec3 qua_pos2 = v3(-748.7392f, -270.6331f, 80f);
 
 				vec3 luk_pos = v3(632.1013f, 358.0017f, 48.1202f);
 				vec3 luk_lok = v3(-263.8631f, 1.909196f, 270f);
@@ -226,7 +226,7 @@ partial class all
 					Zctext.bgcol = v4(1f, .42f, .8f, 1f - eq_in_expo(f));
 					Zctext.bgstyle = 0;
 				} else if (t < 47000) {
-					Zctext.position = v3(400f, -205f, 20f);
+					Zctext.position = v3(400f, -205f, 40f);
 					Zctext.rotation = quat(-PI2, 0f, PI);
 					float f = progress(43040, 44750, t);
 					Zctext.showbg = f >= 0f;
