@@ -28,7 +28,7 @@ public partial class opts : Form
 		c1top.SelectedIndex = 3;
 		c1bot.SelectedIndex = 4;
 		c1left.SelectedIndex = 0;
-		c1ps.SelectedIndex = 1;
+		c1ps.SelectedIndex = 3;
 
 		c2right.SelectedIndex = 5;
 		c2front.SelectedIndex = 6;
@@ -36,7 +36,7 @@ public partial class opts : Form
 		c2top.SelectedIndex = 5;
 		c2bot.SelectedIndex = 5;
 		c2left.SelectedIndex = 5;
-		c2ps.SelectedIndex = 1;
+		c2ps.SelectedIndex = 3;
 
 		setvals();
 	}
