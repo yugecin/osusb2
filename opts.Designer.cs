@@ -786,12 +786,12 @@ namespace osusb1
 			this.c1ps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.c1ps.FormattingEnabled = true;
 			this.c1ps.Items.AddRange(new object[] {
-            "1 (don\'t use this, good luck)",
+            "1 (good luck)",
             "2 (you need a good pc)",
-            "3 (you need a decent pc)",
-            "4",
+            "3",
+            "4 (you need a decent pc)",
             "5",
-            "6 (for potatoes)"});
+            "6 (for near potatoes)"});
 			this.c1ps.Location = new System.Drawing.Point(293, 330);
 			this.c1ps.Name = "c1ps";
 			this.c1ps.Size = new System.Drawing.Size(204, 21);
@@ -811,12 +811,12 @@ namespace osusb1
 			this.c2ps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.c2ps.FormattingEnabled = true;
 			this.c2ps.Items.AddRange(new object[] {
-            "1 (don\'t use this, good luck)",
+            "1 (good luck)",
             "2 (you need a good pc)",
-            "3 (you need a decent pc)",
-            "4",
+            "3",
+            "4 (you need a decent pc)",
             "5",
-            "6 (for potatoes)"});
+            "6 (for near potatoes)"});
 			this.c2ps.Location = new System.Drawing.Point(293, 543);
 			this.c2ps.Name = "c2ps";
 			this.c2ps.Size = new System.Drawing.Size(204, 21);

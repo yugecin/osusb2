@@ -28,7 +28,7 @@ public partial class opts : Form
 		c1top.SelectedIndex = 3;
 		c1bot.SelectedIndex = 4;
 		c1left.SelectedIndex = 0;
-		c1ps.SelectedIndex = 3;
+		c1ps.SelectedIndex = 4;
 
 		c2right.SelectedIndex = 5;
 		c2front.SelectedIndex = 6;
@@ -36,7 +36,7 @@ public partial class opts : Form
 		c2top.SelectedIndex = 5;
 		c2bot.SelectedIndex = 5;
 		c2left.SelectedIndex = 5;
-		c2ps.SelectedIndex = 3;
+		c2ps.SelectedIndex = 4;
 
 		setvals();
 	}
@@ -49,7 +49,7 @@ public partial class opts : Form
 		c1idx[3] = c1top.SelectedIndex;
 		c1idx[4] = c1bot.SelectedIndex;
 		c1idx[5] = c1left.SelectedIndex;
-		c1pxs = c1ps.SelectedIndex;
+		c1pxs = c1ps.SelectedIndex + 1;
 
 		c2idx[0] = c2right.SelectedIndex;
 		c2idx[1] = c2front.SelectedIndex;
@@ -57,7 +57,7 @@ public partial class opts : Form
 		c2idx[3] = c2top.SelectedIndex;
 		c2idx[4] = c2bot.SelectedIndex;
 		c2idx[5] = c2left.SelectedIndex;
-		c2pxs = c2ps.SelectedIndex;
+		c2pxs = c2ps.SelectedIndex + 1;
 
 		enabled[0] = checkBox1.Checked;
 		enabled[1] = checkBox2.Checked;
