@@ -6,7 +6,7 @@ Consider this maybe my resignation from osu! things. The game doesn't really int
 
 I've had this idea for a while now and this was certainly something I really wanted to make. Most of the time I didn't really wanted to work on it though, I just wanted it done (yeah not such a good attitude). But I found the fun again when finally forcing myself to actually do something (and then wrote hack after hack to make it work). And then took another two month break lol. And now I'm just releasing it like this, I'm done.
 
-Unlike last time, I didn't want to think about the size limit to still make it uploadable as an actual beatmap. So this is kind of like shooting a bazooka of storyboard commands instead of trying to optimize it a bit to have a smaller file size. That's also why you have to run the program to generate the storyboard instead of just downloading the mapfile to run it on your own pc. The video you looked at used a 256MB storyboard file.
+Unlike last time, I didn't want to think about the size limit to still make it uploadable as an actual beatmap. So this is kind of like shooting a bazooka of storyboard commands instead of trying to optimize it a bit to have a smaller file size. That's also why you have to run the program to generate the storyboard instead of just downloading the mapfile to run it on your own pc. The video you looked at used a 252MB storyboard file. Also it took maybe 5 minutes to generate and 10 minutes for osu to load it.
 
 Stuff is kinda inspired from Sean Barrett's stb_voxel_render video, it's a gem, watch it here: https://youtu.be/2vnTtiLrV1w
 
