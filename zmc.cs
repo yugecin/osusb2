@@ -160,7 +160,7 @@ partial class all {
 					tpoints[baseidx++] = lerp(ab2, cd2, pj);
 					tpoints[baseidx++] = lerp(ab1, cd1, pj2);
 					tpoints[baseidx++] = lerp(ab2, cd2, pj2);
-					Color col = co.getColor(0, 0, 0, 0, 0, v2(i, j) / 7f);
+					Color col = co.getColor(0, 0, 0, 0, 0, v2(pi, pj));
 					trects[ridx++] = new Rect(_tpoints, col, _tpoints, z, z + 1, z + 2, z + 3);
 				}
 			}
@@ -332,8 +332,8 @@ partial class all {
 			if (bm == null) {
 				return v3(1f, 0f, 0f).col();
 			} else {
-				x = (int)(uv.x * (bm.Width - 1));
-				y = (int)(uv.y * (bm.Height - 1));
+				x = (int)(uv.x * (bm.Width));
+				y = (int)(uv.y * (bm.Height));
 				return bm.GetPixel(x, y);
 			}
 		}
@@ -358,8 +358,8 @@ partial class all {
 			if (bm == null) {
 				return v3(1f, 0f, 0f).col();
 			} else {
-				x = (int)(uv.x * (bm.Width - 1));
-				y = (int)(uv.y * (bm.Height - 1));
+				x = (int)(uv.x * (bm.Width));
+				y = (int)(uv.y * (bm.Height));
 				return bm.GetPixel(x, y);
 			}
 		}
