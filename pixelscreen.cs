@@ -12,12 +12,12 @@ partial class all {
 	}
 	class Pixelscreen {
 
-		int x, y, hpixels, vpixels, pixelsize, hpixeloffset, vpixeloffset;
+		public int x, y, hpixels, vpixels, pixelsize, hpixeloffset, vpixeloffset;
 
 		public object[,] owner;
 		public vec2[,] uv;
 		float[,] zbuf;
-		Odot[,] odot;
+		public Odot[,] odot;
 
 		public Pixelscreen(int x, int y, int hpixels, int vpixels, int pixelsize) {
 			this.x = x;

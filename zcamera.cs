@@ -282,11 +282,11 @@ partial class all
 					break;
 				}
 				dir = dp - v3(0f);
-			} else if (t < 67458) {
+			} else if (t < 64080) {
 				// shad (first appearance)
 				float tt = t;
-				tt += 2000.0f * step(64250, t);
-				tt += 2000.0f * step(64350, t);
+				//tt += 2000.0f * step(64250, t);
+				//tt += 2000.0f * step(64350, t);
 				tt /= 200.0f;
 				float a, b;
 				a = tt / -4f;
@@ -294,6 +294,10 @@ partial class all
 				float xymod = (1f + .1f * abs(sin(b)));
 				float dist = 25f + progressx(67458 - 500, 67458, t) * 200.0f;
 				dp = v3(dist * cos(a) * xymod, dist * sin(a) * xymod, 14f * cos(b));
+				dir = dp - v3(0f);
+			} else if (t < 67458) {
+				// mc
+				dp = v3(-25f, 0f, -10f);
 				dir = dp - v3(0f);
 			} else if (t < 104085) {
 				// harrier breakdown

@@ -10,7 +10,7 @@ partial class all {
 		public const int SETTING_NO_BCULL = 0x2;
 
 		public readonly Rect rect;
-		Otri[] tris;
+		public Otri[] tris;
 		int settings;
 
 		public Orect(Rect rect, int settings) {

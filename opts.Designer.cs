@@ -87,6 +87,11 @@ namespace osusb1
 			this.label28 = new System.Windows.Forms.Label();
 			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
+			this.label29 = new System.Windows.Forms.Label();
+			this.checkBox8 = new System.Windows.Forms.CheckBox();
+			this.numericUpDown8 = new System.Windows.Forms.NumericUpDown();
+			this.c3ps = new System.Windows.Forms.ComboBox();
+			this.label30 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -94,6 +99,7 @@ namespace osusb1
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -367,7 +373,7 @@ namespace osusb1
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(103, 358);
+			this.label10.Location = new System.Drawing.Point(103, 410);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(94, 13);
 			this.label10.TabIndex = 20;
@@ -378,7 +384,7 @@ namespace osusb1
 			this.checkBox6.AutoSize = true;
 			this.checkBox6.Checked = true;
 			this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox6.Location = new System.Drawing.Point(27, 358);
+			this.checkBox6.Location = new System.Drawing.Point(27, 384);
 			this.checkBox6.Name = "checkBox6";
 			this.checkBox6.Size = new System.Drawing.Size(15, 14);
 			this.checkBox6.TabIndex = 19;
@@ -409,7 +415,7 @@ namespace osusb1
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(103, 384);
+			this.label11.Location = new System.Drawing.Point(103, 436);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(41, 13);
 			this.label11.TabIndex = 23;
@@ -420,7 +426,7 @@ namespace osusb1
 			this.checkBox7.AutoSize = true;
 			this.checkBox7.Checked = true;
 			this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox7.Location = new System.Drawing.Point(27, 384);
+			this.checkBox7.Location = new System.Drawing.Point(27, 407);
 			this.checkBox7.Name = "checkBox7";
 			this.checkBox7.Size = new System.Drawing.Size(15, 14);
 			this.checkBox7.TabIndex = 22;
@@ -637,7 +643,7 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2left.Location = new System.Drawing.Point(293, 516);
+			this.c2left.Location = new System.Drawing.Point(293, 568);
 			this.c2left.Name = "c2left";
 			this.c2left.Size = new System.Drawing.Size(204, 21);
 			this.c2left.TabIndex = 53;
@@ -654,7 +660,7 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2bot.Location = new System.Drawing.Point(293, 489);
+			this.c2bot.Location = new System.Drawing.Point(293, 541);
 			this.c2bot.Name = "c2bot";
 			this.c2bot.Size = new System.Drawing.Size(204, 21);
 			this.c2bot.TabIndex = 52;
@@ -671,7 +677,7 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2top.Location = new System.Drawing.Point(293, 462);
+			this.c2top.Location = new System.Drawing.Point(293, 514);
 			this.c2top.Name = "c2top";
 			this.c2top.Size = new System.Drawing.Size(204, 21);
 			this.c2top.TabIndex = 51;
@@ -688,7 +694,7 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2back.Location = new System.Drawing.Point(293, 435);
+			this.c2back.Location = new System.Drawing.Point(293, 487);
 			this.c2back.Name = "c2back";
 			this.c2back.Size = new System.Drawing.Size(204, 21);
 			this.c2back.TabIndex = 50;
@@ -705,7 +711,7 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2front.Location = new System.Drawing.Point(293, 408);
+			this.c2front.Location = new System.Drawing.Point(293, 460);
 			this.c2front.Name = "c2front";
 			this.c2front.Size = new System.Drawing.Size(204, 21);
 			this.c2front.TabIndex = 49;
@@ -722,7 +728,7 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2right.Location = new System.Drawing.Point(293, 381);
+			this.c2right.Location = new System.Drawing.Point(293, 433);
 			this.c2right.Name = "c2right";
 			this.c2right.Size = new System.Drawing.Size(204, 21);
 			this.c2right.TabIndex = 48;
@@ -730,7 +736,7 @@ namespace osusb1
 			// label21
 			// 
 			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(266, 519);
+			this.label21.Location = new System.Drawing.Point(266, 571);
 			this.label21.Name = "label21";
 			this.label21.Size = new System.Drawing.Size(21, 13);
 			this.label21.TabIndex = 47;
@@ -739,7 +745,7 @@ namespace osusb1
 			// label22
 			// 
 			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(248, 492);
+			this.label22.Location = new System.Drawing.Point(248, 544);
 			this.label22.Name = "label22";
 			this.label22.Size = new System.Drawing.Size(39, 13);
 			this.label22.TabIndex = 46;
@@ -748,7 +754,7 @@ namespace osusb1
 			// label23
 			// 
 			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(265, 465);
+			this.label23.Location = new System.Drawing.Point(265, 517);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(22, 13);
 			this.label23.TabIndex = 45;
@@ -757,7 +763,7 @@ namespace osusb1
 			// label24
 			// 
 			this.label24.AutoSize = true;
-			this.label24.Location = new System.Drawing.Point(256, 438);
+			this.label24.Location = new System.Drawing.Point(256, 490);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(31, 13);
 			this.label24.TabIndex = 44;
@@ -766,7 +772,7 @@ namespace osusb1
 			// label25
 			// 
 			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(259, 411);
+			this.label25.Location = new System.Drawing.Point(259, 463);
 			this.label25.Name = "label25";
 			this.label25.Size = new System.Drawing.Size(28, 13);
 			this.label25.TabIndex = 43;
@@ -775,7 +781,7 @@ namespace osusb1
 			// label26
 			// 
 			this.label26.AutoSize = true;
-			this.label26.Location = new System.Drawing.Point(260, 384);
+			this.label26.Location = new System.Drawing.Point(260, 436);
 			this.label26.Name = "label26";
 			this.label26.Size = new System.Drawing.Size(27, 13);
 			this.label26.TabIndex = 42;
@@ -817,7 +823,7 @@ namespace osusb1
             "4 (you need a decent pc)",
             "5",
             "6 (for near potatoes)"});
-			this.c2ps.Location = new System.Drawing.Point(293, 543);
+			this.c2ps.Location = new System.Drawing.Point(293, 595);
 			this.c2ps.Name = "c2ps";
 			this.c2ps.Size = new System.Drawing.Size(204, 21);
 			this.c2ps.TabIndex = 59;
@@ -825,7 +831,7 @@ namespace osusb1
 			// label28
 			// 
 			this.label28.AutoSize = true;
-			this.label28.Location = new System.Drawing.Point(124, 546);
+			this.label28.Location = new System.Drawing.Point(124, 598);
 			this.label28.Name = "label28";
 			this.label28.Size = new System.Drawing.Size(163, 13);
 			this.label28.TabIndex = 58;
@@ -833,7 +839,7 @@ namespace osusb1
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(345, 599);
+			this.button1.Location = new System.Drawing.Point(345, 651);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 60;
@@ -843,7 +849,7 @@ namespace osusb1
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(12, 599);
+			this.button2.Location = new System.Drawing.Point(12, 651);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(175, 23);
 			this.button2.TabIndex = 61;
@@ -851,11 +857,83 @@ namespace osusb1
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
+			// label29
+			// 
+			this.label29.AutoSize = true;
+			this.label29.Location = new System.Drawing.Point(103, 384);
+			this.label29.Name = "label29";
+			this.label29.Size = new System.Drawing.Size(83, 13);
+			this.label29.TabIndex = 62;
+			this.label29.Text = "Minecraft cubes";
+			// 
+			// checkBox8
+			// 
+			this.checkBox8.AutoSize = true;
+			this.checkBox8.Checked = true;
+			this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBox8.Location = new System.Drawing.Point(27, 435);
+			this.checkBox8.Name = "checkBox8";
+			this.checkBox8.Size = new System.Drawing.Size(15, 14);
+			this.checkBox8.TabIndex = 63;
+			this.checkBox8.UseVisualStyleBackColor = true;
+			// 
+			// numericUpDown8
+			// 
+			this.numericUpDown8.Location = new System.Drawing.Point(503, 408);
+			this.numericUpDown8.Maximum = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+			this.numericUpDown8.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.numericUpDown8.Name = "numericUpDown8";
+			this.numericUpDown8.Size = new System.Drawing.Size(71, 20);
+			this.numericUpDown8.TabIndex = 64;
+			this.numericUpDown8.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+			// 
+			// c3ps
+			// 
+			this.c3ps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.c3ps.FormattingEnabled = true;
+			this.c3ps.Items.AddRange(new object[] {
+            "1 (good luck)",
+            "2 (you need a good pc)",
+            "3",
+            "4 (you need a decent pc)",
+            "5",
+            "6 (for near potatoes)"});
+			this.c3ps.Location = new System.Drawing.Point(293, 381);
+			this.c3ps.Name = "c3ps";
+			this.c3ps.Size = new System.Drawing.Size(204, 21);
+			this.c3ps.TabIndex = 65;
+			// 
+			// label30
+			// 
+			this.label30.AutoSize = true;
+			this.label30.Location = new System.Drawing.Point(234, 385);
+			this.label30.Name = "label30";
+			this.label30.Size = new System.Drawing.Size(50, 13);
+			this.label30.TabIndex = 66;
+			this.label30.Text = "Pixel size";
+			// 
 			// opts
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(705, 630);
+			this.ClientSize = new System.Drawing.Size(705, 686);
+			this.Controls.Add(this.label30);
+			this.Controls.Add(this.c3ps);
+			this.Controls.Add(this.numericUpDown8);
+			this.Controls.Add(this.checkBox8);
+			this.Controls.Add(this.label29);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.c2ps);
@@ -927,6 +1005,7 @@ namespace osusb1
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -994,6 +1073,11 @@ namespace osusb1
 		private System.Windows.Forms.Label label28;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Label label29;
+		private System.Windows.Forms.CheckBox checkBox8;
+		private System.Windows.Forms.NumericUpDown numericUpDown8;
+		private System.Windows.Forms.ComboBox c3ps;
+		private System.Windows.Forms.Label label30;
 
 	}
 }

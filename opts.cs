@@ -11,11 +11,11 @@ namespace osusb1
 public partial class opts : Form
 {
 	public static bool export;
-	public static bool[] enabled = new bool[7];
+	public static bool[] enabled = new bool[8];
 	public static int[] c1idx = new int[6];
 	public static int[] c2idx = new int[6];
-	public static int c1pxs, c2pxs;
-	public static int[] fps = new int[7];
+	public static int c1pxs, c2pxs, c3pxs;
+	public static int[] fps = new int[8];
 	public static string txt1, txt2;
 
 	public opts()
@@ -38,6 +38,8 @@ public partial class opts : Form
 		c2left.SelectedIndex = 5;
 		c2ps.SelectedIndex = 4;
 
+		c3ps.SelectedIndex = 3;
+
 		setvals();
 	}
 
@@ -59,6 +61,8 @@ public partial class opts : Form
 		c2idx[5] = c2left.SelectedIndex;
 		c2pxs = c2ps.SelectedIndex + 1;
 
+		c3pxs = c3ps.SelectedIndex + 1;
+
 		enabled[0] = checkBox1.Checked;
 		enabled[1] = checkBox2.Checked;
 		enabled[2] = checkBox3.Checked;
@@ -66,6 +70,7 @@ public partial class opts : Form
 		enabled[4] = checkBox5.Checked;
 		enabled[5] = checkBox6.Checked;
 		enabled[6] = checkBox7.Checked;
+		enabled[7] = checkBox8.Checked;
 
 		fps[0] = (int)numericUpDown1.Value;
 		fps[1] = (int)numericUpDown2.Value;
@@ -74,6 +79,7 @@ public partial class opts : Form
 		fps[4] = (int)numericUpDown5.Value;
 		fps[5] = (int)numericUpDown6.Value;
 		fps[6] = (int)numericUpDown7.Value;
+		fps[7] = (int)numericUpDown8.Value;
 
 		txt1 = textBox1.Text;
 		txt2 = textBox2.Text;
