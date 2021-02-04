@@ -10,7 +10,7 @@ partial class all {
 		public static IColorOwner instance = new shadnew();
 
 void mainImage(out vec4 fragColor, vec2 uv) {
-    vec3 col = v3(0.5f)+v3(0.5f)*cos(v3(iTime)+v3(uv,uv.x)+v3(0f,2f,4f));
+    vec3 col = v3(0.5f)+v3(0.5f)*cos(v3(iTime/500.0f)+v3(uv,uv.x)+v3(0f,2f,4f));
     col += step(uv.x, shadborder);
     col += step(1f - shadborder, uv.x);
     col += step(uv.y, shadborder);
