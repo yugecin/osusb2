@@ -526,7 +526,7 @@ partial class all {
 				Console.WriteLine(". 100%"); // dont judge lol
 				break;
 			}
-			i += 5;
+			i += 1;
 		}
 		rendering = false;
 		isPhantomFrame = false;

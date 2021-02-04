@@ -146,7 +146,7 @@ namespace osusb1
 			this.checkBox1.Location = new System.Drawing.Point(27, 38);
 			this.checkBox1.Name = "checkBox1";
 			this.checkBox1.Size = new System.Drawing.Size(15, 14);
-			this.checkBox1.TabIndex = 4;
+			this.checkBox1.TabIndex = 1;
 			this.checkBox1.UseVisualStyleBackColor = true;
 			// 
 			// label5
@@ -173,7 +173,7 @@ namespace osusb1
             0});
 			this.numericUpDown1.Name = "numericUpDown1";
 			this.numericUpDown1.Size = new System.Drawing.Size(71, 20);
-			this.numericUpDown1.TabIndex = 6;
+			this.numericUpDown1.TabIndex = 2;
 			this.numericUpDown1.Value = new decimal(new int[] {
             20,
             0,
@@ -195,7 +195,7 @@ namespace osusb1
             0});
 			this.numericUpDown2.Name = "numericUpDown2";
 			this.numericUpDown2.Size = new System.Drawing.Size(71, 20);
-			this.numericUpDown2.TabIndex = 9;
+			this.numericUpDown2.TabIndex = 6;
 			this.numericUpDown2.Value = new decimal(new int[] {
             20,
             0,
@@ -219,7 +219,7 @@ namespace osusb1
 			this.checkBox2.Location = new System.Drawing.Point(27, 67);
 			this.checkBox2.Name = "checkBox2";
 			this.checkBox2.Size = new System.Drawing.Size(15, 14);
-			this.checkBox2.TabIndex = 7;
+			this.checkBox2.TabIndex = 3;
 			this.checkBox2.UseVisualStyleBackColor = true;
 			// 
 			// numericUpDown3
@@ -237,7 +237,7 @@ namespace osusb1
             0});
 			this.numericUpDown3.Name = "numericUpDown3";
 			this.numericUpDown3.Size = new System.Drawing.Size(71, 20);
-			this.numericUpDown3.TabIndex = 12;
+			this.numericUpDown3.TabIndex = 8;
 			this.numericUpDown3.Value = new decimal(new int[] {
             20,
             0,
@@ -261,7 +261,7 @@ namespace osusb1
 			this.checkBox3.Location = new System.Drawing.Point(27, 119);
 			this.checkBox3.Name = "checkBox3";
 			this.checkBox3.Size = new System.Drawing.Size(15, 14);
-			this.checkBox3.TabIndex = 10;
+			this.checkBox3.TabIndex = 7;
 			this.checkBox3.UseVisualStyleBackColor = true;
 			// 
 			// numericUpDown4
@@ -279,7 +279,7 @@ namespace osusb1
             0});
 			this.numericUpDown4.Name = "numericUpDown4";
 			this.numericUpDown4.Size = new System.Drawing.Size(71, 20);
-			this.numericUpDown4.TabIndex = 15;
+			this.numericUpDown4.TabIndex = 10;
 			this.numericUpDown4.Value = new decimal(new int[] {
             20,
             0,
@@ -303,7 +303,7 @@ namespace osusb1
 			this.checkBox4.Location = new System.Drawing.Point(27, 145);
 			this.checkBox4.Name = "checkBox4";
 			this.checkBox4.Size = new System.Drawing.Size(15, 14);
-			this.checkBox4.TabIndex = 13;
+			this.checkBox4.TabIndex = 9;
 			this.checkBox4.UseVisualStyleBackColor = true;
 			// 
 			// numericUpDown5
@@ -321,7 +321,7 @@ namespace osusb1
             0});
 			this.numericUpDown5.Name = "numericUpDown5";
 			this.numericUpDown5.Size = new System.Drawing.Size(71, 20);
-			this.numericUpDown5.TabIndex = 18;
+			this.numericUpDown5.TabIndex = 19;
 			this.numericUpDown5.Value = new decimal(new int[] {
             20,
             0,
@@ -345,7 +345,7 @@ namespace osusb1
 			this.checkBox5.Location = new System.Drawing.Point(27, 171);
 			this.checkBox5.Name = "checkBox5";
 			this.checkBox5.Size = new System.Drawing.Size(15, 14);
-			this.checkBox5.TabIndex = 16;
+			this.checkBox5.TabIndex = 11;
 			this.checkBox5.UseVisualStyleBackColor = true;
 			// 
 			// numericUpDown6
@@ -363,7 +363,7 @@ namespace osusb1
             0});
 			this.numericUpDown6.Name = "numericUpDown6";
 			this.numericUpDown6.Size = new System.Drawing.Size(71, 20);
-			this.numericUpDown6.TabIndex = 21;
+			this.numericUpDown6.TabIndex = 22;
 			this.numericUpDown6.Value = new decimal(new int[] {
             20,
             0,
@@ -373,7 +373,7 @@ namespace osusb1
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(103, 410);
+			this.label10.Location = new System.Drawing.Point(103, 385);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(94, 13);
 			this.label10.TabIndex = 20;
@@ -384,10 +384,10 @@ namespace osusb1
 			this.checkBox6.AutoSize = true;
 			this.checkBox6.Checked = true;
 			this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox6.Location = new System.Drawing.Point(27, 384);
+			this.checkBox6.Location = new System.Drawing.Point(27, 359);
 			this.checkBox6.Name = "checkBox6";
 			this.checkBox6.Size = new System.Drawing.Size(15, 14);
-			this.checkBox6.TabIndex = 19;
+			this.checkBox6.TabIndex = 20;
 			this.checkBox6.UseVisualStyleBackColor = true;
 			// 
 			// numericUpDown7
@@ -415,7 +415,7 @@ namespace osusb1
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(103, 436);
+			this.label11.Location = new System.Drawing.Point(103, 411);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(41, 13);
 			this.label11.TabIndex = 23;
@@ -426,10 +426,10 @@ namespace osusb1
 			this.checkBox7.AutoSize = true;
 			this.checkBox7.Checked = true;
 			this.checkBox7.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox7.Location = new System.Drawing.Point(27, 407);
+			this.checkBox7.Location = new System.Drawing.Point(27, 382);
 			this.checkBox7.Name = "checkBox7";
 			this.checkBox7.Size = new System.Drawing.Size(15, 14);
-			this.checkBox7.TabIndex = 22;
+			this.checkBox7.TabIndex = 23;
 			this.checkBox7.UseVisualStyleBackColor = true;
 			// 
 			// label12
@@ -464,7 +464,7 @@ namespace osusb1
 			this.textBox1.Location = new System.Drawing.Point(237, 65);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(260, 20);
-			this.textBox1.TabIndex = 28;
+			this.textBox1.TabIndex = 4;
 			this.textBox1.Text = "robin_be presents";
 			// 
 			// textBox2
@@ -472,7 +472,7 @@ namespace osusb1
 			this.textBox2.Location = new System.Drawing.Point(237, 91);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(260, 20);
-			this.textBox2.TabIndex = 29;
+			this.textBox2.TabIndex = 5;
 			this.textBox2.Text = "osu! storyboard demo number two";
 			// 
 			// label13
@@ -544,7 +544,7 @@ namespace osusb1
 			this.c1right.Location = new System.Drawing.Point(293, 168);
 			this.c1right.Name = "c1right";
 			this.c1right.Size = new System.Drawing.Size(204, 21);
-			this.c1right.TabIndex = 36;
+			this.c1right.TabIndex = 12;
 			// 
 			// c1front
 			// 
@@ -561,7 +561,7 @@ namespace osusb1
 			this.c1front.Location = new System.Drawing.Point(293, 195);
 			this.c1front.Name = "c1front";
 			this.c1front.Size = new System.Drawing.Size(204, 21);
-			this.c1front.TabIndex = 37;
+			this.c1front.TabIndex = 13;
 			// 
 			// c1back
 			// 
@@ -578,7 +578,7 @@ namespace osusb1
 			this.c1back.Location = new System.Drawing.Point(293, 222);
 			this.c1back.Name = "c1back";
 			this.c1back.Size = new System.Drawing.Size(204, 21);
-			this.c1back.TabIndex = 38;
+			this.c1back.TabIndex = 14;
 			// 
 			// c1top
 			// 
@@ -595,7 +595,7 @@ namespace osusb1
 			this.c1top.Location = new System.Drawing.Point(293, 249);
 			this.c1top.Name = "c1top";
 			this.c1top.Size = new System.Drawing.Size(204, 21);
-			this.c1top.TabIndex = 39;
+			this.c1top.TabIndex = 15;
 			// 
 			// c1bot
 			// 
@@ -612,7 +612,7 @@ namespace osusb1
 			this.c1bot.Location = new System.Drawing.Point(293, 276);
 			this.c1bot.Name = "c1bot";
 			this.c1bot.Size = new System.Drawing.Size(204, 21);
-			this.c1bot.TabIndex = 40;
+			this.c1bot.TabIndex = 16;
 			// 
 			// c1left
 			// 
@@ -629,7 +629,7 @@ namespace osusb1
 			this.c1left.Location = new System.Drawing.Point(293, 303);
 			this.c1left.Name = "c1left";
 			this.c1left.Size = new System.Drawing.Size(204, 21);
-			this.c1left.TabIndex = 41;
+			this.c1left.TabIndex = 17;
 			// 
 			// c2left
 			// 
@@ -643,10 +643,10 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2left.Location = new System.Drawing.Point(293, 568);
+			this.c2left.Location = new System.Drawing.Point(293, 543);
 			this.c2left.Name = "c2left";
 			this.c2left.Size = new System.Drawing.Size(204, 21);
-			this.c2left.TabIndex = 53;
+			this.c2left.TabIndex = 31;
 			// 
 			// c2bot
 			// 
@@ -660,10 +660,10 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2bot.Location = new System.Drawing.Point(293, 541);
+			this.c2bot.Location = new System.Drawing.Point(293, 516);
 			this.c2bot.Name = "c2bot";
 			this.c2bot.Size = new System.Drawing.Size(204, 21);
-			this.c2bot.TabIndex = 52;
+			this.c2bot.TabIndex = 30;
 			// 
 			// c2top
 			// 
@@ -677,10 +677,10 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2top.Location = new System.Drawing.Point(293, 514);
+			this.c2top.Location = new System.Drawing.Point(293, 489);
 			this.c2top.Name = "c2top";
 			this.c2top.Size = new System.Drawing.Size(204, 21);
-			this.c2top.TabIndex = 51;
+			this.c2top.TabIndex = 29;
 			// 
 			// c2back
 			// 
@@ -694,10 +694,10 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2back.Location = new System.Drawing.Point(293, 487);
+			this.c2back.Location = new System.Drawing.Point(293, 462);
 			this.c2back.Name = "c2back";
 			this.c2back.Size = new System.Drawing.Size(204, 21);
-			this.c2back.TabIndex = 50;
+			this.c2back.TabIndex = 28;
 			// 
 			// c2front
 			// 
@@ -711,10 +711,10 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2front.Location = new System.Drawing.Point(293, 460);
+			this.c2front.Location = new System.Drawing.Point(293, 435);
 			this.c2front.Name = "c2front";
 			this.c2front.Size = new System.Drawing.Size(204, 21);
-			this.c2front.TabIndex = 49;
+			this.c2front.TabIndex = 27;
 			// 
 			// c2right
 			// 
@@ -728,15 +728,15 @@ namespace osusb1
             "new (colors)",
             "danser logo",
             "osu!logo (heavy)"});
-			this.c2right.Location = new System.Drawing.Point(293, 433);
+			this.c2right.Location = new System.Drawing.Point(293, 408);
 			this.c2right.Name = "c2right";
 			this.c2right.Size = new System.Drawing.Size(204, 21);
-			this.c2right.TabIndex = 48;
+			this.c2right.TabIndex = 26;
 			// 
 			// label21
 			// 
 			this.label21.AutoSize = true;
-			this.label21.Location = new System.Drawing.Point(266, 571);
+			this.label21.Location = new System.Drawing.Point(266, 546);
 			this.label21.Name = "label21";
 			this.label21.Size = new System.Drawing.Size(21, 13);
 			this.label21.TabIndex = 47;
@@ -745,7 +745,7 @@ namespace osusb1
 			// label22
 			// 
 			this.label22.AutoSize = true;
-			this.label22.Location = new System.Drawing.Point(248, 544);
+			this.label22.Location = new System.Drawing.Point(248, 519);
 			this.label22.Name = "label22";
 			this.label22.Size = new System.Drawing.Size(39, 13);
 			this.label22.TabIndex = 46;
@@ -754,7 +754,7 @@ namespace osusb1
 			// label23
 			// 
 			this.label23.AutoSize = true;
-			this.label23.Location = new System.Drawing.Point(265, 517);
+			this.label23.Location = new System.Drawing.Point(265, 492);
 			this.label23.Name = "label23";
 			this.label23.Size = new System.Drawing.Size(22, 13);
 			this.label23.TabIndex = 45;
@@ -763,7 +763,7 @@ namespace osusb1
 			// label24
 			// 
 			this.label24.AutoSize = true;
-			this.label24.Location = new System.Drawing.Point(256, 490);
+			this.label24.Location = new System.Drawing.Point(256, 465);
 			this.label24.Name = "label24";
 			this.label24.Size = new System.Drawing.Size(31, 13);
 			this.label24.TabIndex = 44;
@@ -772,7 +772,7 @@ namespace osusb1
 			// label25
 			// 
 			this.label25.AutoSize = true;
-			this.label25.Location = new System.Drawing.Point(259, 463);
+			this.label25.Location = new System.Drawing.Point(259, 438);
 			this.label25.Name = "label25";
 			this.label25.Size = new System.Drawing.Size(28, 13);
 			this.label25.TabIndex = 43;
@@ -781,7 +781,7 @@ namespace osusb1
 			// label26
 			// 
 			this.label26.AutoSize = true;
-			this.label26.Location = new System.Drawing.Point(260, 436);
+			this.label26.Location = new System.Drawing.Point(260, 411);
 			this.label26.Name = "label26";
 			this.label26.Size = new System.Drawing.Size(27, 13);
 			this.label26.TabIndex = 42;
@@ -801,7 +801,7 @@ namespace osusb1
 			this.c1ps.Location = new System.Drawing.Point(293, 330);
 			this.c1ps.Name = "c1ps";
 			this.c1ps.Size = new System.Drawing.Size(204, 21);
-			this.c1ps.TabIndex = 56;
+			this.c1ps.TabIndex = 18;
 			// 
 			// label27
 			// 
@@ -823,15 +823,15 @@ namespace osusb1
             "4 (you need a decent pc)",
             "5",
             "6 (for near potatoes)"});
-			this.c2ps.Location = new System.Drawing.Point(293, 595);
+			this.c2ps.Location = new System.Drawing.Point(293, 570);
 			this.c2ps.Name = "c2ps";
 			this.c2ps.Size = new System.Drawing.Size(204, 21);
-			this.c2ps.TabIndex = 59;
+			this.c2ps.TabIndex = 32;
 			// 
 			// label28
 			// 
 			this.label28.AutoSize = true;
-			this.label28.Location = new System.Drawing.Point(124, 598);
+			this.label28.Location = new System.Drawing.Point(124, 573);
 			this.label28.Name = "label28";
 			this.label28.Size = new System.Drawing.Size(163, 13);
 			this.label28.TabIndex = 58;
@@ -839,20 +839,20 @@ namespace osusb1
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(345, 651);
+			this.button1.Location = new System.Drawing.Point(335, 607);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 60;
+			this.button1.TabIndex = 35;
 			this.button1.Text = "Generate";
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(12, 651);
+			this.button2.Location = new System.Drawing.Point(2, 607);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(175, 23);
-			this.button2.TabIndex = 61;
+			this.button2.TabIndex = 34;
 			this.button2.Text = "open old gui (has no purpose)";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -860,7 +860,7 @@ namespace osusb1
 			// label29
 			// 
 			this.label29.AutoSize = true;
-			this.label29.Location = new System.Drawing.Point(103, 384);
+			this.label29.Location = new System.Drawing.Point(103, 359);
 			this.label29.Name = "label29";
 			this.label29.Size = new System.Drawing.Size(83, 13);
 			this.label29.TabIndex = 62;
@@ -871,10 +871,10 @@ namespace osusb1
 			this.checkBox8.AutoSize = true;
 			this.checkBox8.Checked = true;
 			this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.checkBox8.Location = new System.Drawing.Point(27, 435);
+			this.checkBox8.Location = new System.Drawing.Point(27, 410);
 			this.checkBox8.Name = "checkBox8";
 			this.checkBox8.Size = new System.Drawing.Size(15, 14);
-			this.checkBox8.TabIndex = 63;
+			this.checkBox8.TabIndex = 25;
 			this.checkBox8.UseVisualStyleBackColor = true;
 			// 
 			// numericUpDown8
@@ -892,7 +892,7 @@ namespace osusb1
             0});
 			this.numericUpDown8.Name = "numericUpDown8";
 			this.numericUpDown8.Size = new System.Drawing.Size(71, 20);
-			this.numericUpDown8.TabIndex = 64;
+			this.numericUpDown8.TabIndex = 33;
 			this.numericUpDown8.Value = new decimal(new int[] {
             20,
             0,
@@ -910,15 +910,15 @@ namespace osusb1
             "4 (you need a decent pc)",
             "5",
             "6 (for near potatoes)"});
-			this.c3ps.Location = new System.Drawing.Point(293, 381);
+			this.c3ps.Location = new System.Drawing.Point(293, 356);
 			this.c3ps.Name = "c3ps";
 			this.c3ps.Size = new System.Drawing.Size(204, 21);
-			this.c3ps.TabIndex = 65;
+			this.c3ps.TabIndex = 21;
 			// 
 			// label30
 			// 
 			this.label30.AutoSize = true;
-			this.label30.Location = new System.Drawing.Point(234, 385);
+			this.label30.Location = new System.Drawing.Point(234, 360);
 			this.label30.Name = "label30";
 			this.label30.Size = new System.Drawing.Size(50, 13);
 			this.label30.TabIndex = 66;
@@ -928,7 +928,7 @@ namespace osusb1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(705, 686);
+			this.ClientSize = new System.Drawing.Size(705, 632);
 			this.Controls.Add(this.label30);
 			this.Controls.Add(this.c3ps);
 			this.Controls.Add(this.numericUpDown8);
