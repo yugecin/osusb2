@@ -288,7 +288,7 @@ partial class all
 				dir = dp - v3(0f);
 			} else if (t < 67600) {
 				// shad (first.5 appearance)
-				float p = progressx(64250, 67458, t) * 205f;
+				float p = progressx(64250, 67458, t) * 3.5f;
 				p += 3.2f * step(t, 64350);
 				//float tt = t;
 				//tt += 2000.0f * step(64350, t) - 200f;
@@ -296,8 +296,8 @@ partial class all
 				float a, b;
 				//a = tt / -4f;
 				//b = tt / 6f;
-				a = p + 103f;
-				b = p + 3.5f;
+				a = p + -.75f;
+				b = p + 6.5f;
 				float xymod = (1f + .1f * abs(sin(b)));
 				float dist = 25f + progressx(67600 - 500, 67600, t) * 200.0f;
 				dp = v3(dist * cos(a) * xymod, dist * sin(a) * xymod, 14f * cos(b));
