@@ -257,7 +257,7 @@ partial class all
 					Zctext.bgstyle = 1;
 				}
 			} else if (t < 58000) {
-				// transition to shad (first appearance)
+				// transition to shad (first appearance) (but not actually, mc is in between)
 				float tt = t / 200f;
 				int seg = (58000 - 56333) / 6;
 				switch ((t - 56333) / seg) {
@@ -282,22 +282,25 @@ partial class all
 					break;
 				}
 				dir = dp - v3(0f);
-			} else if (t < 64080) {
-				// shad (first appearance)
-				float tt = t;
-				//tt += 2000.0f * step(64250, t);
-				//tt += 2000.0f * step(64350, t);
-				tt /= 200.0f;
-				float a, b;
-				a = tt / -4f;
-				b = tt / 6f;
-				float xymod = (1f + .1f * abs(sin(b)));
-				float dist = 25f + progressx(67458 - 500, 67458, t) * 200.0f;
-				dp = v3(dist * cos(a) * xymod, dist * sin(a) * xymod, 14f * cos(b));
-				dir = dp - v3(0f);
-			} else if (t < 67458) {
+			} else if (t < 64250) {
 				// mc
 				dp = v3(-25f, 0f, -10f);
+				dir = dp - v3(0f);
+			} else if (t < 67600) {
+				// shad (first.5 appearance)
+				float p = progressx(64250, 67458, t) * 205f;
+				p += 3.2f * step(t, 64350);
+				//float tt = t;
+				//tt += 2000.0f * step(64350, t) - 200f;
+				//tt /= 200.0f;
+				float a, b;
+				//a = tt / -4f;
+				//b = tt / 6f;
+				a = p + 103f;
+				b = p + 3.5f;
+				float xymod = (1f + .1f * abs(sin(b)));
+				float dist = 25f + progressx(67600 - 500, 67600, t) * 200.0f;
+				dp = v3(dist * cos(a) * xymod, dist * sin(a) * xymod, 14f * cos(b));
 				dir = dp - v3(0f);
 			} else if (t < 104085) {
 				// harrier breakdown

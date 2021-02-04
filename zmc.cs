@@ -170,13 +170,13 @@ partial class all {
 		{
 			copy(_points, points);
 			move(_points, v3(0f, 0f, -7.5f));
-			turn(_points, v3(), quat(0f, 0f, -.8f + 3.4f * scene.progress));
+			turn(_points, v3(), quat(0f, 0f, -.8f + 6.4f * scene.progress));
 			move(_points, v3(0f, -8f, 0f));
 			move(_points, Zcamera.mid);
 			Zcamera.adjust(_points);
 			copy(_tpoints, tpoints);
 			move(_tpoints, v3(0f, 0f, -7.5f));
-			turn(_tpoints, v3(), quat(0f, 0f, .8f - 3.4f * scene.progress));
+			turn(_tpoints, v3(), quat(0f, 0f, .8f - 6.4f * scene.progress));
 			move(_tpoints, v3(0f, 8f, 0f));
 			move(_tpoints, Zcamera.mid);
 			Zcamera.adjust(_tpoints);

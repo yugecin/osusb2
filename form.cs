@@ -409,7 +409,7 @@ partial class all {
 			zs.Add(new Zharrier(17650, 34000).setFPS(opts.fps[3]));
 		}
 		if (opts.enabled[4]) {
-			zs.Add(new Zshad(56333, 64080, opts.c1pxs, new IColorOwner[] {
+			zs.Add(new Zshad(56333, 58000, opts.c1pxs, new IColorOwner[] {
 				// right
 				// front
 				// back
@@ -425,10 +425,20 @@ partial class all {
 			}).setFPS(opts.fps[4]));
 		}
 		if (opts.enabled[5]) {
-			zs.Add(new Zmc(64080, 67458, opts.c3pxs).setFPS(opts.fps[5]));
+			zs.Add(new Zmc(58000, 64250, opts.c3pxs).setFPS(opts.fps[5]));
+		}
+		if (opts.enabled[4]) {
+			zs.Add(new Zshad(64250, 67458, opts.c1pxs, new IColorOwner[] {
+				shads[opts.c1idx[0]],
+				shads[opts.c1idx[1]],
+				shads[opts.c1idx[2]],
+				shads[opts.c1idx[3]],
+				shads[opts.c1idx[4]],
+				shads[opts.c1idx[5]],
+			}).setFPS(opts.fps[4]));
 		}
 		if (opts.enabled[6]) {
-			zs.Add(new Zharrierbreakdown(67458, 104085).setFPS(opts.fps[6]));
+			zs.Add(new Zharrierbreakdown(67600, 104085).setFPS(opts.fps[6]));
 		}
 		if (opts.enabled[7]) {
 			zs.Add(new Zshad(104085, 124000, opts.c2pxs, new IColorOwner[] {
