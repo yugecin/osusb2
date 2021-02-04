@@ -96,6 +96,7 @@ public partial class opts : Form
 
 	private void button2_Click(object sender, EventArgs e)
 	{
+		setvals();
 		new form().ShowDialog();
 	}
 }
