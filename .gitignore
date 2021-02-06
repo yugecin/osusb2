@@ -7,3 +7,5 @@
 !/*.osu
 !/*.csproj
 !/*.resx
+!/Properties/
+!/Properties/*

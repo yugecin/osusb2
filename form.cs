@@ -342,7 +342,12 @@ partial class all {
 		CultureInfo customCulture = (CultureInfo) Thread.CurrentThread.CurrentCulture.Clone();
 		customCulture.NumberFormat.NumberDecimalSeparator = ".";
 		Thread.CurrentThread.CurrentCulture = customCulture;
-		Bez.init();
+		try {
+			Bez.init();
+		} catch (Exception e) {
+			MessageBox.Show("Invalid bez.txt or wrong working directory");
+			throw e;
+		}
 		harr.read();
 		fft = new FFT();
 		zs = new List<Z>();
